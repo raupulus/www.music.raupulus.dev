@@ -71,3 +71,14 @@
 
 * La web cuenta con un script en Python (`build.py`) que lee los metadatos de las canciones desde `data/songs.json` (extraídos de los storyboards, letras y portadas de `videoclips/CD 1 - Nunca venderé mi alma de Metal`).
 * Al actualizar un ID de YouTube o añadir un tema, basta con ejecutar `python3 build.py` para regenerar todo el sitio en `dist/` en cuestión de segundos.
+
+---
+
+## 7. PROTOCOLO TRAS TRANSCODIFICACIÓN DE VÍDEOS (ACTUALIZACIÓN WEB)
+
+* **Solicitud Obligatoria de ID de YouTube:** Cada vez que se transcodifique, monte o finalice un vídeo de una canción (`*_wm.mp4`), el agente debe **pedir obligatoriamente al usuario el ID del vídeo de YouTube** (o enlace del vídeo subido al canal `@RaupulusMusic`).
+* **Actualización Automática de la Web:** Con el ID proporcionado:
+  1. Insertar el ID en el campo `"youtube_id"` correspondiente en `data/songs.json`.
+  2. Ejecutar `python3 build.py` para regenerar `dist/index.html`, la página de la canción con el reproductor embebido y `dist/sitemap.xml`.
+  3. Confirmar la actualización y comitear en Git.
+
