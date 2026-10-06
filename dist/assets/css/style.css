@@ -803,6 +803,44 @@ p {
   color: var(--text-bright);
 }
 
+.lore-bust-wrap {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 8px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.lore-bust-glow-purple {
+  background: radial-gradient(circle, rgba(155, 77, 255, 0.22) 0%, rgba(155, 77, 255, 0.05) 50%, transparent 75%);
+}
+
+.lore-bust-glow-emerald {
+  background: radial-gradient(circle, rgba(0, 230, 118, 0.22) 0%, rgba(0, 230, 118, 0.05) 50%, transparent 75%);
+}
+
+.lore-bust-glow-cyan {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.22) 0%, rgba(0, 229, 255, 0.05) 50%, transparent 75%);
+}
+
+.lore-bust-img {
+  max-height: 190px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.75));
+  transition: transform var(--transition-med), filter var(--transition-med);
+}
+
+.lore-card:hover .lore-bust-img {
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.9));
+}
+
 .lore-list {
   list-style: none;
   display: flex;
@@ -822,6 +860,7 @@ p {
   color: var(--accent-purple);
   font-weight: 800;
 }
+
 
 /* Single Song Page Layout */
 .song-header {

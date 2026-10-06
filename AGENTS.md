@@ -82,3 +82,20 @@
   2. Ejecutar `python3 build.py` para regenerar `dist/index.html`, la página de la canción con el reproductor embebido y `dist/sitemap.xml`.
   3. Confirmar la actualización y comitear en Git.
 
+---
+
+## 8. NOMENCLATURA OFICIAL: CÓDIGO INTERNO VS. CARA AL PÚBLICO
+
+> [!IMPORTANT]
+> Los nombres técnicos con sufijo `-Avatar` son códigos internos para la consistencia en prompts de IA y organización técnica. De cara al público, la web oficial, descripciones de YouTube, redes sociales y metadatos se debe utilizar rigurosamente la nomenclatura artística:
+>
+> 1. **`R-Avatar` (código interno) ➔ `Raupulus` (nombre público):**  
+>    El protagonista indiscutible del proyecto. Nunca llamarlo "R-Avatar" ante los usuarios o en la web pública; para el público es simplemente **Raupulus**.
+>
+> 2. **`Wolf-Avatar` (código interno) ➔ `Su Perro` / `Su Mascota` / `Su Mejor Amigo` (nombre público):**  
+>    El lobo titánico de ojos esmeralda. Presentarlo en la narrativa como su perro, su mascota o su mejor amigo.
+>
+> 3. **`M-Love-Avatar` (código interno) ➔ `Amada` / `Su Amada` (nombre público):**  
+>    La elfa-ogra híbrida musa trágica del universo. Presentarla ante el público como su amada.
+
+

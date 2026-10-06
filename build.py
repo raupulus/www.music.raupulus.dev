@@ -41,12 +41,20 @@ def load_songs():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def sanitize_public_text(text):
+    if not text:
+        return ""
+    text = text.replace("R-Avatar", "Raupulus").replace("R-avatar", "Raupulus").replace("r-avatar", "Raupulus")
+    text = text.replace("Wolf-Avatar", "su perro / mejor amigo (el lobo)").replace("wolf-avatar", "su perro / mejor amigo (el lobo)")
+    text = text.replace("M-Love-Avatar", "su amada").replace("m-love-avatar", "su amada")
+    return text
+
 def generate_index(songs):
     first_song = songs[0] if songs else {}
 
     cards_html = []
     for s in songs:
-        synopsis_short = html.escape(s.get('synopsis', ''))
+        synopsis_short = html.escape(sanitize_public_text(s.get('synopsis', '')))
         title_esc = html.escape(s['title'])
         card = f"""
         <article class="song-card" data-title="{title_esc.lower()}" data-slug="{s['slug']}">
@@ -112,7 +120,7 @@ def generate_index(songs):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raupulus Music — Metal Industrial, Cyberpunk & Videoclips con IA</title>
-  <meta name="description" content="Sitio oficial de Raupulus Music. Descubre el álbum 'CD 1: Nunca venderé mi alma de Metal', 23 videoclips cinematográficos, letras oficiales y el universo visual de R-Avatar.">
+  <meta name="description" content="Sitio oficial de Raupulus Music. Descubre el álbum 'CD 1: Nunca venderé mi alma de Metal', 23 videoclips cinematográficos, letras oficiales y el universo visual de Raupulus.">
   <link rel="canonical" href="{SITE_URL}/">
 
   <!-- Open Graph / Facebook -->
@@ -126,7 +134,7 @@ def generate_index(songs):
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="{SITE_URL}/">
   <meta name="twitter:title" content="Raupulus Music — Álbum Oficial CD 1">
-  <meta name="twitter:description" content="Metal Industrial y Videoclips Cinematográficos de R-Avatar. Letras, historias y vídeos en YouTube.">
+  <meta name="twitter:description" content="Metal Industrial y Videoclips Cinematográficos de Raupulus. Letras, historias y vídeos en YouTube.">
   <meta name="twitter:image" content="{SITE_URL}/assets/images/banner.jpg">
 
   <link rel="icon" type="image/png" href="assets/images/avatar-circular.png">
@@ -138,7 +146,7 @@ def generate_index(songs):
 </head>
 <body>
 
-  <!-- Siluetas de R-Avatar de fondo -->
+  <!-- Siluetas de Raupulus de fondo -->
   <div class="bg-watermark"></div>
   <div class="bg-watermark-left"></div>
 
@@ -157,7 +165,7 @@ def generate_index(songs):
         <li><a href="#inicio" class="active">Inicio</a></li>
         <li><a href="#spotlight">Destacado</a></li>
         <li><a href="#canciones">Canciones ({len(songs)})</a></li>
-        <li><a href="#universo">Universo R-Avatar</a></li>
+        <li><a href="#universo">Universo</a></li>
         <li><a href="#proyecto">El Proyecto</a></li>
       </ul>
 
@@ -180,7 +188,7 @@ def generate_index(songs):
         <h1 class="hero-title">NUNCA VENDERÉ MI ALMA DE <span class="highlight-purple">METAL</span></h1>
         <p class="hero-subtitle">Metal Industrial • Cyber Hardcore • Inteligencia Artificial</p>
         <p class="hero-desc">
-          Sumérgete en la odisea visceral de <strong>R-Avatar</strong>: 23 composiciones brutales y 570 clips cinematográficos generados por IA que desafían el horizonte sonoro y visual.
+          Sumérgete en la odisea visceral de <strong>Raupulus</strong>: 23 composiciones brutales y 570 clips cinematográficos generados por IA que desafían el horizonte sonoro y visual.
         </p>
 
         <div class="hero-actions">
@@ -189,7 +197,7 @@ def generate_index(songs):
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             Ver en YouTube
           </a>
-          <a href="#universo" class="btn btn-outline btn-lg">Conocer a R-Avatar</a>
+          <a href="#universo" class="btn btn-outline btn-lg">Conocer el Universo</a>
         </div>
 
         <div class="hero-stats">
@@ -210,15 +218,16 @@ def generate_index(songs):
 
       <div class="hero-media">
         <div class="hero-avatar-frame">
-          <img src="assets/images/r-avatar-portrait.jpg" alt="R-Avatar — Soberano de la corteza y plasma violeta" width="440" height="550">
+          <img src="assets/images/r-avatar-portrait.jpg" alt="Raupulus — Soberano de la corteza y plasma violeta" width="440" height="550">
           <div class="hero-avatar-overlay">
-            <span class="hero-avatar-name">R-Avatar</span>
-            <span class="hero-avatar-role">Protagonista Canónico del Álbum</span>
+            <span class="hero-avatar-name">Raupulus</span>
+            <span class="hero-avatar-role">Protagonista del Álbum</span>
           </div>
         </div>
       </div>
     </div>
   </header>
+
 
   <!-- Spotlight Player -->
   <section id="spotlight" class="section">
@@ -250,7 +259,7 @@ def generate_index(songs):
               <span class="badge">CD 1</span>
             </div>
             <h3 id="spotlight-title" class="spotlight-title">{html.escape(first_song.get('title', 'Corona de Hierro'))}</h3>
-            <p id="spotlight-synopsis" class="spotlight-synopsis">{html.escape(first_song.get('synopsis', ''))}</p>
+            <p id="spotlight-synopsis" class="spotlight-synopsis">{html.escape(sanitize_public_text(first_song.get('synopsis', '')))}</p>
           </div>
 
           <div class="spotlight-actions">
@@ -296,52 +305,66 @@ def generate_index(songs):
     </div>
   </section>
 
-  <!-- Universo Visual R-Avatar -->
+  <!-- Universo de Raupulus -->
   <section id="universo" class="section">
     <div class="container">
       <div class="section-header">
         <div class="badge">LORE & CONCEPT ART</div>
-        <h2>EL UNIVERSO VISUAL DE R-AVATAR</h2>
+        <h2>EL UNIVERSO DE RAUPULUS</h2>
         <p>Un cosmos donde la madera de ébano viva, la bioelectricidad violeta y el poder industrial colisionan.</p>
       </div>
 
       <div class="universe-grid">
+        <!-- Tarjeta 1: Raupulus -->
         <div class="lore-card">
+          <div class="lore-bust-wrap lore-bust-glow-purple">
+            <img src="assets/images/r-avatar-face.png" alt="Raupulus" class="lore-bust-img" loading="lazy">
+          </div>
           <div class="badge">PROTAGONISTA PRINCIPAL</div>
-          <h3 class="lore-title">R-Avatar</h3>
-          <p>Entidad humanoide atlética (~1.95 m) esculpida en haces de músculo de ébano oscuro, sin piel pero con cero aspecto esquelético. Recorrido por venas bioluminiscentes violetas/magenta (#9b4dff).</p>
+          <h3 class="lore-title">Raupulus</h3>
+          <p>Entidad humanoide atlética (~1.95 m) esculpida en haces de músculo de ébano oscuro, sin piel pero con anatomía viva (cero huesos expuestos). Recorrido por venas bioluminiscentes violetas/magenta (#9b4dff).</p>
           <ul class="lore-list">
-            <li><span class="bullet">✦</span> <strong>Cabeza:</strong> Cuernos curvados de madera orgánica y calavera de madera con sonrisa afilada.</li>
+            <li><span class="bullet">✦</span> <strong>Cabeza:</strong> Cuernos curvados de madera orgánica y dentadura blanca afilada.</li>
             <li><span class="bullet">✦</span> <strong>Cerebro Expuesto:</strong> Tejido neural pulsante con fisuras bioeléctricas violetas y cian.</li>
-            <li><span class="bullet">✦</span> <strong>Mirada:</strong> Exactamente 8 ojos violetas sin pupilas (2 orbitales, 2 frontales, 4 temporales).</li>
+            <li><span class="bullet">✦</span> <strong>Mirada:</strong> Exactamente 8 ojos violetas sin pupilas con intensa bioluminiscencia.</li>
             <li><span class="bullet">✦</span> <strong>Extremidades:</strong> Zarpas afiladas violetas y pies tridáctilos de velociraptor.</li>
           </ul>
         </div>
 
+        <!-- Tarjeta 2: Su Mejor Amigo -->
         <div class="lore-card">
-          <div class="badge badge-cyan">EL HERMANO Y LEAL ALIADO</div>
-          <h3 class="lore-title">Wolf-Avatar</h3>
-          <p>Lobo titánico de pelaje negro carbón y musculatura de madera orgánica viva. Es el protagonista del capítulo 10 ("Mi mejor amigo Ladra"), representando la fidelidad inquebrantable que cura el aislamiento del alma.</p>
+          <div class="lore-bust-wrap lore-bust-glow-emerald">
+            <img src="assets/images/wolf-avatar-bust.png" alt="Su Mejor Amigo" class="lore-bust-img" loading="lazy">
+          </div>
+          <div class="badge badge-cyan">SU PERRO & MEJOR AMIGO</div>
+          <h3 class="lore-title">Su Mejor Amigo</h3>
+          <p>Lobo titánico mítico de pelaje negro carbón y musculatura orgánica viva. Es el leal guardián y protector de Raupulus, protagonista del capítulo 10 ("Mi mejor amigo Ladra").</p>
           <ul class="lore-list">
-            <li><span class="bullet">✦</span> Furia salvaje en combate y ternura protectora junto a R-Avatar.</li>
-            <li><span class="bullet">✦</span> Colmillos de marfil negro y ojos fulgurantes que detectan el peligro en la niebla.</li>
+            <li><span class="bullet">✦</span> <strong>Hermandad:</strong> Fidelidad inquebrantable que cura el aislamiento y combate a su lado.</li>
+            <li><span class="bullet">✦</span> <strong>Mirada:</strong> Dos penetrantes ojos fluorescentes verde esmeralda (#00e676).</li>
+            <li><span class="bullet">✦</span> <strong>Presencia:</strong> Mandíbulas poderosas y limpios colmillos blancos de marfil.</li>
           </ul>
         </div>
 
+        <!-- Tarjeta 3: Amada -->
         <div class="lore-card">
+          <div class="lore-bust-wrap lore-bust-glow-cyan">
+            <img src="assets/images/amada-avatar-bust.png" alt="Amada" class="lore-bust-img" loading="lazy">
+          </div>
           <div class="badge">LA MUSA TRÁGICA</div>
-          <h3 class="lore-title">M-Love-Avatar</h3>
-          <p>Figura femenina etérea esculpida en madera de cerezo oscura y zafiro, protagonista del desgarrador capítulo 18 ("Mi amada tiene fecha de caducidad"). Representa la belleza de lo efímero y la despedida de un amor inmortal.</p>
+          <h3 class="lore-title">Amada</h3>
+          <p>Criatura fantástica híbrida entre elfa y ogra noble, protagonista del desgarrador capítulo 18 ("Mi amada tiene fecha de caducidad"). Representa la belleza de lo efímero y un amor indestructible.</p>
           <ul class="lore-list">
-            <li><span class="bullet">✦</span> Danza sobre las cumbres donde la muerte se convierte en ascensión cósmica.</li>
-            <li><span class="bullet">✦</span> Líneas bioeléctricas doradas y púrpuras que se apagan con dulzura al amanecer.</li>
+            <li><span class="bullet">✦</span> <strong>Esencia:</strong> Epidermis biológica verde jade natural y aura luminiscente esmeralda.</li>
+            <li><span class="bullet">✦</span> <strong>Mirada:</strong> Ojos fluorescentes azul cobalto / cian (#00e5ff) de gran calidez.</li>
+            <li><span class="bullet">✦</span> <strong>Rostro:</strong> Orejas élficas puntiagudas, hoyuelos suaves y sutiles colmillos delicados.</li>
           </ul>
         </div>
       </div>
 
       <div style="margin-top: 50px; text-align: center;">
         <div style="position: relative; max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow);">
-          <img src="assets/images/r-avatar-triptych.jpg" alt="R-Avatar — Tríptico de Poses Épicas: Riff de Guitarra, Alas Demoníacas y Soberano del Trono" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra, Alas Demoníacas y Soberano del Trono" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
         <p style="margin-top: 14px; font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em;">
           Furia Sonora • Ascensión de Plasma • Trono de los Sesenta Mares
@@ -349,6 +372,7 @@ def generate_index(songs):
       </div>
     </div>
   </section>
+
 
   <!-- Sobre el Proyecto & SEO -->
   <section id="proyecto" class="section">
@@ -398,7 +422,7 @@ def generate_index(songs):
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#canciones">Listado de Canciones</a></li>
-            <li><a href="#universo">Universo R-Avatar</a></li>
+            <li><a href="#universo">Universo</a></li>
             <li><a href="#proyecto">Sobre el Proyecto</a></li>
           </ul>
         </div>
@@ -436,7 +460,7 @@ def generate_index(songs):
 def generate_song_pages(songs):
     for s in songs:
         title_esc = html.escape(s['title'])
-        synopsis_esc = html.escape(s.get('synopsis', ''))
+        synopsis_esc = html.escape(sanitize_public_text(s.get('synopsis', '')))
         lyrics_esc = html.escape(s.get('lyrics', ''))
         slug = s['slug']
         num_str = f"#{s['number']:02d}"
@@ -524,7 +548,7 @@ def generate_song_pages(songs):
                 "name": "Raupulus Music",
                 "url": YT_CHANNEL
             },
-            "description": s.get('synopsis', '')
+            "description": sanitize_public_text(s.get('synopsis', ''))
         }
 
         song_page_html = f"""<!DOCTYPE html>
@@ -575,7 +599,7 @@ def generate_song_pages(songs):
       <ul class="nav-links">
         <li><a href="../index.html">Inicio</a></li>
         <li><a href="../index.html#canciones">Todas las Canciones</a></li>
-        <li><a href="../index.html#universo">R-Avatar</a></li>
+        <li><a href="../index.html#universo">Universo</a></li>
       </ul>
 
       <div class="nav-cta">
@@ -671,7 +695,7 @@ def generate_song_pages(songs):
           </div>
           <div class="spec-item">
             <span class="spec-label">Protagonista</span>
-            <div class="spec-val">R-Avatar</div>
+            <div class="spec-val">Raupulus</div>
           </div>
           <div class="spec-item">
             <span class="spec-label">Género</span>
@@ -719,7 +743,7 @@ def generate_song_pages(songs):
           <ul class="footer-links">
             <li><a href="../index.html">Página Principal</a></li>
             <li><a href="../index.html#canciones">Índice del CD 1 (23 Canciones)</a></li>
-            <li><a href="../index.html#universo">Universo R-Avatar</a></li>
+            <li><a href="../index.html#universo">Universo</a></li>
           </ul>
         </div>
 
