@@ -60,10 +60,23 @@ def generate_index(songs):
         title_esc = html.escape(s['title'])
         card = f"""
         <article class="song-card" data-title="{title_esc.lower()}" data-slug="{s['slug']}">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="{s['number']}"
+               data-title="{title_esc}"
+               data-duration="{s['duration']}"
+               data-synopsis="{synopsis_short}"
+               data-cover="assets/images/covers/{s['cover_file']}"
+               data-slug="{s['slug']}"
+               data-ytid="{s.get('youtube_id', '')}"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de {title_esc}">
             <span class="card-badge-num">#{s['number']:02d}</span>
             <span class="card-badge-dur">{s['duration']}</span>
             <img src="assets/images/covers/{s['cover_file']}" alt="Portada {title_esc} — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -73,7 +86,7 @@ def generate_index(songs):
             <div class="card-footer">
               <a href="canciones/{s['slug']}.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="{s['number']}"
                       data-title="{title_esc}"
                       data-duration="{s['duration']}"
@@ -81,7 +94,7 @@ def generate_index(songs):
                       data-cover="assets/images/covers/{s['cover_file']}"
                       data-slug="{s['slug']}"
                       data-ytid="{s.get('youtube_id', '')}">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -166,7 +179,7 @@ def generate_index(songs):
 
       <ul class="nav-links">
         <li><a href="#inicio" class="active">Inicio</a></li>
-        <li><a href="#spotlight">Destacado</a></li>
+        <li><a href="#destacado">Tema Destacado</a></li>
         <li><a href="#canciones">Canciones ({len(songs)})</a></li>
         <li><a href="#universo">Universo</a></li>
         <li><a href="#proyecto">El Proyecto</a></li>
@@ -232,42 +245,41 @@ def generate_index(songs):
   </header>
 
 
-  <!-- Spotlight Player -->
-  <section id="spotlight" class="section">
+  <!-- Tema Destacado -->
+  <section id="destacado" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">VISTA PREVIA INTERACTIVA</div>
-        <h2>REPRODUCTOR DESTACADO</h2>
-        <p>Selecciona cualquier pista del álbum para explorar su ambientación, sinopsis y enlace oficial de YouTube.</p>
+        <div class="badge badge-cyan">SINGLE DESTACADO • PISTA DE APERTURA</div>
+        <h2>CORONA DE HIERRO</h2>
+        <p>El himno fundacional de 'Nunca venderé mi alma de Metal'. Reproduce el videoclip oficial:</p>
       </div>
 
       <div class="spotlight-card">
         <div class="spotlight-video-wrap">
-          <div class="spotlight-poster">
-            <img id="spotlight-img" src="assets/images/covers/{first_song.get('cover_file', 'cover-01.jpg')}" alt="Portada {first_song.get('title', '')}">
-            <div class="spotlight-play-overlay">
-              <a id="spotlight-yt" href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="play-circle" aria-label="Reproducir en YouTube">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </a>
-              <span class="badge badge-yt">🔴 Reproducir en YouTube</span>
-            </div>
+          <div class="video-player-container" style="margin: 0; min-height: 380px;">
+            <iframe src="https://www.youtube-nocookie.com/embed/{first_song.get('youtube_id', 'ATeWyiFG-cM')}?autoplay=0&rel=0&modestbranding=1" 
+                    title="Corona de Hierro — Raupulus Music" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen 
+                    loading="lazy"></iframe>
           </div>
         </div>
 
         <div class="spotlight-info">
           <div class="spotlight-top">
             <div style="display: flex; gap: 10px; align-items: center;">
-              <span id="spotlight-num" class="badge">#01</span>
-              <span id="spotlight-dur" class="badge badge-cyan">{first_song.get('duration', '03:31')}</span>
+              <span class="badge">#01 de 23</span>
+              <span class="badge badge-cyan">{first_song.get('duration', '03:31')}</span>
               <span class="badge">CD 1</span>
             </div>
-            <h3 id="spotlight-title" class="spotlight-title">{html.escape(first_song.get('title', 'Corona de Hierro'))}</h3>
-            <p id="spotlight-synopsis" class="spotlight-synopsis">{html.escape(sanitize_public_text(first_song.get('synopsis', '')))}</p>
+            <h3 class="spotlight-title">{html.escape(first_song.get('title', 'Corona de Hierro'))}</h3>
+            <p class="spotlight-synopsis">{html.escape(sanitize_public_text(first_song.get('synopsis', '')))}</p>
           </div>
 
           <div class="spotlight-actions">
-            <a id="spotlight-link" href="canciones/{first_song.get('slug', '01-corona-de-hierro')}.html" class="btn btn-purple">
-              Ver Letra Completa & Vídeo
+            <a href="canciones/{first_song.get('slug', '01-corona-de-hierro')}.html" class="btn btn-purple">
+              Ver Letra Completa & Ficha
             </a>
             <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
               🔔 Suscribirse al Canal
@@ -424,6 +436,7 @@ def generate_index(songs):
           <h4>Navegación</h4>
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#destacado">Tema Destacado</a></li>
             <li><a href="#canciones">Listado de Canciones</a></li>
             <li><a href="#universo">Universo</a></li>
             <li><a href="#proyecto">Sobre el Proyecto</a></li>
@@ -451,6 +464,43 @@ def generate_index(songs):
       </div>
     </div>
   </footer>
+
+  <!-- Modal de Vista Previa Inmediata (Reproducción sin scroll) -->
+  <div id="preview-modal" class="preview-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="preview-modal-dialog">
+      <div class="preview-modal-header">
+        <div class="preview-modal-title-wrap">
+          <span id="preview-modal-num" class="badge">#01 de 23</span>
+          <span id="preview-modal-dur" class="badge badge-cyan">03:31</span>
+          <h3 id="preview-modal-title" class="preview-modal-title">Corona de Hierro</h3>
+        </div>
+        <button type="button" class="preview-modal-close" aria-label="Cerrar vista previa">✕</button>
+      </div>
+
+      <div id="preview-modal-video-wrap" class="preview-modal-video-wrap">
+        <!-- Reproductor o Poster inyectado dinámicamente -->
+      </div>
+
+      <div class="preview-modal-body">
+        <p id="preview-modal-synopsis" class="preview-modal-synopsis"></p>
+
+        <div class="preview-modal-footer">
+          <div class="preview-modal-footer-actions">
+            <a id="preview-modal-song-link" href="#" class="btn btn-purple">
+              Ver Letra Completa & Ficha →
+            </a>
+            <a id="preview-modal-yt-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Ver en YouTube
+            </a>
+          </div>
+          <button type="button" id="preview-modal-close-btn" class="btn btn-outline btn-sm">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>

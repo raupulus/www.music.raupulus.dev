@@ -226,7 +226,7 @@
 
       <ul class="nav-links">
         <li><a href="#inicio" class="active">Inicio</a></li>
-        <li><a href="#spotlight">Destacado</a></li>
+        <li><a href="#destacado">Tema Destacado</a></li>
         <li><a href="#canciones">Canciones (23)</a></li>
         <li><a href="#universo">Universo</a></li>
         <li><a href="#proyecto">El Proyecto</a></li>
@@ -292,42 +292,41 @@
   </header>
 
 
-  <!-- Spotlight Player -->
-  <section id="spotlight" class="section">
+  <!-- Tema Destacado -->
+  <section id="destacado" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">VISTA PREVIA INTERACTIVA</div>
-        <h2>REPRODUCTOR DESTACADO</h2>
-        <p>Selecciona cualquier pista del álbum para explorar su ambientación, sinopsis y enlace oficial de YouTube.</p>
+        <div class="badge badge-cyan">SINGLE DESTACADO • PISTA DE APERTURA</div>
+        <h2>CORONA DE HIERRO</h2>
+        <p>El himno fundacional de 'Nunca venderé mi alma de Metal'. Reproduce el videoclip oficial:</p>
       </div>
 
       <div class="spotlight-card">
         <div class="spotlight-video-wrap">
-          <div class="spotlight-poster">
-            <img id="spotlight-img" src="assets/images/covers/cover-01.jpg" alt="Portada Corona de Hierro">
-            <div class="spotlight-play-overlay">
-              <a id="spotlight-yt" href="https://www.youtube.com/@RaupulusMusic" target="_blank" rel="noopener noreferrer" class="play-circle" aria-label="Reproducir en YouTube">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </a>
-              <span class="badge badge-yt">🔴 Reproducir en YouTube</span>
-            </div>
+          <div class="video-player-container" style="margin: 0; min-height: 380px;">
+            <iframe src="https://www.youtube-nocookie.com/embed/PyvTqcnsZgI?autoplay=0&rel=0&modestbranding=1" 
+                    title="Corona de Hierro — Raupulus Music" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen 
+                    loading="lazy"></iframe>
           </div>
         </div>
 
         <div class="spotlight-info">
           <div class="spotlight-top">
             <div style="display: flex; gap: 10px; align-items: center;">
-              <span id="spotlight-num" class="badge">#01</span>
-              <span id="spotlight-dur" class="badge badge-cyan">03:31</span>
+              <span class="badge">#01 de 23</span>
+              <span class="badge badge-cyan">03:31</span>
               <span class="badge">CD 1</span>
             </div>
-            <h3 id="spotlight-title" class="spotlight-title">Corona de Hierro</h3>
-            <p id="spotlight-synopsis" class="spotlight-synopsis">En una fortaleza volcánica forjada con hierro y piedra negra, Raupulus camina entre ríos de lava incandescente. Rechazando el vasallaje de antiguos monarcas, Raupulus se forja su propia corona de hierro y madera viva, proclamándose soberano de las cenizas.</p>
+            <h3 class="spotlight-title">Corona de Hierro</h3>
+            <p class="spotlight-synopsis">En una fortaleza volcánica forjada con hierro y piedra negra, Raupulus camina entre ríos de lava incandescente. Rechazando el vasallaje de antiguos monarcas, Raupulus se forja su propia corona de hierro y madera viva, proclamándose soberano de las cenizas.</p>
           </div>
 
           <div class="spotlight-actions">
-            <a id="spotlight-link" href="canciones/01-corona-de-hierro.html" class="btn btn-purple">
-              Ver Letra Completa & Vídeo
+            <a href="canciones/01-corona-de-hierro.html" class="btn btn-purple">
+              Ver Letra Completa & Ficha
             </a>
             <a href="https://www.youtube.com/@RaupulusMusic?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
               🔔 Suscribirse al Canal
@@ -365,10 +364,23 @@
       <div class="songs-grid">
         
         <article class="song-card" data-title="corona de hierro" data-slug="01-corona-de-hierro">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="1"
+               data-title="Corona de Hierro"
+               data-duration="03:31"
+               data-synopsis="En una fortaleza volcánica forjada con hierro y piedra negra, Raupulus camina entre ríos de lava incandescente. Rechazando el vasallaje de antiguos monarcas, Raupulus se forja su propia corona de hierro y madera viva, proclamándose soberano de las cenizas."
+               data-cover="assets/images/covers/cover-01.jpg"
+               data-slug="01-corona-de-hierro"
+               data-ytid="PyvTqcnsZgI"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Corona de Hierro">
             <span class="card-badge-num">#01</span>
             <span class="card-badge-dur">03:31</span>
             <img src="assets/images/covers/cover-01.jpg" alt="Portada Corona de Hierro — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -378,7 +390,7 @@
             <div class="card-footer">
               <a href="canciones/01-corona-de-hierro.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="1"
                       data-title="Corona de Hierro"
                       data-duration="03:31"
@@ -386,7 +398,7 @@
                       data-cover="assets/images/covers/cover-01.jpg"
                       data-slug="01-corona-de-hierro"
                       data-ytid="PyvTqcnsZgI">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -394,10 +406,23 @@
         
 
         <article class="song-card" data-title="desde el cielo mando" data-slug="02-desde-el-cielo-mando">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="2"
+               data-title="Desde el cielo Mando"
+               data-duration="03:42"
+               data-synopsis="Sobre un mar de nubes de tormenta cargadas de electricidad violeta, Raupulus se eleva en la cima de un monolito flotante. Gobernando el viento y los relámpagos, canaliza la furia del cielo hacia el vacío."
+               data-cover="assets/images/covers/cover-02.jpg"
+               data-slug="02-desde-el-cielo-mando"
+               data-ytid="StCK6oO_JPM"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Desde el cielo Mando">
             <span class="card-badge-num">#02</span>
             <span class="card-badge-dur">03:42</span>
             <img src="assets/images/covers/cover-02.jpg" alt="Portada Desde el cielo Mando — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -407,7 +432,7 @@
             <div class="card-footer">
               <a href="canciones/02-desde-el-cielo-mando.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="2"
                       data-title="Desde el cielo Mando"
                       data-duration="03:42"
@@ -415,7 +440,7 @@
                       data-cover="assets/images/covers/cover-02.jpg"
                       data-slug="02-desde-el-cielo-mando"
                       data-ytid="StCK6oO_JPM">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -423,10 +448,23 @@
         
 
         <article class="song-card" data-title="me has robado la vida" data-slug="03-me-has-robado-la-vida">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="3"
+               data-title="Me has robado la vida"
+               data-duration="04:13"
+               data-synopsis="Encadenado en las profundidades de un laberinto subterráneo de piedra húmeda, Raupulus confronta a espectros sombríos que intentaron drenar su esencia. Desatando su furia contenida, despedaza los grilletes y persigue a las sombras ladronas."
+               data-cover="assets/images/covers/cover-03.jpg"
+               data-slug="03-me-has-robado-la-vida"
+               data-ytid="oZEK5_YWW4c"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Me has robado la vida">
             <span class="card-badge-num">#03</span>
             <span class="card-badge-dur">04:13</span>
             <img src="assets/images/covers/cover-03.jpg" alt="Portada Me has robado la vida — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -436,7 +474,7 @@
             <div class="card-footer">
               <a href="canciones/03-me-has-robado-la-vida.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="3"
                       data-title="Me has robado la vida"
                       data-duration="04:13"
@@ -444,7 +482,7 @@
                       data-cover="assets/images/covers/cover-03.jpg"
                       data-slug="03-me-has-robado-la-vida"
                       data-ytid="oZEK5_YWW4c">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -452,10 +490,23 @@
         
 
         <article class="song-card" data-title="bandolero de la noche" data-slug="04-bandolero-de-la-noche">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="4"
+               data-title="Bandolero de la Noche"
+               data-duration="04:04"
+               data-synopsis="Bajo una luna roja de sangre, Raupulus acecha por un bosque gótico de árboles retorcidos y ruinas victorianas. Es el forajido indomable de la noche, esquivando emboscadas y moviéndose veloz entre las tinieblas."
+               data-cover="assets/images/covers/cover-04.jpg"
+               data-slug="04-bandolero-de-la-noche"
+               data-ytid="zZB-H_TxBqE"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Bandolero de la Noche">
             <span class="card-badge-num">#04</span>
             <span class="card-badge-dur">04:04</span>
             <img src="assets/images/covers/cover-04.jpg" alt="Portada Bandolero de la Noche — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -465,7 +516,7 @@
             <div class="card-footer">
               <a href="canciones/04-bandolero-de-la-noche.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="4"
                       data-title="Bandolero de la Noche"
                       data-duration="04:04"
@@ -473,7 +524,7 @@
                       data-cover="assets/images/covers/cover-04.jpg"
                       data-slug="04-bandolero-de-la-noche"
                       data-ytid="zZB-H_TxBqE">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -481,10 +532,23 @@
         
 
         <article class="song-card" data-title="no vuelvo a respirar" data-slug="05-no-vuelvo-a-respirar">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="5"
+               data-title="No vuelvo a Respirar"
+               data-duration="04:09"
+               data-synopsis="En una llanura desolada asfixiada por ceniza densa y gases tóxicos, Raupulus camina sin necesidad de aliento. Su cuerpo de madera calcinada desafía la extinción mientras un sol moribundo se apaga en el horizonte."
+               data-cover="assets/images/covers/cover-05.jpg"
+               data-slug="05-no-vuelvo-a-respirar"
+               data-ytid="AZMI5Kqgi10"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de No vuelvo a Respirar">
             <span class="card-badge-num">#05</span>
             <span class="card-badge-dur">04:09</span>
             <img src="assets/images/covers/cover-05.jpg" alt="Portada No vuelvo a Respirar — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -494,7 +558,7 @@
             <div class="card-footer">
               <a href="canciones/05-no-vuelvo-a-respirar.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="5"
                       data-title="No vuelvo a Respirar"
                       data-duration="04:09"
@@ -502,7 +566,7 @@
                       data-cover="assets/images/covers/cover-05.jpg"
                       data-slug="05-no-vuelvo-a-respirar"
                       data-ytid="AZMI5Kqgi10">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -510,10 +574,23 @@
         
 
         <article class="song-card" data-title="ciudadano de un país llamado métal" data-slug="06-ciudadano-de-un-pais-llamado-metal">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="6"
+               data-title="Ciudadano de un país llamado Métal"
+               data-duration="03:37"
+               data-synopsis="Raupulus recorre una metrópolis industrial brutalista de acero y engranajes colosales. En este imperio de metal fundido y percusión constante, Raupulus lidera una rebelión de almas mecánicas e indomables."
+               data-cover="assets/images/covers/cover-06.jpg"
+               data-slug="06-ciudadano-de-un-pais-llamado-metal"
+               data-ytid="Kb1YxcttScc"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Ciudadano de un país llamado Métal">
             <span class="card-badge-num">#06</span>
             <span class="card-badge-dur">03:37</span>
             <img src="assets/images/covers/cover-06.jpg" alt="Portada Ciudadano de un país llamado Métal — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -523,7 +600,7 @@
             <div class="card-footer">
               <a href="canciones/06-ciudadano-de-un-pais-llamado-metal.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="6"
                       data-title="Ciudadano de un país llamado Métal"
                       data-duration="03:37"
@@ -531,7 +608,7 @@
                       data-cover="assets/images/covers/cover-06.jpg"
                       data-slug="06-ciudadano-de-un-pais-llamado-metal"
                       data-ytid="Kb1YxcttScc">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -539,10 +616,23 @@
         
 
         <article class="song-card" data-title="mi corazón bombea ginebra" data-slug="07-mi-corazon-bombea-ginebra">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="7"
+               data-title="Mi corazón bombea Ginebra"
+               data-duration="03:59"
+               data-synopsis="En un laboratorio clandestino repleto de matraces químicos y tuberías de cobre corroído, los fluidos de Raupulus brillan con una toxicidad embriagadora. Su resistencia al veneno convierte el dolor en euforia implacable."
+               data-cover="assets/images/covers/cover-07.jpg"
+               data-slug="07-mi-corazon-bombea-ginebra"
+               data-ytid="xC0Y0rx-5lU"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Mi corazón bombea Ginebra">
             <span class="card-badge-num">#07</span>
             <span class="card-badge-dur">03:59</span>
             <img src="assets/images/covers/cover-07.jpg" alt="Portada Mi corazón bombea Ginebra — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -552,7 +642,7 @@
             <div class="card-footer">
               <a href="canciones/07-mi-corazon-bombea-ginebra.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="7"
                       data-title="Mi corazón bombea Ginebra"
                       data-duration="03:59"
@@ -560,7 +650,7 @@
                       data-cover="assets/images/covers/cover-07.jpg"
                       data-slug="07-mi-corazon-bombea-ginebra"
                       data-ytid="xC0Y0rx-5lU">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -568,10 +658,23 @@
         
 
         <article class="song-card" data-title="pacto con la muerte" data-slug="08-pacto-con-la-muerte">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="8"
+               data-title="Pacto con la Muerte"
+               data-duration="04:07"
+               data-synopsis="En un cementerio gótico milenario cubierto de niebla helada, Raupulus se encuentra cara a cara con la entidad de la Muerte. En lugar de someterse, sellan una alianza de respeto mutuo bajo un roble ancestral."
+               data-cover="assets/images/covers/cover-08.jpg"
+               data-slug="08-pacto-con-la-muerte"
+               data-ytid="DBfvozBREXg"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Pacto con la Muerte">
             <span class="card-badge-num">#08</span>
             <span class="card-badge-dur">04:07</span>
             <img src="assets/images/covers/cover-08.jpg" alt="Portada Pacto con la Muerte — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -581,7 +684,7 @@
             <div class="card-footer">
               <a href="canciones/08-pacto-con-la-muerte.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="8"
                       data-title="Pacto con la Muerte"
                       data-duration="04:07"
@@ -589,7 +692,7 @@
                       data-cover="assets/images/covers/cover-08.jpg"
                       data-slug="08-pacto-con-la-muerte"
                       data-ytid="DBfvozBREXg">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -597,10 +700,23 @@
         
 
         <article class="song-card" data-title="derrapando por tu piel" data-slug="09-derrapando-por-tu-piel">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="9"
+               data-title="Derrapando por tu Piel"
+               data-duration="03:52"
+               data-synopsis="En una autopista infinita suspendida sobre un abismo de magma y relámpagos de neón, **Raupulus** y **su amada** protagonizan una historia de amor salvaje, velocidad y adrenalina desatada. Raupulus pilota un bólido negro blindado al límite del peligro mientras su amada lo desafía, acompaña y seduce con su presencia magnética, sonrisas con colmillos y hoyuelos, y su aura esmeralda. Juntos desafían el abismo en un salto colosal que sella su pacto de amor sobre el asfalto."
+               data-cover="assets/images/covers/cover-09.jpg"
+               data-slug="09-derrapando-por-tu-piel"
+               data-ytid="u40CotMrAJo"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Derrapando por tu Piel">
             <span class="card-badge-num">#09</span>
             <span class="card-badge-dur">03:52</span>
             <img src="assets/images/covers/cover-09.jpg" alt="Portada Derrapando por tu Piel — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -610,7 +726,7 @@
             <div class="card-footer">
               <a href="canciones/09-derrapando-por-tu-piel.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="9"
                       data-title="Derrapando por tu Piel"
                       data-duration="03:52"
@@ -618,7 +734,7 @@
                       data-cover="assets/images/covers/cover-09.jpg"
                       data-slug="09-derrapando-por-tu-piel"
                       data-ytid="u40CotMrAJo">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -626,10 +742,25 @@
         
 
         <article class="song-card" data-title="mi mejor amigo ladra" data-slug="10-mi-mejor-amigo-ladra">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="10"
+               data-title="Mi mejor amigo Ladra"
+               data-duration="03:32"
+               data-synopsis="En un mundo frío, ruinoso y hostil, **Raupulus** vive consumido por un aislamiento abrumador en su rústico refugio gótico. Todo cambia gracias a la presencia viva y luminosa de **su perro / mejor amigo (el lobo)**, un colosal lobo huargo negro de pelaje azabache y ojos verde esmeralda. Lejos de ser una bestia agresiva, el lobo es su compañero del alma, su protector silencioso y la mascota gigante que le devuelve la felicidad. 
+
+La película narra su día a día y su profunda hermandad: momentos de máxima ternura y consuelo sentados y descansando juntos en el viejo sofá de cuero de la cabaña, paseos serenos al amanecer, carreras enérgicas por prados y tundras, ascensos escarpados por riscos de montaña, juegos compartidos de tira y afloja y recoger ramas al vuelo, hasta refugiarse juntos de la lluvia y contemplar las estrellas. Una historia emotiva y cinematográfica donde la fidelidad incondicional de un animal cura definitivamente las heridas de la soledad."
+               data-cover="assets/images/covers/cover-10.jpg"
+               data-slug="10-mi-mejor-amigo-ladra"
+               data-ytid="mp5wRq_PS8U"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Mi mejor amigo Ladra">
             <span class="card-badge-num">#10</span>
             <span class="card-badge-dur">03:32</span>
             <img src="assets/images/covers/cover-10.jpg" alt="Portada Mi mejor amigo Ladra — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -641,7 +772,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
             <div class="card-footer">
               <a href="canciones/10-mi-mejor-amigo-ladra.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="10"
                       data-title="Mi mejor amigo Ladra"
                       data-duration="03:32"
@@ -651,7 +782,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
                       data-cover="assets/images/covers/cover-10.jpg"
                       data-slug="10-mi-mejor-amigo-ladra"
                       data-ytid="mp5wRq_PS8U">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -659,10 +790,23 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
         
 
         <article class="song-card" data-title="vivo en la carretera" data-slug="11-vivo-en-la-carretera">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="11"
+               data-title="Vivo en la carretera"
+               data-duration="04:24"
+               data-synopsis="Raupulus es el eterno nómada de la noche, conduciendo a través de túneles iluminados por neones violetas y gasolineras abandonadas. La carretera solitaria es su único hogar y su refugio frente a la sociedad."
+               data-cover="assets/images/covers/cover-11.jpg"
+               data-slug="11-vivo-en-la-carretera"
+               data-ytid="JPS26YoNJ7w"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Vivo en la carretera">
             <span class="card-badge-num">#11</span>
             <span class="card-badge-dur">04:24</span>
             <img src="assets/images/covers/cover-11.jpg" alt="Portada Vivo en la carretera — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -672,7 +816,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
             <div class="card-footer">
               <a href="canciones/11-vivo-en-la-carretera.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="11"
                       data-title="Vivo en la carretera"
                       data-duration="04:24"
@@ -680,7 +824,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
                       data-cover="assets/images/covers/cover-11.jpg"
                       data-slug="11-vivo-en-la-carretera"
                       data-ytid="JPS26YoNJ7w">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -688,10 +832,23 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
         
 
         <article class="song-card" data-title="trillado del coco" data-slug="12-trillado-del-coco">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="12"
+               data-title="Trillado del Coco"
+               data-duration="04:13"
+               data-synopsis="En el interior de un sanatorio mental industrial en ruinas, Raupulus experimenta un violento colapso psíquico. Su mente se quiebra en dos ante descargas eléctricas violetas, desatando una tormenta de cristales rotos y delirio lúcido."
+               data-cover="assets/images/covers/cover-12.jpg"
+               data-slug="12-trillado-del-coco"
+               data-ytid="ZcBROzcaf80"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Trillado del Coco">
             <span class="card-badge-num">#12</span>
             <span class="card-badge-dur">04:13</span>
             <img src="assets/images/covers/cover-12.jpg" alt="Portada Trillado del Coco — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -701,7 +858,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
             <div class="card-footer">
               <a href="canciones/12-trillado-del-coco.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="12"
                       data-title="Trillado del Coco"
                       data-duration="04:13"
@@ -709,7 +866,7 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
                       data-cover="assets/images/covers/cover-12.jpg"
                       data-slug="12-trillado-del-coco"
                       data-ytid="ZcBROzcaf80">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -717,10 +874,25 @@ La película narra su día a día y su profunda hermandad: momentos de máxima t
         
 
         <article class="song-card" data-title="ya no me quedan amigos" data-slug="13-ya-no-me-quedan-amigos">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="13"
+               data-title="Ya no me quedan amigos"
+               data-duration="05:02"
+               data-synopsis="Una crónica visual desgarradora y épica sobre el paso del tiempo, el destino implacable y la disolución de los lazos de juventud. Raupulus recorre las calles y ruinas de su antiguo territorio mientras revive y constata cómo cada uno de sus viejos compañeros de manada (representados como seres humanoides y semi-humanoides fantásticos) tomó rumbos divergentes: el amigo encarcelado entre muros de piedra (**Ogro de granito**), el amigo fallecido cuyo espíritu deja el pulso frío (**Espectro alado translúcido**), el que cruzó el charco hacia tierras lejanas borrando sus raíces (**Dracónido viajero**), el que vendió por la espalda y los que se hicieron humo en negocios turbios (**Hombre-Lagarto y Hombres-Hiena**), el atrapado en la hipnosis de las pantallas (**Hombre-Ratón**), el que fundó su propia familia y quemó todos los puentes (**Demonio alado**), el que se hundió en el alcoholismo (**Hombre-Jabalí**), el que cambió de bando para encajar con la élite aristocrática (**Hombre-Chacal**), el que cayó destrozado por su propio orgullo sin volver a la acera (**Guerrero Minotauro**), el amigo más leal que perdió la cordura y tiró la llave al pozo (**Hombre-Búho místico**), y el último que apagó la luz dejando el cuarto roto (**Hombre-Mantis**).
+
+Frente a la desolación y los ausentes, Raupulus no se dobla ante el suelo: se endurece como el hierro, responde con los dientes afilados y forja una alianza eterna e inquebrantable con su única compañía leal que jamás lo traicionará: su propia sombra."
+               data-cover="assets/images/covers/cover-13.jpg"
+               data-slug="13-ya-no-me-quedan-amigos"
+               data-ytid="-oJfBCCCeHM"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Ya no me quedan amigos">
             <span class="card-badge-num">#13</span>
             <span class="card-badge-dur">05:02</span>
             <img src="assets/images/covers/cover-13.jpg" alt="Portada Ya no me quedan amigos — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -732,7 +904,7 @@ Frente a la desolación y los ausentes, Raupulus no se dobla ante el suelo: se e
             <div class="card-footer">
               <a href="canciones/13-ya-no-me-quedan-amigos.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="13"
                       data-title="Ya no me quedan amigos"
                       data-duration="05:02"
@@ -742,7 +914,7 @@ Frente a la desolación y los ausentes, Raupulus no se dobla ante el suelo: se e
                       data-cover="assets/images/covers/cover-13.jpg"
                       data-slug="13-ya-no-me-quedan-amigos"
                       data-ytid="-oJfBCCCeHM">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -750,10 +922,25 @@ Frente a la desolación y los ausentes, Raupulus no se dobla ante el suelo: se e
         
 
         <article class="song-card" data-title="diez mil años en más de 100 vidas" data-slug="14-diez-mil-anos-en-mas-de-100-vidas">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="14"
+               data-title="Diez Mil Años en más de 100 vidas"
+               data-duration="03:24"
+               data-synopsis="Una odisea visual a través de diez mil años de historia cósmica y terrenal. Una misma alma guerrera e inmortal (identificada por sus ojos y esencia de plasma violeta) ha renacido en más de cien cuerpos y razas fantásticas distintas a lo largo de las eras: desde su nacimiento primitivo en el fango prehistórico, comandando ejércitos dracónicos ante la caída de monarcas, errando por desiertos como un nómada chacal, derribando murallas como un minotauro y un cíclope de piedra, hasta resistir empalado en hierro, renacer de las cenizas como un fénix solar y sostener continentes quebrados como un gigante de tormenta.
+
+Al final del viaje, todas las encarnaciones y memorias convergen en un vórtice astral del que emerge la forma definitiva: **Raupulus**, quien pulveriza la barrera dimensional del tiempo y marcha hacia el infinito respaldado por el ejército espectral de sus cien vidas pasadas."
+               data-cover="assets/images/covers/cover-14.jpg"
+               data-slug="14-diez-mil-anos-en-mas-de-100-vidas"
+               data-ytid="8x2uwLAnXlQ"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Diez Mil Años en más de 100 vidas">
             <span class="card-badge-num">#14</span>
             <span class="card-badge-dur">03:24</span>
             <img src="assets/images/covers/cover-14.jpg" alt="Portada Diez Mil Años en más de 100 vidas — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -765,7 +952,7 @@ Al final del viaje, todas las encarnaciones y memorias convergen en un vórtice 
             <div class="card-footer">
               <a href="canciones/14-diez-mil-anos-en-mas-de-100-vidas.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="14"
                       data-title="Diez Mil Años en más de 100 vidas"
                       data-duration="03:24"
@@ -775,7 +962,7 @@ Al final del viaje, todas las encarnaciones y memorias convergen en un vórtice 
                       data-cover="assets/images/covers/cover-14.jpg"
                       data-slug="14-diez-mil-anos-en-mas-de-100-vidas"
                       data-ytid="8x2uwLAnXlQ">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -783,10 +970,28 @@ Al final del viaje, todas las encarnaciones y memorias convergen en un vórtice 
         
 
         <article class="song-card" data-title="no quedan árboles en mi barrio" data-slug="15-no-quedan-arboles-en-mi-barrio">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="15"
+               data-title="No quedan árboles en mi Barrio"
+               data-duration="04:14"
+               data-synopsis="Una feroz crítica visual a la **deforestación descontrolada**, la **voracidad del progreso urbano** y la **destrucción de los pulmones de la Tierra por la mano humana**.
+El videoclip se articula en torno a un **contraste radical constante**:
+- **Paraísos Vivos:** Selvas ancestrales de secuoyas, palmeras tropicales, praderas esmeralda, cascadas cristalinas y tierra fértil rebosante de clorofila.
+- **Devastación Humana:** Bosques talados hasta el horizonte convertidos en serrín y tocones humeantes, vertido masivo de hormigón líquido sobre la hierba en time-lapse, megalópolis de ladrillo y cristal (&quot;cuadrícula gris&quot;), y desiertos estériles e irradiados con chimeneas nucleares.
+
+Raupulus camina en la frontera entre ambos mundos como la encarnación de la madera viva y la raíz indómita, para desatar una rebelión tectónica que derriba grúas, tritura el asfalto y reconquista cada centímetro de cemento para que el planeta vuelva a respirar."
+               data-cover="assets/images/covers/cover-15.jpg"
+               data-slug="15-no-quedan-arboles-en-mi-barrio"
+               data-ytid="eaGRqNsznZg"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de No quedan árboles en mi Barrio">
             <span class="card-badge-num">#15</span>
             <span class="card-badge-dur">04:14</span>
             <img src="assets/images/covers/cover-15.jpg" alt="Portada No quedan árboles en mi Barrio — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -801,7 +1006,7 @@ Raupulus camina en la frontera entre ambos mundos como la encarnación de la mad
             <div class="card-footer">
               <a href="canciones/15-no-quedan-arboles-en-mi-barrio.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="15"
                       data-title="No quedan árboles en mi Barrio"
                       data-duration="04:14"
@@ -814,7 +1019,7 @@ Raupulus camina en la frontera entre ambos mundos como la encarnación de la mad
                       data-cover="assets/images/covers/cover-15.jpg"
                       data-slug="15-no-quedan-arboles-en-mi-barrio"
                       data-ytid="eaGRqNsznZg">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -822,10 +1027,26 @@ Raupulus camina en la frontera entre ambos mundos como la encarnación de la mad
         
 
         <article class="song-card" data-title="ángel rechazado" data-slug="16-angel-rechazado">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="16"
+               data-title="Ángel Rechazado"
+               data-duration="04:03"
+               data-synopsis="Una **obra cinematográfica hiperrealista de fantasía oscura y profundo simbolismo espiritual**:
+Raupulus es un ser celestial nacido con alas de madera viva y fuego violeta en la espalda. Al llegar a la corte celestial con sus alas heridas y ofreciendo su propia luz y dolor, es juzgado y repudiado con frialdad dogmática por sus &quot;hermanos&quot;: arcángeles de armaduras blancas inmaculadas y máscaras doradas sin alma que borran su nombre sagrado y le cierran las puertas del cielo.
+
+Arrojado al abismo, Raupulus no se hunde en la desesperación: aterriza de pie entre las ruinas góticas del inframundo, donde es recibido con honor, reverencia y hermandad por **legiones de demonios de obsidiana, seres de ceniza y espíritus de sombra**. Al ser asediado por el ejército angelical, Raupulus lidera una rebelión cósmica, quebrando el templo celestial hipócrita y derrotando al Arcángel supremo sin derramar su sangre por pura superioridad moral. Finalmente, Raupulus es coronado en su trono de raíces y basalto, en paz absoluta con su destino: *&quot;Nací con fuego en la espalda y nunca pedí su cielo&quot;*."
+               data-cover="assets/images/covers/cover-16.jpg"
+               data-slug="16-angel-rechazado"
+               data-ytid="koQzQXeP0h8"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Ángel Rechazado">
             <span class="card-badge-num">#16</span>
             <span class="card-badge-dur">04:03</span>
             <img src="assets/images/covers/cover-16.jpg" alt="Portada Ángel Rechazado — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -838,7 +1059,7 @@ Arrojado al abismo, Raupulus no se hunde en la desesperación: aterriza de pie e
             <div class="card-footer">
               <a href="canciones/16-angel-rechazado.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="16"
                       data-title="Ángel Rechazado"
                       data-duration="04:03"
@@ -849,7 +1070,7 @@ Arrojado al abismo, Raupulus no se hunde en la desesperación: aterriza de pie e
                       data-cover="assets/images/covers/cover-16.jpg"
                       data-slug="16-angel-rechazado"
                       data-ytid="koQzQXeP0h8">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -857,10 +1078,27 @@ Arrojado al abismo, Raupulus no se hunde en la desesperación: aterriza de pie e
         
 
         <article class="song-card" data-title="he perdido el hambre" data-slug="17-he-perdido-el-hambre">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="17"
+               data-title="He perdido el hambre"
+               data-duration="03:47"
+               data-synopsis="En un universo surrealista, hiperrealista y profundamente depresivo, la existencia se ha convertido en un circo pantagruélico de glotonería descontrolada y consumo ciego. Palacios barrocos infinitos albergan banquetes colosales donde mesas kilométricas se hunden bajo montañas de manjares grasientos, animales mitológicos asados enteros (hidras, dragones, jabalíes titánicos) y cascadas de queso y mantequilla derretida.
+
+En este reino, **absolutamente todos los seres fantásticos y mitológicos son grotescamente obesos**: ogros de múltiples papadas, reyes trasgos con barrigas esféricas que no caben en sus trajes, demonios cerdos alados y minotauros con delantales ensopados en salsa, todos riendo ruidosamente, socializando y devorando con voracidad animales y otros seres fantásticos. La escala del mundo está cómicamente distorsionada: sandías y ciruelas colosales ruedan por las escaleras como peñascos descontrolados aplastando bandejas, tenedores de dos pisos y cuchillos de varias toneladas actúan como armas de asedio clavadas en asados, y un príncipe goblin panzón se baña plácidamente dentro de un caldero gigante de sopa hirviendo usando un cucharón para rascarse la espalda entre ruedas de cebolla y discos de zanahoria gigantes.
+
+En medio de este carnaval de grasa y gula, **Raupulus es la única anomalía**: un ser atlético, fibroso, macizo y esculpido en madera de ébano oscuro con venas bioeléctricas violetas, ocho ojos luminiscentes y cuernos orgánicos de madera curvados. Raupulus no siente apetito por los excesos del mundo; el hedor aceitoso y la gula desenfrenada le provocan una náusea visceral y un doloroso nudo en la garganta. Su vacío interior es existencial: *&quot;el hambre se mudó al pecho&quot;*, donde late un corazón bioeléctrico que arde por un propósito superior. Rechazando el banquete, Raupulus camina entre la multitud ignorando los manjares, cruza un puente suspendido sobre las nubes bajo la luna llena y se retira a la quietud de los pinares salvajes, encontrando la paz verdadera en la soledad, el aire fresco y el sutil hilo de humo de una infusión solitaria."
+               data-cover="assets/images/covers/cover-17.jpg"
+               data-slug="17-he-perdido-el-hambre"
+               data-ytid="mwQDAXvQSTE"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de He perdido el hambre">
             <span class="card-badge-num">#17</span>
             <span class="card-badge-dur">03:47</span>
             <img src="assets/images/covers/cover-17.jpg" alt="Portada He perdido el hambre — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -874,7 +1112,7 @@ En medio de este carnaval de grasa y gula, **Raupulus es la única anomalía**: 
             <div class="card-footer">
               <a href="canciones/17-he-perdido-el-hambre.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="17"
                       data-title="He perdido el hambre"
                       data-duration="03:47"
@@ -886,7 +1124,7 @@ En medio de este carnaval de grasa y gula, **Raupulus es la única anomalía**: 
                       data-cover="assets/images/covers/cover-17.jpg"
                       data-slug="17-he-perdido-el-hambre"
                       data-ytid="mwQDAXvQSTE">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -894,10 +1132,27 @@ En medio de este carnaval de grasa y gula, **Raupulus es la única anomalía**: 
         
 
         <article class="song-card" data-title="mi amada tiene fecha de caducidad" data-slug="18-mi-amada-tiene-fecha-de-caducidad">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="18"
+               data-title="Mi amada tiene fecha de caducidad"
+               data-duration="04:17"
+               data-synopsis="Una obra cinematográfica desgarradora, pausada y poética concebida como un homenaje solemne a la muerte y al amor que trasciende la existencia física: un amor irrompible en la tierra, pero separado inevitablemente por el destino.
+
+**su amada**, la amada del protagonista (una criatura noble híbrida entre elfa y ogra de piel verde biológica, orejas puntiagudas y ojos cian fluorescentes), padece una enfermedad incurable y le han diagnosticado un tiempo límite de vida (*&quot;fecha de caducidad&quot;*). En la intimidad de la habitación y del hospital, entre el goteo del suero y relojes de arena rotos, ella libra una batalla silenciosa: **oculta su agonía y dolor bajo una tierna sonrisa con hoyuelos para que su compañero no sufra viéndola quebrarse**. 
+
+Desafiando la esterilidad clínica del hospital, **Raupulus** traslada la cama entera a la cima de una colina salvaje batida por el viento, rodeada de hierba alta y flores bajo un crepúsculo infinito. En una sobrecogedora escena de cámara orbital en 360 grados, Raupulus se derrumba llorando sobre el pecho de ella mientras su amada, con las pocas fuerzas que le quedan, acaricia sus cuernos de madera curvados. Tras el momento desgarrador en que la mano de ella pierde el pulso y cae, la Muerte (La Parca) emerge entre la niebla no como un enemigo cruel, sino como una presencia antigua, solemne y compasiva. El espíritu de su amada se desprende de su cuerpo terrenal coronada por una resplandeciente **aureola angelical dorada**, y tras una última y amorosa despedida espiritual, camina junto a la Muerte hacia el firmamento, sellando un amor eterno que continuará latiendo en el pecho de Raupulus hasta el final de los tiempos."
+               data-cover="assets/images/covers/cover-18.jpg"
+               data-slug="18-mi-amada-tiene-fecha-de-caducidad"
+               data-ytid="SnTkN2MmqcY"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Mi amada tiene fecha de caducidad">
             <span class="card-badge-num">#18</span>
             <span class="card-badge-dur">04:17</span>
             <img src="assets/images/covers/cover-18.jpg" alt="Portada Mi amada tiene fecha de caducidad — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -911,7 +1166,7 @@ Desafiando la esterilidad clínica del hospital, **Raupulus** traslada la cama e
             <div class="card-footer">
               <a href="canciones/18-mi-amada-tiene-fecha-de-caducidad.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="18"
                       data-title="Mi amada tiene fecha de caducidad"
                       data-duration="04:17"
@@ -923,7 +1178,7 @@ Desafiando la esterilidad clínica del hospital, **Raupulus** traslada la cama e
                       data-cover="assets/images/covers/cover-18.jpg"
                       data-slug="18-mi-amada-tiene-fecha-de-caducidad"
                       data-ytid="SnTkN2MmqcY">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -931,10 +1186,29 @@ Desafiando la esterilidad clínica del hospital, **Raupulus** traslada la cama e
         
 
         <article class="song-card" data-title="rey de los sesenta mares" data-slug="19-rey-de-los-sesenta-mares">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="19"
+               data-title="Rey de los Sesenta Mares"
+               data-duration="04:07.12"
+               data-synopsis="Una epopeya cinematográfica submarina y naval que narra la coronación de **Raupulus** como soberano absoluto de los sesenta horizontes líquidos del planeta.
+
+La historia arranca en la superficie de un océano infernal azotado por olas titánicas de cuarenta metros y relámpagos púrpuras. A bordo de un buque de guerra acorazado de madera negra milenaria, Raupulus capitanea una tripulación de criaturas fantásticas anfibias (piratas con piel de tiburón, corsarios con caparazones blindados de crustáceo y sirenas guerreras). Portando una majestuosa corona marina de coral negro entrelazada con sus cuernos de madera curvados canónicos, Raupulus consulta un mapa que arde con runas líquidas antes de lanzarse a las aguas abiertas de un remolino místico.
+
+Bajo el agua, el océano revela un cosmos submarino sobrecogedor. Raupulus domina y cabalga sobre el lomo de un **Leviatán colosal de plata iridiscente**, surcando corrientes de espuma hasta adentrarse en la **Ciudadela Sumergida de la Atlántida**. Allí, torres de cristal y cúpulas de *&quot;burbujas vivas&quot;* tiemblan a su paso, mientras una corte de **mercaderes abisales cefalópodos** con mantos de seda marina inclinan sus cabezas con temor reverencial, y una guardia real de **caballitos de mar monstruosos de seiscientos dientes** escolta su llegada.
+
+En el corazón del palacio abisal, rodeado por galeones milenarios que derraman tesoros oxidados palpitantes, Raupulus empuña su **Cetro sagrado de hueso de ballena fósil** y toma posesión del legendario **Trono de Nácar**. Finalmente, desafiando la gravedad y la presión aplastante, se sumerge en la oscuridad infinita de la **Fosa de las Marianas**, donde medusas titánicas flotan como candelabros vivientes iluminando el lecho oceánico, y el fondo tectónico del mundo se inclina rindiendo pleitesía eterna al Rey de los Sesenta Mares."
+               data-cover="assets/images/covers/cover-19.jpg"
+               data-slug="19-rey-de-los-sesenta-mares"
+               data-ytid="yHHLgW3XuQg"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Rey de los Sesenta Mares">
             <span class="card-badge-num">#19</span>
             <span class="card-badge-dur">04:07.12</span>
             <img src="assets/images/covers/cover-19.jpg" alt="Portada Rey de los Sesenta Mares — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -950,7 +1224,7 @@ En el corazón del palacio abisal, rodeado por galeones milenarios que derraman 
             <div class="card-footer">
               <a href="canciones/19-rey-de-los-sesenta-mares.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="19"
                       data-title="Rey de los Sesenta Mares"
                       data-duration="04:07.12"
@@ -964,7 +1238,7 @@ En el corazón del palacio abisal, rodeado por galeones milenarios que derraman 
                       data-cover="assets/images/covers/cover-19.jpg"
                       data-slug="19-rey-de-los-sesenta-mares"
                       data-ytid="yHHLgW3XuQg">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -972,10 +1246,29 @@ En el corazón del palacio abisal, rodeado por galeones milenarios que derraman 
         
 
         <article class="song-card" data-title="soy rico sin tener dinero" data-slug="20-soy-rico-sin-tener-dinero">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="20"
+               data-title="Soy Rico sin tener Dinero"
+               data-duration="04:04.28"
+               data-synopsis="Una epopeya cinematográfica sobre el mayor tesoro que un ser puede poseer: la lealtad incondicional de una familia elegida que nunca te dejará caer (*&quot;La moneda es lealtad&quot;*, *&quot;Una mesa larga, nadie sobra&quot;*).
+
+Lejos de la soledad y los palacios fríos de oro terrenal, **Raupulus** lidera y convive con una entrañable y diversa manada de seres fantásticos: un noble **Gólem de Roca y Musgo**, su inseparable y gigante lobo **su perro / mejor amigo (el lobo)**, una cuadrilla de laboriosos y pícaros **Duendes Cocineros**, un sabio y fornido **Centauro Guerrero**, un majestuoso **Grifo Alado de las Cumbres** y alegres **Faunos Músicos**. Juntos no acumulan monedas ni títulos vacíos; acumulan recuerdos, heridas compartidas y abrazos verdaderos.
+
+La historia arranca en una expedición a través de cañones indómitos y valles dorados de otoño donde el grupo demuestra su compenetración y apoyo mutuo: salvando desfiladeros, ayudándose a trepar peñascos y protegiéndose mutuamente. Al llegar a un claro bañado por la luz dorada del atardecer (*&quot;el tesoro de los domingos&quot;*), construyen y comparten un banquete inolvidable sobre una larguísima mesa de madera viva donde nadie sobra: hogazas de pan caliente recién horneadas partidas con las manos, miel silvestre, agua pura servida en copas de cristal tallado (*&quot;brindando con agua en cristal&quot;*) y carcajadas sinceras.
+
+Al caer la noche sobre su gran refugio de roble y piedra (*&quot;paredes que abrazan, no ladrillos&quot;*), abren su peculiar *&quot;caja fuerte&quot;*: un baúl rústico que no custodia dinero, sino cuadros pintados a mano de sus aventuras, cartas de hermandad y reliquias de batallas pasadas. Finalmente, reunidos en círculo alrededor de una colosal fogata bajo constelaciones violetas, entrelazan sus garras, brazos y pechos en un pacto inquebrantable (*&quot;el escudo son nuestras manos&quot;*), consagrando a Raupulus como el ser más multimillonario del universo."
+               data-cover="assets/images/covers/cover-20.jpg"
+               data-slug="20-soy-rico-sin-tener-dinero"
+               data-ytid="ATeWyiFG-cM"
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Soy Rico sin tener Dinero">
             <span class="card-badge-num">#20</span>
             <span class="card-badge-dur">04:04.28</span>
             <img src="assets/images/covers/cover-20.jpg" alt="Portada Soy Rico sin tener Dinero — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -991,7 +1284,7 @@ Al caer la noche sobre su gran refugio de roble y piedra (*&quot;paredes que abr
             <div class="card-footer">
               <a href="canciones/20-soy-rico-sin-tener-dinero.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="20"
                       data-title="Soy Rico sin tener Dinero"
                       data-duration="04:04.28"
@@ -1005,7 +1298,7 @@ Al caer la noche sobre su gran refugio de roble y piedra (*&quot;paredes que abr
                       data-cover="assets/images/covers/cover-20.jpg"
                       data-slug="20-soy-rico-sin-tener-dinero"
                       data-ytid="ATeWyiFG-cM">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -1013,10 +1306,29 @@ Al caer la noche sobre su gran refugio de roble y piedra (*&quot;paredes que abr
         
 
         <article class="song-card" data-title="grito a la montaña" data-slug="21-grito-a-la-montana">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="21"
+               data-title="Grito a la Montaña"
+               data-duration="04:04.80"
+               data-synopsis="Una sobrecogedora catarsis cinematográfica donde **Raupulus** se adentra en la soledad salvaje de una cordillera ancestral para purgar todo su dolor, rabia y verdades en un enfrentamiento íntimo con los elementos (*&quot;Grito a la montaña&quot;*, *&quot;Aúlla hasta romper el valle&quot;*, *&quot;El alivio de no ser escuchado por humanos&quot;*).
+
+La travesía comienza en la penumbra de un valle húmedo de musgo y barro. Al pisar con sus garras descalzas las raíces milenarias, la voz de Raupulus hace retumbar el subsuelo, despertando a los **Guardianes Arbóreos (Ents de Pinos Negros)**, gigantes de madera y corteza ancestral que reconocen a su igual. Mientras asciende escalando paredes verticales de roca negra, los **Espíritus de la Niebla** descienden de las cumbres envolviendo su cuerpo en volutas de vapor; Raupulus les entrega sus temores y el frío glacial sella sus grietas de ébano en escarcha luminosa (*&quot;cicatrices que sanan con el frío&quot;*).
+
+En la aguja rocosa más afilada de la montaña, por encima de un mar de nubes infinito, Raupulus se reúne con **su perro / mejor amigo (el lobo) y una manada de lobos espirituales**. Juntos echan la cabeza hacia atrás y desatan un aullido sísmico cuyas ondas concéntricas quiebran la roca y despiertan los ojos de cuarzo del **Titán de la Montaña**, un coloso pétreo dormido en el risco vecino que absorbe su dolor con benevolencia. 
+
+Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la energía telúrica y se convierte en el **Supertrueno**: arcos titánicos de plasma violeta brotan de su cerebro expuesto y sus cuernos de madera curvados hacia la estratosfera, desafiando a los relámpagos del cielo y quedando victoriosamente de pie sobre la cima, purgado y soberano de las cumbres."
+               data-cover="assets/images/covers/cover-21.jpg"
+               data-slug="21-grito-a-la-montana"
+               data-ytid=""
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Grito a la Montaña">
             <span class="card-badge-num">#21</span>
             <span class="card-badge-dur">04:04.80</span>
             <img src="assets/images/covers/cover-21.jpg" alt="Portada Grito a la Montaña — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -1032,7 +1344,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
             <div class="card-footer">
               <a href="canciones/21-grito-a-la-montana.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="21"
                       data-title="Grito a la Montaña"
                       data-duration="04:04.80"
@@ -1046,7 +1358,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
                       data-cover="assets/images/covers/cover-21.jpg"
                       data-slug="21-grito-a-la-montana"
                       data-ytid="">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -1054,10 +1366,23 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
         
 
         <article class="song-card" data-title="mil veces me dijeron que no podía" data-slug="22-mil-veces-me-dijeron-que-no-podia">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="22"
+               data-title="Mil veces me dijeron que no podía"
+               data-duration="04:04"
+               data-synopsis=""
+               data-cover="assets/images/covers/cover-22.jpg"
+               data-slug="22-mil-veces-me-dijeron-que-no-podia"
+               data-ytid=""
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Mil veces me dijeron que no podía">
             <span class="card-badge-num">#22</span>
             <span class="card-badge-dur">04:04</span>
             <img src="assets/images/covers/cover-22.jpg" alt="Portada Mil veces me dijeron que no podía — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -1067,7 +1392,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
             <div class="card-footer">
               <a href="canciones/22-mil-veces-me-dijeron-que-no-podia.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="22"
                       data-title="Mil veces me dijeron que no podía"
                       data-duration="04:04"
@@ -1075,7 +1400,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
                       data-cover="assets/images/covers/cover-22.jpg"
                       data-slug="22-mil-veces-me-dijeron-que-no-podia"
                       data-ytid="">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -1083,10 +1408,23 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
         
 
         <article class="song-card" data-title="por encima de los límites" data-slug="23-por-encima-de-los-limites">
-          <div class="card-media">
+          <div class="card-media" 
+               data-preview-trigger 
+               data-num="23"
+               data-title="Por encima de los límites"
+               data-duration="04:19"
+               data-synopsis=""
+               data-cover="assets/images/covers/cover-23.jpg"
+               data-slug="23-por-encima-de-los-limites"
+               data-ytid=""
+               style="cursor: pointer;"
+               title="Reproducir vista previa de Por encima de los límites">
             <span class="card-badge-num">#23</span>
             <span class="card-badge-dur">04:19</span>
             <img src="assets/images/covers/cover-23.jpg" alt="Portada Por encima de los límites — Raupulus Music" loading="lazy" width="640" height="360">
+            <div class="card-media-play-hover">
+              <div class="play-circle-sm">▶</div>
+            </div>
           </div>
           <div class="card-body">
             <div>
@@ -1096,7 +1434,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
             <div class="card-footer">
               <a href="canciones/23-por-encima-de-los-limites.html" class="btn btn-outline btn-sm">Ver Vídeo y Letra</a>
               <button type="button" class="btn btn-purple btn-sm" 
-                      data-spotlight-switch 
+                      data-preview-trigger 
                       data-num="23"
                       data-title="Por encima de los límites"
                       data-duration="04:19"
@@ -1104,7 +1442,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
                       data-cover="assets/images/covers/cover-23.jpg"
                       data-slug="23-por-encima-de-los-limites"
                       data-ytid="">
-                Vista Previa
+                ▶ Vista Previa
               </button>
             </div>
           </div>
@@ -1230,6 +1568,7 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
           <h4>Navegación</h4>
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#destacado">Tema Destacado</a></li>
             <li><a href="#canciones">Listado de Canciones</a></li>
             <li><a href="#universo">Universo</a></li>
             <li><a href="#proyecto">Sobre el Proyecto</a></li>
@@ -1257,6 +1596,43 @@ Finalmente, bajo una tormenta eléctrica cataclísmica, Raupulus canaliza la ene
       </div>
     </div>
   </footer>
+
+  <!-- Modal de Vista Previa Inmediata (Reproducción sin scroll) -->
+  <div id="preview-modal" class="preview-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="preview-modal-dialog">
+      <div class="preview-modal-header">
+        <div class="preview-modal-title-wrap">
+          <span id="preview-modal-num" class="badge">#01 de 23</span>
+          <span id="preview-modal-dur" class="badge badge-cyan">03:31</span>
+          <h3 id="preview-modal-title" class="preview-modal-title">Corona de Hierro</h3>
+        </div>
+        <button type="button" class="preview-modal-close" aria-label="Cerrar vista previa">✕</button>
+      </div>
+
+      <div id="preview-modal-video-wrap" class="preview-modal-video-wrap">
+        <!-- Reproductor o Poster inyectado dinámicamente -->
+      </div>
+
+      <div class="preview-modal-body">
+        <p id="preview-modal-synopsis" class="preview-modal-synopsis"></p>
+
+        <div class="preview-modal-footer">
+          <div class="preview-modal-footer-actions">
+            <a id="preview-modal-song-link" href="#" class="btn btn-purple">
+              Ver Letra Completa & Ficha →
+            </a>
+            <a id="preview-modal-yt-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Ver en YouTube
+            </a>
+          </div>
+          <button type="button" id="preview-modal-close-btn" class="btn btn-outline btn-sm">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>

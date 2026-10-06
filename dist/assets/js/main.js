@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
   initMobileMenu();
   initCopyLyrics();
-  initSpotlight();
+  initPreviewModal();
   initFileProtocolNotice();
 });
 
@@ -115,54 +115,123 @@ function showToast(message) {
 }
 
 /**
- * Reproductor Spotlight interactivo
+ * Modal de Vista Previa Inmediata para las 23 canciones (sin scroll)
  */
-function initSpotlight() {
-  const triggerBtns = document.querySelectorAll('[data-spotlight-switch]');
-  const spotlightTitle = document.getElementById('spotlight-title');
-  const spotlightNum = document.getElementById('spotlight-num');
-  const spotlightDur = document.getElementById('spotlight-dur');
-  const spotlightSyn = document.getElementById('spotlight-synopsis');
-  const spotlightImg = document.getElementById('spotlight-img');
-  const spotlightLink = document.getElementById('spotlight-link');
-  const spotlightYt = document.getElementById('spotlight-yt');
+function initPreviewModal() {
+  const modal = document.getElementById('preview-modal');
+  if (!modal) return;
 
-  if (!triggerBtns.length || !spotlightTitle) return;
+  const closeBtn = modal.querySelector('.preview-modal-close');
+  const footerCloseBtn = modal.querySelector('#preview-modal-close-btn');
+  const titleEl = modal.querySelector('#preview-modal-title');
+  const numEl = modal.querySelector('#preview-modal-num');
+  const durEl = modal.querySelector('#preview-modal-dur');
+  const synEl = modal.querySelector('#preview-modal-synopsis');
+  const songLinkEl = modal.querySelector('#preview-modal-song-link');
+  const ytLinkEl = modal.querySelector('#preview-modal-yt-link');
+  const videoWrap = modal.querySelector('#preview-modal-video-wrap');
 
-  triggerBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const num = btn.getAttribute('data-num');
-      const title = btn.getAttribute('data-title');
-      const dur = btn.getAttribute('data-duration');
-      const syn = btn.getAttribute('data-synopsis');
-      const cover = btn.getAttribute('data-cover');
-      const slug = btn.getAttribute('data-slug');
-      const ytId = btn.getAttribute('data-ytid');
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // Limpiar reproductor para detener el audio/vídeo de inmediato
+    if (videoWrap) {
+      videoWrap.innerHTML = '';
+    }
+  }
 
-      if (spotlightTitle) spotlightTitle.textContent = title;
-      if (spotlightNum) spotlightNum.textContent = `#${num.padStart(2, '0')}`;
-      if (spotlightDur) spotlightDur.textContent = dur;
-      if (spotlightSyn) spotlightSyn.textContent = syn;
-      if (spotlightImg) spotlightImg.src = cover;
-      if (spotlightLink) spotlightLink.href = `canciones/${slug}.html`;
+  function openModal(data) {
+    const { num, title, duration, synopsis, cover, slug, ytid } = data;
 
-      if (spotlightYt) {
-        if (ytId) {
-          spotlightYt.href = `https://www.youtube.com/watch?v=${ytId}`;
-        } else {
-          spotlightYt.href = `https://www.youtube.com/@RaupulusMusic`;
+    if (numEl) numEl.textContent = `#${String(num).padStart(2, '0')} de 23`;
+    if (durEl) durEl.textContent = duration;
+    if (titleEl) titleEl.textContent = title;
+    if (synEl) synEl.textContent = synopsis;
+    if (songLinkEl) songLinkEl.href = `canciones/${slug}.html`;
+
+    if (ytLinkEl) {
+      if (ytid) {
+        ytLinkEl.href = `https://www.youtube.com/watch?v=${ytid}`;
+        ytLinkEl.style.display = 'inline-flex';
+      } else {
+        ytLinkEl.href = `https://www.youtube.com/@RaupulusMusic`;
+        ytLinkEl.style.display = 'inline-flex';
+      }
+    }
+
+    if (videoWrap) {
+      if (ytid) {
+        let isLocalFile = window.location.protocol === 'file:';
+        let noticeHtml = '';
+        if (isLocalFile) {
+          noticeHtml = `
+            <div class="file-protocol-warning" style="margin: 12px; font-size: 0.85rem;">
+              <div class="warning-header" style="font-size: 0.95rem;">⚠️ Previsualización en archivo local (file://)</div>
+              <p style="margin-bottom: 6px;">YouTube bloquea los reproductores embebidos locales sin servidor (Error 153). En <strong>music.raupulus.dev</strong> o corriendo <code>python3 serve.py</code> se reproduce automáticamente.</p>
+              <a href="https://www.youtube.com/watch?v=${ytid}" target="_blank" class="btn btn-sm btn-yt">▶ Ver directamente en YouTube</a>
+            </div>
+          `;
         }
+        videoWrap.innerHTML = `
+          ${noticeHtml}
+          <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1" 
+                  title="${title} — Raupulus Music" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+        `;
+      } else {
+        videoWrap.innerHTML = `
+          <div class="spotlight-poster">
+            <img src="${cover}" alt="Portada ${title}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="spotlight-play-overlay">
+              <a href="https://www.youtube.com/@RaupulusMusic" target="_blank" rel="noopener noreferrer" class="play-circle" aria-label="Ver canal">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </a>
+              <span class="badge badge-yt">🔴 Estreno Próximamente en @RaupulusMusic</span>
+            </div>
+          </div>
+        `;
       }
+    }
 
-      // Smooth scroll to player
-      const card = document.querySelector('.spotlight-card');
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
 
-      showToast(`Pista #${num} seleccionada: ${title}`);
+  // Asignar a todos los botones y tarjetas con data-preview-trigger
+  document.querySelectorAll('[data-preview-trigger]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const data = {
+        num: el.getAttribute('data-num') || '1',
+        title: el.getAttribute('data-title') || '',
+        duration: el.getAttribute('data-duration') || '',
+        synopsis: el.getAttribute('data-synopsis') || '',
+        cover: el.getAttribute('data-cover') || '',
+        slug: el.getAttribute('data-slug') || '',
+        ytid: el.getAttribute('data-ytid') || ''
+      };
+      openModal(data);
     });
+  });
+
+  // Eventos de cierre
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (footerCloseBtn) footerCloseBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
   });
 }
 
