@@ -340,7 +340,12 @@ def generate_index(songs):
       </div>
 
       <div style="margin-top: 50px; text-align: center;">
-        <img src="assets/images/r-avatar-character-sheet.jpg" alt="Hoja de Personaje Maestro R-Avatar" style="width: 100%; max-width: 980px; border-radius: var(--radius-lg); border: 1px solid var(--border-accent); box-shadow: var(--shadow-glow);" loading="lazy">
+        <div style="position: relative; max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow);">
+          <img src="assets/images/r-avatar-triptych.jpg" alt="R-Avatar — Tríptico de Poses Épicas: Riff de Guitarra, Alas Demoníacas y Soberano del Trono" style="width: 100%; height: auto; display: block;" loading="lazy">
+        </div>
+        <p style="margin-top: 14px; font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em;">
+          Furia Sonora • Ascensión de Plasma • Trono de los Sesenta Mares
+        </p>
       </div>
     </div>
   </section>
