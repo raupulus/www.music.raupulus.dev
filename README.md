@@ -1,6 +1,6 @@
 # ⚡ RAUPULUS MUSIC — WEB OFICIAL (music.raupulus.dev)
 
-> Sitio web oficial y catálogo cinematográfico para el proyecto musical y audiovisual **Raupulus Music** (`@RaupulusMusic`), centrado en el álbum conceptual **CD 1: Nunca venderé mi alma de Metal** y el universo visual de **R-Avatar**.
+> Sitio web oficial y catálogo cinematográfico para el proyecto musical y audiovisual **Raupulus Music** (`@RaupulusMusic`), centrado en el álbum conceptual **CD 1: Nunca venderé mi alma de Metal** y el universo visual de **Raupulus**.
 
 ---
 
@@ -23,7 +23,7 @@
    * Arte de portada 16:9 en alta resolución.
    * Navegación secuencial entre pistas (anterior / siguiente).
    * Aviso legal de copyright y créditos completos.
-4. **Diseño Visual Temático:** Estética oscura inspirada en el R-Avatar (ébano calcinado `#06050a`, bioluminiscencia púrpura `#9b4dff`, siluetas semitransparentes del personaje, acentos cian y neón).
+4. **Diseño Visual Temático:** Estética oscura inspirada en Raupulus (ébano calcinado `#06050a`, bioluminiscencia púrpura `#9b4dff`, siluetas semitransparentes del personaje, acentos cian y neón).
 
 ---
 
@@ -34,6 +34,7 @@ web/
 ├── AGENTS.md                 # Reglas obligatorias, privacidad y estándares de diseño
 ├── README.md                 # Este manual técnico
 ├── build.py                  # Generador estático en Python (compila dist/ en 1 segundo)
+├── serve.py                  # Servidor local de desarrollo (http://localhost:8080)
 ├── data/
 │   └── songs.json            # Base de datos JSON con las 23 canciones, letras y YouTube IDs
 ├── src/
@@ -54,10 +55,9 @@ web/
     │   └── images/
     │       ├── logo.png
     │       ├── r-avatar-face.png
-    │       ├── avatar-circular.png
-    │       ├── banner.jpg
-    │       ├── r-avatar-portrait.jpg
-    │       ├── r-avatar-character-sheet.jpg
+    │       ├── wolf-avatar-bust.png
+    │       ├── amada-avatar-bust.png
+    │       ├── r-avatar-triptych.jpg
     │       └── covers/       # 23 portadas cinematográficas oficiales 16:9
     ├── sitemap.xml           # Mapa del sitio para indexación completa en Google
     └── robots.txt            # Reglas para rastreadores de motores de búsqueda
@@ -83,6 +83,21 @@ Cuando subas un nuevo videoclip a YouTube y tengas su ID (por ejemplo `dQw4w9WgX
    python3 build.py
    ```
 4. ¡Listo! El script regenerará automáticamente la portada, las páginas de canciones con el reproductor oficial de YouTube embebido y el `sitemap.xml` en milisegundos.
+
+---
+
+## 💻 Previsualización Local y Desarrollo (`serve.py`)
+
+Debido a las políticas de seguridad de Google/YouTube, los reproductores embebidos bloquean la reproducción si se abren directamente desde el explorador como archivo local en disco (`file://`, provocando el **Error 153**) al carecer de cabecera de origen web (`Referrer`).
+
+Para previsualizar y navegar la web en local con todos los vídeos operativos:
+
+```bash
+# Iniciar servidor local de desarrollo (abre automáticamente http://localhost:8080)
+python3 serve.py
+```
+
+Al desplegar en producción (`https://music.raupulus.dev`) o sobre un servidor web, los vídeos se reproducen directamente sin ninguna restricción.
 
 ---
 

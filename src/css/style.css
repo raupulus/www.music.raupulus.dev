@@ -1214,3 +1214,47 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Aviso para protocolo local file:// */
+.file-protocol-warning {
+  background: rgba(255, 179, 0, 0.08);
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.file-protocol-warning .warning-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffe082;
+  margin-bottom: 8px;
+}
+
+.file-protocol-warning p {
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.file-protocol-warning .warning-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.file-protocol-warning code {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-subtle);
+  font-family: monospace;
+}

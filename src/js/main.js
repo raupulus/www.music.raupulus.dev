@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initCopyLyrics();
   initSpotlight();
+  initFileProtocolNotice();
 });
 
 /**
@@ -162,5 +163,35 @@ function initSpotlight() {
 
       showToast(`Pista #${num} seleccionada: ${title}`);
     });
+  });
+}
+
+/**
+ * Detectar protocolo file:// y mostrar aviso amigable si los embeds de YouTube se bloquean
+ */
+function initFileProtocolNotice() {
+  if (window.location.protocol !== 'file:') return;
+
+  const playerContainers = document.querySelectorAll('.video-player-container');
+  playerContainers.forEach((container) => {
+    if (container.querySelector('.file-protocol-warning') || container.parentElement.querySelector('.file-protocol-warning')) return;
+
+    const notice = document.createElement('div');
+    notice.className = 'file-protocol-warning';
+    notice.innerHTML = `
+      <div class="warning-header">
+        <span>⚠️</span>
+        <strong>Aviso de Previsualización Local (protocolo file://)</strong>
+      </div>
+      <p>
+        Google y YouTube bloquean la inicialización de reproductores incrustados desde archivos en disco (<strong>Error 153</strong>) por seguridad, al no enviar cabeceras de origen web.
+      </p>
+      <div class="warning-footer">
+        <div>🚀 <strong>Para ver el vídeo embebido en local:</strong> ejecuta en tu terminal <code>python3 serve.py</code> y abre <a href="http://localhost:8080" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">http://localhost:8080</a>.</div>
+        <div>🌐 En el servidor de producción (<strong>music.raupulus.dev</strong>) se reproduce directamente sin restricciones.</div>
+      </div>
+    `;
+
+    container.parentElement.insertBefore(notice, container);
   });
 }

@@ -13,6 +13,8 @@ from datetime import datetime
 
 SITE_URL = "https://music.raupulus.dev"
 YT_CHANNEL = "https://www.youtube.com/@RaupulusMusic"
+YT_SUBSCRIBE = "https://www.youtube.com/@RaupulusMusic?sub_confirmation=1"
+YT_PLAYLIST_CD1 = "https://www.youtube.com/watch?v=ATeWyiFG-cM&list=PLAfm1RK6VyG8"
 YT_PERSONAL = "https://www.youtube.com/@raupulus"
 PUBLIC_EMAIL = "public@raupulus.dev"
 ALBUM_TITLE = "CD 1 — Nunca venderé mi alma de Metal"
@@ -119,6 +121,7 @@ def generate_index(songs):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Raupulus Music — Metal Industrial, Cyberpunk & Videoclips con IA</title>
   <meta name="description" content="Sitio oficial de Raupulus Music. Descubre el álbum 'CD 1: Nunca venderé mi alma de Metal', 23 videoclips cinematográficos, letras oficiales y el universo visual de Raupulus.">
   <link rel="canonical" href="{SITE_URL}/">
@@ -193,9 +196,9 @@ def generate_index(songs):
 
         <div class="hero-actions">
           <a href="#canciones" class="btn btn-purple btn-lg">Explorar las 23 Canciones</a>
-          <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt btn-lg">
+          <a href="{YT_PLAYLIST_CD1}" target="_blank" rel="noopener noreferrer" class="btn btn-yt btn-lg">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            Ver en YouTube
+            Ver Álbum en YouTube
           </a>
           <a href="#universo" class="btn btn-outline btn-lg">Conocer el Universo</a>
         </div>
@@ -266,8 +269,8 @@ def generate_index(songs):
             <a id="spotlight-link" href="canciones/{first_song.get('slug', '01-corona-de-hierro')}.html" class="btn btn-purple">
               Ver Letra Completa & Vídeo
             </a>
-            <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
-              Suscribirse al Canal
+            <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
+              🔔 Suscribirse al Canal
             </a>
           </div>
         </div>
@@ -387,7 +390,7 @@ def generate_index(songs):
           Lejos de ser experimentos aleatorios, cada videoclip de <em>Nunca venderé mi alma de Metal</em> ha sido planeado con un guion técnico matemático: 570 planos de 10 segundos sincronizados al milisegundo con la rítmica y la lírica, con Foley diegético de entorno (viento, chispas, cadenas, agua hirviente) que expande la experiencia auditiva sin interferir con la contundencia del metal.
         </p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
+          <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">
             🔴 Suscribirse en YouTube (@RaupulusMusic)
           </a>
           <a href="{YT_PERSONAL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -473,9 +476,10 @@ def generate_song_pages(songs):
         if yt_id:
             player_html = f"""
             <div class="video-player-container">
-              <iframe src="https://www.youtube.com/embed/{yt_id}?autoplay=0&rel=0&modestbranding=1" 
+              <iframe src="https://www.youtube-nocookie.com/embed/{yt_id}?autoplay=0&rel=0&modestbranding=1" 
                       title="{title_esc} — Raupulus Music" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      referrerpolicy="strict-origin-when-cross-origin"
                       allowfullscreen 
                       loading="lazy"></iframe>
             </div>
@@ -556,6 +560,7 @@ def generate_song_pages(songs):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>{title_esc} — Raupulus Music | Vídeo Oficial y Letra</title>
   <meta name="description" content="Videoclip y letra oficial de '{title_esc}' por Raupulus Music. Pista {s['number']} del álbum 'Nunca venderé mi alma de Metal'.">
   <link rel="canonical" href="{canonical_url}">
@@ -648,7 +653,7 @@ def generate_song_pages(songs):
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           Ver en YouTube
         </a>
-        <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
           🔔 Suscribirse al Canal
         </a>
       </div>
@@ -712,9 +717,12 @@ def generate_song_pages(songs):
           <img src="../assets/images/covers/{s['cover_file']}" alt="Portada {title_esc}" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
 
-        <div style="margin-top: 24px;">
-          <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt" style="width: 100%;">
-            Ver Canal de YouTube
+        <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <a href="{yt_watch_url}" target="_blank" rel="noopener noreferrer" class="btn btn-yt" style="width: 100%;">
+            Ver en YouTube
+          </a>
+          <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">
+            🔔 Suscribirse al Canal
           </a>
         </div>
       </aside>
