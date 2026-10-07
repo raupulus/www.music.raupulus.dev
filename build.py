@@ -26,6 +26,14 @@ DATA_FILE = os.path.join(BASE_DIR, "data", "songs.json")
 DIST_DIR = os.path.join(BASE_DIR, "dist")
 SRC_DIR = os.path.join(BASE_DIR, "src")
 
+try:
+    import subprocess
+    git_hash = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR).decode().strip()
+    BUILD_ID = f"{datetime.now().strftime('%Y%m%d%H%M%S')}-{git_hash}"
+except Exception:
+    BUILD_ID = datetime.now().strftime("%Y%m%d%H%M%S")
+
+
 def ensure_dirs():
     os.makedirs(os.path.join(DIST_DIR, "assets", "css"), exist_ok=True)
     os.makedirs(os.path.join(DIST_DIR, "assets", "js"), exist_ok=True)
@@ -227,8 +235,8 @@ def generate_index(songs):
   <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="stylesheet" href="assets/css/common.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/common.css?v={BUILD_ID}">
+  <link rel="stylesheet" href="assets/css/home.css?v={BUILD_ID}">
 
   <script type="application/ld+json">
   {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
@@ -597,7 +605,7 @@ def generate_index(songs):
     </div>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v={BUILD_ID}"></script>
 </body>
 </html>
 """
@@ -787,8 +795,8 @@ def generate_song_pages(songs):
   <link rel="icon" type="image/webp" href="../assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="stylesheet" href="../assets/css/common.css">
-  <link rel="stylesheet" href="../assets/css/song.css">
+  <link rel="stylesheet" href="../assets/css/common.css?v={BUILD_ID}">
+  <link rel="stylesheet" href="../assets/css/song.css?v={BUILD_ID}">
 
   <script type="application/ld+json">
   {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
@@ -990,7 +998,7 @@ def generate_song_pages(songs):
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js?v={BUILD_ID}"></script>
 </body>
 </html>
 """
@@ -1057,11 +1065,16 @@ def generate_playlist_page(songs):
             <h3 class="playlist-card-title">{title_esc}</h3>
             <p class="playlist-card-synopsis">{synopsis_clean}</p>
             <div class="playlist-card-footer">
-              <button type="button" class="btn btn-sm btn-purple card-play-trigger">▶ Ver en Grande</button>
-              <a href="canciones/{slug}.html" class="btn btn-sm btn-outline card-lyrics-link" title="Ver letra y crónica de {title_esc}">📜 Letra</a>
-              <a href="https://www.youtube.com/watch?v={ytid}&list={YT_PLAYLIST_ID}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt card-yt-link" title="Ver videoclip en YouTube">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </a>
+              <button type="button" class="btn btn-sm btn-purple card-play-trigger" aria-label="Ver {title_esc} en pantalla grande">
+                ▶ Ver en Grande
+              </button>
+              <div class="playlist-card-subactions">
+                <a href="canciones/{slug}.html" class="btn btn-sm btn-outline card-lyrics-link" title="Ver letra y crónica de {title_esc}">📜 Letra</a>
+                <a href="https://www.youtube.com/watch?v={ytid}&list={YT_PLAYLIST_ID}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt card-yt-link" title="Ver videoclip en YouTube">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  YouTube
+                </a>
+              </div>
             </div>
           </div>
         </article>
@@ -1129,8 +1142,8 @@ def generate_playlist_page(songs):
   <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="stylesheet" href="assets/css/common.css">
-  <link rel="stylesheet" href="assets/css/playlist.css">
+  <link rel="stylesheet" href="assets/css/common.css?v={BUILD_ID}">
+  <link rel="stylesheet" href="assets/css/playlist.css?v={BUILD_ID}">
 
   <script type="application/ld+json">
   {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
@@ -1345,7 +1358,7 @@ def generate_playlist_page(songs):
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v={BUILD_ID}"></script>
 </body>
 </html>
 """

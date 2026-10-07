@@ -412,6 +412,24 @@ function initPlaylistViewer() {
 
   const playlistId = 'PLAfm1RK6VyG8';
 
+  function scrollToPlayer() {
+    if (screenWrap) {
+      screenWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function getCardData(card) {
+    return {
+      ytid: card.getAttribute('data-ytid') || '',
+      title: card.getAttribute('data-title') || '',
+      num: card.getAttribute('data-num') || '1',
+      duration: card.getAttribute('data-duration') || '',
+      clips: card.getAttribute('data-clips') || '23',
+      synopsis: card.getAttribute('data-synopsis') || '',
+      slug: card.getAttribute('data-slug') || ''
+    };
+  }
+
   function loadVideo(data, autoScroll = true) {
     const { ytid, title, num, duration, clips, synopsis, slug } = data;
 
@@ -454,15 +472,19 @@ function initPlaylistViewer() {
       `;
     }
 
-    if (autoScroll && window.innerWidth <= 992) {
-      screenWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (autoScroll) {
+      scrollToPlayer();
     }
   }
 
   // Botón para reproducir la lista completa en bucle continuo
   if (loopBtn) {
-    loopBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+    const handleLoop = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
       if (titleEl) titleEl.textContent = 'Álbum Completo: Nunca venderé mi alma de Metal (Bucle Oficial)';
       if (numEl) numEl.textContent = 'Playlist';
       if (durEl) durEl.textContent = '23 Videoclips';
@@ -494,35 +516,38 @@ function initPlaylistViewer() {
         `;
       }
 
-      if (window.innerWidth <= 992) {
-        screenWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
+      scrollToPlayer();
+    };
+
+    loopBtn.addEventListener('click', handleLoop);
   }
 
-  // Manejar clic y teclado en las tarjetas de videoclip
+  // Manejar eventos en las tarjetas de videoclip
   cards.forEach((card) => {
-    const handleSelect = (e) => {
-      if (e.target.closest('.card-lyrics-link') || e.target.closest('.card-yt-link')) {
+    // Botón específico "▶ Ver en Grande"
+    const playTrigger = card.querySelector('.card-play-trigger');
+    if (playTrigger) {
+      playTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        loadVideo(getCardData(card), true);
+      });
+    }
+
+    // Clic en el resto de la tarjeta (imagen, título, cuerpo)
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.card-lyrics-link') || e.target.closest('.card-yt-link') || e.target.closest('.card-play-trigger')) {
         return;
       }
       e.preventDefault();
-      const data = {
-        ytid: card.getAttribute('data-ytid'),
-        title: card.getAttribute('data-title'),
-        num: card.getAttribute('data-num'),
-        duration: card.getAttribute('data-duration'),
-        clips: card.getAttribute('data-clips') || '23',
-        synopsis: card.getAttribute('data-synopsis'),
-        slug: card.getAttribute('data-slug')
-      };
-      loadVideo(data, true);
-    };
+      loadVideo(getCardData(card), true);
+    });
 
-    card.addEventListener('click', handleSelect);
+    // Accesibilidad por teclado en la tarjeta
     card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        handleSelect(e);
+      if (e.target === card && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        loadVideo(getCardData(card), true);
       }
     });
   });
