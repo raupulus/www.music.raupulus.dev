@@ -21,9 +21,9 @@
   <meta property="og:url" content="https://music.raupulus.dev/canciones/19-rey-de-los-sesenta-mares.html">
   <meta property="og:title" content="Rey de los Sesenta Mares — Raupulus Music (Vídeo y Letra Oficial)">
   <meta property="og:description" content="Una epopeya submarina y náutica que narra la coronación de Raupulus como soberano absoluto de los sesenta mares. Sumergiéndose en abismos inexplorados y empuñando el Bastón de los Sesenta Mares, doblega leviatanes y ciudadelas sumergidas para gobernar las aguas del planeta.">
-  <meta property="og:image" content="https://music.raupulus.dev/assets/images/covers/cover-19.jpg">
-  <meta property="og:image:secure_url" content="https://music.raupulus.dev/assets/images/covers/cover-19.jpg">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image" content="https://music.raupulus.dev/assets/images/covers/cover-19.webp">
+  <meta property="og:image:secure_url" content="https://music.raupulus.dev/assets/images/covers/cover-19.webp">
+  <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="1376">
   <meta property="og:image:height" content="768">
   <meta property="og:image:alt" content="Portada oficial de Rey de los Sesenta Mares — Álbum Nunca venderé mi alma de Metal">
@@ -40,10 +40,12 @@
   <meta name="twitter:url" content="https://music.raupulus.dev/canciones/19-rey-de-los-sesenta-mares.html">
   <meta name="twitter:title" content="Rey de los Sesenta Mares — Raupulus Music">
   <meta name="twitter:description" content="Una epopeya submarina y náutica que narra la coronación de Raupulus como soberano absoluto de los sesenta mares. Sumergiéndose en abismos inexplorados y empuñando el Bastón de los Sesenta Mares, doblega leviatanes y ciudadelas sumergidas para gobernar las aguas del planeta.">
-  <meta name="twitter:image" content="https://music.raupulus.dev/assets/images/covers/cover-19.jpg">
+  <meta name="twitter:image" content="https://music.raupulus.dev/assets/images/covers/cover-19.webp">
   <meta name="twitter:image:alt" content="Portada oficial de Rey de los Sesenta Mares — Álbum Nunca venderé mi alma de Metal">
 
-  <link rel="icon" type="image/png" href="../assets/images/avatar-circular.png">
+  <link rel="icon" type="image/webp" href="../assets/images/avatar-circular.webp">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="stylesheet" href="../assets/css/style.css">
 
   <script type="application/ld+json">
@@ -52,20 +54,20 @@
   "@type": "MusicRecording",
   "name": "Rey de los Sesenta Mares",
   "url": "https://music.raupulus.dev/canciones/19-rey-de-los-sesenta-mares.html",
-  "image": "https://music.raupulus.dev/assets/images/covers/cover-19.jpg",
+  "image": "https://music.raupulus.dev/assets/images/covers/cover-19.webp",
   "duration": "PT04M07.12S",
   "position": 19,
   "inAlbum": {
     "@type": "MusicAlbum",
     "name": "CD 1 — Nunca venderé mi alma de Metal",
     "url": "https://music.raupulus.dev/",
-    "image": "https://music.raupulus.dev/assets/images/logo.png"
+    "image": "https://music.raupulus.dev/assets/images/logo.webp"
   },
   "byArtist": {
     "@type": "MusicGroup",
     "name": "Raupulus Music",
     "url": "https://www.youtube.com/@RaupulusMusic",
-    "image": "https://music.raupulus.dev/assets/images/logo.png"
+    "image": "https://music.raupulus.dev/assets/images/logo.webp"
   },
   "description": "Una epopeya submarina y náutica que narra la coronación de Raupulus como soberano absoluto de los sesenta mares. Sumergiéndose en abismos inexplorados y empuñando el Bastón de los Sesenta Mares, doblega leviatanes y ciudadelas sumergidas para gobernar las aguas del planeta."
 }
@@ -79,7 +81,7 @@
   <nav class="site-nav" aria-label="Navegación">
     <div class="container">
       <a href="../index.html" class="nav-brand">
-        <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="44" height="44">
+        <img src="../assets/images/logo.webp" alt="Logotipo Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -126,13 +128,26 @@
 
     <!-- Reproductor Embebido de YouTube -->
     
-            <div class="video-player-container">
-              <iframe src="https://www.youtube-nocookie.com/embed/yHHLgW3XuQg?autoplay=0&rel=0&modestbranding=1" 
-                      title="Rey de los Sesenta Mares — Raupulus Music" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                      referrerpolicy="strict-origin-when-cross-origin"
-                      allowfullscreen 
-                      loading="lazy"></iframe>
+            <div class="video-player-container video-facade" 
+                 data-facade-ytid="yHHLgW3XuQg" 
+                 data-facade-title="Rey de los Sesenta Mares"
+                 role="button" 
+                 tabindex="0" 
+                 aria-label="Reproducir videoclip oficial de Rey de los Sesenta Mares" 
+                 style="cursor: pointer;">
+              <div class="video-poster-placeholder">
+                <img src="../assets/images/covers/cover-19.webp" 
+                     alt="Portada videoclip Rey de los Sesenta Mares — Raupulus Music" 
+                     width="1280" height="720" 
+                     fetchpriority="high"
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="spotlight-play-overlay">
+                  <div class="play-circle" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="badge badge-yt">▶ Reproducir Videoclip</span>
+                </div>
+              </div>
             </div>
             
 
@@ -266,7 +281,7 @@ y el fondo se inclina al pasar</div>
 
         <h3 class="aside-section-title" style="margin-top: 24px;">Arte de Portada</h3>
         <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle);">
-          <img src="../assets/images/covers/cover-19.jpg" alt="Portada cinematográfica de Rey de los Sesenta Mares — Álbum Nunca venderé mi alma de Metal" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="../assets/images/covers/cover-19.webp" alt="Portada cinematográfica de Rey de los Sesenta Mares — Álbum Nunca venderé mi alma de Metal" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
 
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
@@ -317,7 +332,7 @@ y el fondo se inclina al pasar</div>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
+          <img src="../assets/images/logo.webp" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>

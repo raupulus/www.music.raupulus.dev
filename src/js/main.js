@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
   initMobileMenu();
   initCopyLyrics();
+  initVideoFacades();
   initPreviewModal();
   initFileProtocolNotice();
 });
@@ -269,5 +270,54 @@ function initFileProtocolNotice() {
     `;
 
     container.parentElement.insertBefore(notice, container);
+  });
+}
+
+/**
+ * Patrón Fachada de YouTube (YouTube Facade Pattern)
+ * Sustituye la carga pesada de iframes en arranque por pósters ligeros WebP.
+ * Al hacer clic o presionar Enter/Espacio, inicializa el reproductor de YouTube al instante.
+ */
+function initVideoFacades() {
+  const facades = document.querySelectorAll('.video-facade[data-facade-ytid]');
+  facades.forEach((container) => {
+    const ytid = container.getAttribute('data-facade-ytid');
+    const title = container.getAttribute('data-facade-title') || 'Raupulus Music';
+
+    const activatePlayer = (e) => {
+      e.preventDefault();
+      container.removeAttribute('data-facade-ytid');
+      container.removeAttribute('role');
+      container.removeAttribute('tabindex');
+      container.removeAttribute('aria-label');
+      container.classList.remove('video-facade');
+      container.style.cursor = 'default';
+
+      if (window.location.protocol === 'file:') {
+        container.innerHTML = `
+          <div class="file-protocol-warning" style="margin: 20px; font-size: 0.95rem;">
+            <div class="warning-header" style="font-size: 1.05rem;">⚠️ Previsualización en archivo local (file://)</div>
+            <p style="margin-bottom: 10px;">YouTube bloquea los reproductores embebidos locales sin servidor (Error 153). En <strong>music.raupulus.dev</strong> o corriendo <code>python3 serve.py</code> se reproduce automáticamente.</p>
+            <a href="https://www.youtube.com/watch?v=${ytid}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt">▶ Ver directamente en YouTube</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1" 
+                title="${title} — Raupulus Music" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+      `;
+    };
+
+    container.addEventListener('click', activatePlayer);
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        activatePlayer(e);
+      }
+    });
   });
 }

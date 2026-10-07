@@ -30,11 +30,49 @@ def ensure_dirs():
     os.makedirs(os.path.join(DIST_DIR, "assets", "images", "covers"), exist_ok=True)
     os.makedirs(os.path.join(DIST_DIR, "canciones"), exist_ok=True)
 
+def minify_css(css):
+    import re
+    # Eliminar comentarios CSS
+    css = re.sub(r'/\*[\s\S]*?\*/', '', css)
+    # Normalizar saltos de línea y tabulaciones
+    css = re.sub(r'[\r\n\t]+', ' ', css)
+    # Colapsar múltiples espacios
+    css = re.sub(r'\s{2,}', ' ', css)
+    # Espacios alrededor de delimitadores
+    css = re.sub(r'\s*([\{\};,])\s*', r'\1', css)
+    css = re.sub(r';}', '}', css)
+    return css.strip()
+
+def minify_js(js):
+    import re
+    lines = []
+    for line in js.splitlines():
+        line_clean = line.strip()
+        if line_clean.startswith('//'):
+            continue
+        if line_clean:
+            lines.append(line)
+    cleaned = '\n'.join(lines)
+    cleaned = re.sub(r'/\*[\s\S]*?\*/', '', cleaned)
+    return cleaned.strip()
+
 def copy_assets():
-    # CSS
-    shutil.copy2(os.path.join(SRC_DIR, "css", "style.css"), os.path.join(DIST_DIR, "assets", "css", "style.css"))
-    # JS
-    shutil.copy2(os.path.join(SRC_DIR, "js", "main.js"), os.path.join(DIST_DIR, "assets", "js", "main.js"))
+    # CSS con minificación
+    css_src = os.path.join(SRC_DIR, "css", "style.css")
+    css_dist = os.path.join(DIST_DIR, "assets", "css", "style.css")
+    with open(css_src, "r", encoding="utf-8") as f:
+        raw_css = f.read()
+    with open(css_dist, "w", encoding="utf-8") as f:
+        f.write(minify_css(raw_css))
+
+    # JS con minificación
+    js_src = os.path.join(SRC_DIR, "js", "main.js")
+    js_dist = os.path.join(DIST_DIR, "assets", "js", "main.js")
+    with open(js_src, "r", encoding="utf-8") as f:
+        raw_js = f.read()
+    with open(js_dist, "w", encoding="utf-8") as f:
+        f.write(minify_js(raw_js))
+
     alpine_src = os.path.join(SRC_DIR, "js", "alpine.min.js")
     if os.path.exists(alpine_src):
         shutil.copy2(alpine_src, os.path.join(DIST_DIR, "assets", "js", "alpine.min.js"))
@@ -129,13 +167,13 @@ def generate_index(songs):
         "@context": "https://schema.org",
         "@type": "MusicAlbum",
         "name": ALBUM_TITLE,
-        "image": f"{SITE_URL}/assets/images/logo.png",
+        "image": f"{SITE_URL}/assets/images/logo.webp",
         "url": f"{SITE_URL}/",
         "byArtist": {
             "@type": "MusicGroup",
             "name": "Raupulus Music",
             "url": YT_CHANNEL,
-            "image": f"{SITE_URL}/assets/images/logo.png"
+            "image": f"{SITE_URL}/assets/images/logo.webp"
         },
         "genre": ["Industrial Metal", "Cyber Hardcore", "Metal IA"],
         "numTracks": len(songs),
@@ -165,9 +203,9 @@ def generate_index(songs):
   <meta property="og:url" content="{SITE_URL}/">
   <meta property="og:title" content="Raupulus Music — CD 1: Nunca venderé mi alma de Metal">
   <meta property="og:description" content="23 canciones de puro Metal Industrial y Cyber Hardcore con 570 clips generados por IA cinematográfica. Explora los vídeos y las letras oficiales.">
-  <meta property="og:image" content="{SITE_URL}/assets/images/logo.png">
-  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/logo.png">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:image" content="{SITE_URL}/assets/images/logo.webp">
+  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/logo.webp">
+  <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Logotipo Oficial de Raupulus Music">
@@ -179,10 +217,12 @@ def generate_index(songs):
   <meta name="twitter:url" content="{SITE_URL}/">
   <meta name="twitter:title" content="Raupulus Music — Álbum Oficial CD 1">
   <meta name="twitter:description" content="Metal Industrial y Videoclips Cinematográficos de Raupulus. Letras, historias y vídeos en YouTube.">
-  <meta name="twitter:image" content="{SITE_URL}/assets/images/logo.png">
+  <meta name="twitter:image" content="{SITE_URL}/assets/images/logo.webp">
   <meta name="twitter:image:alt" content="Logotipo Oficial de Raupulus Music">
 
-  <link rel="icon" type="image/png" href="assets/images/avatar-circular.png">
+  <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script type="application/ld+json">
@@ -201,7 +241,7 @@ def generate_index(songs):
   <nav class="site-nav" aria-label="Navegación principal">
     <div class="container">
       <a href="{SITE_URL}/" class="nav-brand">
-        <img src="assets/images/logo.png" alt="Logotipo Oficial Raupulus Music" width="44" height="44">
+        <img src="assets/images/logo.webp" alt="Logotipo Oficial Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -266,7 +306,7 @@ def generate_index(songs):
 
       <div class="hero-media">
         <div class="hero-avatar-frame">
-          <img src="assets/images/r-avatar-portrait.jpg" alt="Raupulus — Soberano de la corteza y plasma violeta" width="440" height="550">
+          <img src="assets/images/r-avatar-portrait.webp" alt="Raupulus — Soberano de la corteza y plasma violeta" width="440" height="550" fetchpriority="high">
           <div class="hero-avatar-overlay">
             <span class="hero-avatar-name">Raupulus</span>
             <span class="hero-avatar-role">Protagonista del Álbum</span>
@@ -288,13 +328,26 @@ def generate_index(songs):
 
       <div class="spotlight-card">
         <div class="spotlight-video-wrap">
-          <div class="video-player-container" style="margin: 0; min-height: 380px;">
-            <iframe src="https://www.youtube-nocookie.com/embed/{first_song.get('youtube_id', 'ATeWyiFG-cM')}?autoplay=0&rel=0&modestbranding=1" 
-                    title="Corona de Hierro — Raupulus Music" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen 
-                    loading="lazy"></iframe>
+          <div class="video-player-container video-facade" 
+               data-facade-ytid="{first_song.get('youtube_id', 'ATeWyiFG-cM')}" 
+               data-facade-title="{html.escape(first_song.get('title', 'Corona de Hierro'))}"
+               role="button" 
+               tabindex="0" 
+               aria-label="Reproducir videoclip oficial de {html.escape(first_song.get('title', 'Corona de Hierro'))}" 
+               style="margin: 0; min-height: 380px; cursor: pointer;">
+            <div class="video-poster-placeholder">
+              <img src="assets/images/covers/{first_song.get('cover_file', 'cover-01.webp')}" 
+                   alt="Portada videoclip {html.escape(first_song.get('title', 'Corona de Hierro'))}" 
+                   width="1280" height="720" 
+                   fetchpriority="high"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="spotlight-play-overlay">
+                <div class="play-circle" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="badge badge-yt">▶ Reproducir Videoclip</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -366,7 +419,7 @@ def generate_index(songs):
         <!-- Tarjeta 1: Raupulus -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-purple">
-            <img src="assets/images/r-avatar-face.png" alt="Busto de frente de Raupulus mostrando su calavera de ébano oscuro, cuernos curvados, 8 ojos violetas y cerebro bioeléctrico expuesto" class="lore-bust-img" width="160" height="160" loading="lazy">
+            <img src="assets/images/r-avatar-face.webp" alt="Busto de frente de Raupulus mostrando su calavera de ébano oscuro, cuernos curvados, 8 ojos violetas y cerebro bioeléctrico expuesto" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">PROTAGONISTA PRINCIPAL</div>
           <h3 class="lore-title">Raupulus</h3>
@@ -382,7 +435,7 @@ def generate_index(songs):
         <!-- Tarjeta 2: Su Mejor Amigo -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-emerald">
-            <img src="assets/images/wolf-avatar-bust.png" alt="Busto frontal del mejor amigo de Raupulus: lobo titánico de pelaje negro carbón con ojos verde esmeralda luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
+            <img src="assets/images/wolf-avatar-bust.webp" alt="Busto frontal del mejor amigo de Raupulus: lobo titánico de pelaje negro carbón con ojos verde esmeralda luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge badge-cyan">SU PERRO & MEJOR AMIGO</div>
           <h3 class="lore-title">Su Mejor Amigo</h3>
@@ -397,7 +450,7 @@ def generate_index(songs):
         <!-- Tarjeta 3: Amada -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-cyan">
-            <img src="assets/images/amada-avatar-bust.png" alt="Busto frontal de Amada, la musa trágica: elfa-ogra híbrida con piel verde jade, orejas puntiagudas y ojos cian luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
+            <img src="assets/images/amada-avatar-bust.webp" alt="Busto frontal de Amada, la musa trágica: elfa-ogra híbrida con piel verde jade, orejas puntiagudas y ojos cian luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">LA MUSA TRÁGICA</div>
           <h3 class="lore-title">Amada</h3>
@@ -412,7 +465,7 @@ def generate_index(songs):
 
       <div style="margin-top: 50px; text-align: center;">
         <div style="position: relative; max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow);">
-          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra con chispas violetas a la izquierda, Alas Demoníacas iluminadas en el centro y Soberano en el Trono de los 60 mares a la derecha" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="assets/images/r-avatar-triptych.webp" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra con chispas violetas a la izquierda, Alas Demoníacas iluminadas en el centro y Soberano en el Trono de los 60 mares a la derecha" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
         <p style="margin-top: 14px; font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em;">
           Furia Sonora • Ascensión de Plasma • Trono de los Sesenta Mares
@@ -455,7 +508,7 @@ def generate_index(songs):
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
+          <img src="assets/images/logo.webp" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
@@ -576,16 +629,29 @@ def generate_song_pages(songs):
         else:
             story_chronicle_html = ""
 
-        # Player Embed or Interactive Poster
+        # Player Embed or Interactive Poster (YouTube Facade Pattern)
         if yt_id:
             player_html = f"""
-            <div class="video-player-container">
-              <iframe src="https://www.youtube-nocookie.com/embed/{yt_id}?autoplay=0&rel=0&modestbranding=1" 
-                      title="{title_esc} — Raupulus Music" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                      referrerpolicy="strict-origin-when-cross-origin"
-                      allowfullscreen 
-                      loading="lazy"></iframe>
+            <div class="video-player-container video-facade" 
+                 data-facade-ytid="{yt_id}" 
+                 data-facade-title="{title_esc}"
+                 role="button" 
+                 tabindex="0" 
+                 aria-label="Reproducir videoclip oficial de {title_esc}" 
+                 style="cursor: pointer;">
+              <div class="video-poster-placeholder">
+                <img src="../assets/images/covers/{s['cover_file']}" 
+                     alt="Portada videoclip {title_esc} — Raupulus Music" 
+                     width="1280" height="720" 
+                     fetchpriority="high"
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="spotlight-play-overlay">
+                  <div class="play-circle" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="badge badge-yt">▶ Reproducir Videoclip</span>
+                </div>
+              </div>
             </div>
             """
             yt_watch_url = f"https://www.youtube.com/watch?v={yt_id}"
@@ -653,13 +719,13 @@ def generate_song_pages(songs):
                 "@type": "MusicAlbum",
                 "name": ALBUM_TITLE,
                 "url": f"{SITE_URL}/",
-                "image": f"{SITE_URL}/assets/images/logo.png"
+                "image": f"{SITE_URL}/assets/images/logo.webp"
             },
             "byArtist": {
                 "@type": "MusicGroup",
                 "name": "Raupulus Music",
                 "url": YT_CHANNEL,
-                "image": f"{SITE_URL}/assets/images/logo.png"
+                "image": f"{SITE_URL}/assets/images/logo.webp"
             },
             "description": sanitize_public_text(s.get('synopsis', ''))
         }
@@ -689,7 +755,7 @@ def generate_song_pages(songs):
   <meta property="og:description" content="{synopsis_esc}">
   <meta property="og:image" content="{cover_url}">
   <meta property="og:image:secure_url" content="{cover_url}">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="1376">
   <meta property="og:image:height" content="768">
   <meta property="og:image:alt" content="Portada oficial de {title_esc} — Álbum Nunca venderé mi alma de Metal">
@@ -709,7 +775,9 @@ def generate_song_pages(songs):
   <meta name="twitter:image" content="{cover_url}">
   <meta name="twitter:image:alt" content="Portada oficial de {title_esc} — Álbum Nunca venderé mi alma de Metal">
 
-  <link rel="icon" type="image/png" href="../assets/images/avatar-circular.png">
+  <link rel="icon" type="image/webp" href="../assets/images/avatar-circular.webp">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="stylesheet" href="../assets/css/style.css">
 
   <script type="application/ld+json">
@@ -724,7 +792,7 @@ def generate_song_pages(songs):
   <nav class="site-nav" aria-label="Navegación">
     <div class="container">
       <a href="../index.html" class="nav-brand">
-        <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="44" height="44">
+        <img src="../assets/images/logo.webp" alt="Logotipo Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -874,7 +942,7 @@ def generate_song_pages(songs):
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
+          <img src="../assets/images/logo.webp" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
