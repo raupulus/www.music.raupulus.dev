@@ -557,14 +557,23 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 380px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.spotlight-video-wrap .video-player-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .spotlight-video-wrap iframe,
 .spotlight-video-wrap video {
   width: 100%;
   height: 100%;
-  min-height: 380px;
   border: none;
 }
 
@@ -572,7 +581,6 @@ p {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 380px;
   overflow: hidden;
 }
 
@@ -1384,9 +1392,22 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-stats {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .spotlight-info {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .spotlight-actions .btn {
+    width: 100%;
   }
 
   .track-nav {
@@ -1404,6 +1425,18 @@ p {
   .preview-modal-footer-actions {
     flex-direction: column;
     width: 100%;
+  }
+
+  .spotlight-card {
+    margin-bottom: 36px;
+  }
+
+  .spotlight-info {
+    padding: 20px 16px;
+  }
+
+  .spotlight-title {
+    font-size: 1.5rem;
   }
 
   .btn {

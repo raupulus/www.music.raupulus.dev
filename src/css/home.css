@@ -1,0 +1,726 @@
+/* ==============================================================================
+   RAUPULUS MUSIC — HOME PAGE STYLES (home.css)
+   Hero, single destacado (spotlight), buscador, rejilla de 23 canciones, lore y modal.
+   ============================================================================== */
+
+/* Hero Section */
+.hero {
+  padding: 60px 0 80px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  word-break: break-word;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 6px;
+}
+
+.hero-media {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-avatar-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  aspect-ratio: 4 / 5;
+  background: var(--bg-surface);
+}
+
+.hero-avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-med);
+}
+
+.hero-avatar-frame:hover img {
+  transform: scale(1.03);
+}
+
+.hero-avatar-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(0deg, rgba(6, 5, 10, 0.95) 0%, rgba(6, 5, 10, 0.5) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-avatar-name {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.hero-avatar-role {
+  font-size: 0.85rem;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+/* Section Headings */
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  font-size: 1.05rem;
+}
+
+/* Spotlight Player Section (RESPONSIVE FIX: width 100%, aspect-ratio 16/9, NO rigid min-height) */
+.spotlight-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.spotlight-video-wrap {
+  position: relative;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.spotlight-video-wrap .video-player-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.spotlight-video-wrap iframe,
+.spotlight-video-wrap video {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.spotlight-poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.spotlight-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-med);
+}
+
+.spotlight-poster:hover img {
+  transform: scale(1.03);
+}
+
+.spotlight-info {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.spotlight-top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spotlight-title {
+  font-size: 1.8rem;
+  color: var(--text-bright);
+}
+
+.spotlight-synopsis {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.spotlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Search & Filter Toolbar */
+.toolbar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 260px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-box:focus-within {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 15px rgba(155, 77, 255, 0.3);
+}
+
+.search-box svg {
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: var(--text-bright);
+  font-size: 0.95rem;
+  width: 100%;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: var(--text-dim);
+}
+
+.filter-count {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Songs Grid */
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.song-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.song-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-med);
+}
+
+.song-card:hover .card-media img {
+  transform: scale(1.05);
+}
+
+.card-media-play-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 18, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.song-card:hover .card-media-play-hover {
+  opacity: 1;
+}
+
+.play-circle-sm {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--yt-red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+  transition: transform var(--transition-fast);
+}
+
+.song-card:hover .play-circle-sm {
+  transform: scale(1.1);
+}
+
+.card-badge-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(10, 8, 18, 0.85);
+  border: 1px solid var(--border-accent);
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+
+.card-badge-dur {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(6, 5, 10, 0.85);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 16px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-bright);
+}
+
+.card-synopsis {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Universe / Lore Section */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 28px;
+}
+
+.lore-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.lore-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glow);
+}
+
+.lore-bust-wrap {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--border-accent);
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lore-bust-glow-purple {
+  box-shadow: 0 0 35px rgba(155, 77, 255, 0.4);
+}
+
+.lore-bust-glow-emerald {
+  box-shadow: 0 0 35px rgba(0, 230, 118, 0.35);
+  border-color: rgba(0, 230, 118, 0.5);
+}
+
+.lore-bust-glow-cyan {
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.35);
+  border-color: rgba(0, 229, 255, 0.5);
+}
+
+.lore-bust-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-med);
+}
+
+.lore-card:hover .lore-bust-img {
+  transform: scale(1.08);
+}
+
+.lore-title {
+  font-size: 1.45rem;
+  color: var(--text-bright);
+}
+
+.lore-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.lore-list .bullet {
+  color: var(--accent-purple);
+  margin-right: 4px;
+}
+
+/* Modal de Vista Previa Inmediata */
+.preview-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 3, 8, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.preview-modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.preview-modal-dialog {
+  background: linear-gradient(145deg, #140f24 0%, #0a0812 100%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(155, 77, 255, 0.25);
+  max-width: 880px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-modal-backdrop.open .preview-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.preview-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(18, 14, 31, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.preview-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.preview-modal-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin: 0;
+}
+
+.preview-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preview-modal-close:hover {
+  background: rgba(155, 77, 255, 0.2);
+  color: #fff;
+  border-color: var(--accent-purple);
+  transform: scale(1.08);
+}
+
+.preview-modal-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.preview-modal-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.preview-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.preview-modal-synopsis {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.preview-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.preview-modal-footer-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Home-Specific Responsive Queries */
+@media (max-width: 992px) {
+  .hero-grid,
+  .spotlight-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .songs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .spotlight-info {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .spotlight-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions,
+  .spotlight-actions,
+  .preview-modal-footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .spotlight-card {
+    margin-bottom: 36px;
+  }
+
+  .spotlight-info {
+    padding: 20px 16px;
+  }
+
+  .spotlight-title {
+    font-size: 1.5rem;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box input {
+    font-size: 16px;
+  }
+}

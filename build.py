@@ -57,13 +57,15 @@ def minify_js(js):
     return cleaned.strip()
 
 def copy_assets():
-    # CSS con minificación
-    css_src = os.path.join(SRC_DIR, "css", "style.css")
-    css_dist = os.path.join(DIST_DIR, "assets", "css", "style.css")
-    with open(css_src, "r", encoding="utf-8") as f:
-        raw_css = f.read()
-    with open(css_dist, "w", encoding="utf-8") as f:
-        f.write(minify_css(raw_css))
+    # CSS con minificación individual (Punto 2: eliminación de CSS no utilizado)
+    for css_file in ["common.css", "home.css", "song.css", "style.css"]:
+        css_src = os.path.join(SRC_DIR, "css", css_file)
+        if os.path.exists(css_src):
+            css_dist = os.path.join(DIST_DIR, "assets", "css", css_file)
+            with open(css_src, "r", encoding="utf-8") as f:
+                raw_css = f.read()
+            with open(css_dist, "w", encoding="utf-8") as f:
+                f.write(minify_css(raw_css))
 
     # JS con minificación
     js_src = os.path.join(SRC_DIR, "js", "main.js")
@@ -223,7 +225,8 @@ def generate_index(songs):
   <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/home.css">
 
   <script type="application/ld+json">
   {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
@@ -334,7 +337,7 @@ def generate_index(songs):
                role="button" 
                tabindex="0" 
                aria-label="Reproducir videoclip oficial de {html.escape(first_song.get('title', 'Corona de Hierro'))}" 
-               style="margin: 0; min-height: 380px; cursor: pointer;">
+               style="margin: 0; cursor: pointer;">
             <div class="video-poster-placeholder">
               <img src="assets/images/covers/{first_song.get('cover_file', 'cover-01.webp')}" 
                    alt="Portada videoclip {html.escape(first_song.get('title', 'Corona de Hierro'))}" 
@@ -778,7 +781,8 @@ def generate_song_pages(songs):
   <link rel="icon" type="image/webp" href="../assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/song.css">
 
   <script type="application/ld+json">
   {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
