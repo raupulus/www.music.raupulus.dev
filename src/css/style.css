@@ -283,6 +283,15 @@ p {
   width: 100%;
 }
 
+.nav-links a.nav-highlight {
+  color: var(--accent-cyan);
+}
+
+.nav-links a.nav-highlight:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
 .nav-cta {
   display: flex;
   align-items: center;
@@ -1425,6 +1434,12 @@ p {
     border-color: var(--accent-purple);
     color: #ffffff;
     box-shadow: 0 0 16px rgba(155, 77, 255, 0.35);
+  }
+
+  .nav-links.mobile-open a.nav-highlight {
+    color: var(--accent-cyan);
+    border-color: rgba(0, 240, 255, 0.45);
+    background: rgba(0, 240, 255, 0.06);
   }
 
   .nav-links.mobile-open a::after {

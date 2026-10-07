@@ -14,6 +14,8 @@ from datetime import datetime
 SITE_URL = "https://music.raupulus.dev"
 YT_CHANNEL = "https://www.youtube.com/@RaupulusMusic"
 YT_SUBSCRIBE = "https://www.youtube.com/@RaupulusMusic?sub_confirmation=1"
+YT_PLAYLIST_ID = "PLAfm1RK6VyG8"
+YT_PLAYLIST_URL = "https://www.youtube.com/playlist?list=PLAfm1RK6VyG8"
 YT_PLAYLIST_CD1 = "https://www.youtube.com/watch?v=ATeWyiFG-cM&list=PLAfm1RK6VyG8"
 YT_PERSONAL = "https://www.youtube.com/@raupulus"
 PUBLIC_EMAIL = "public@raupulus.dev"
@@ -58,7 +60,7 @@ def minify_js(js):
 
 def copy_assets():
     # CSS con minificación individual (Punto 2: eliminación de CSS no utilizado)
-    for css_file in ["common.css", "home.css", "song.css", "style.css"]:
+    for css_file in ["common.css", "home.css", "song.css", "playlist.css", "style.css"]:
         css_src = os.path.join(SRC_DIR, "css", css_file)
         if os.path.exists(css_src):
             css_dist = os.path.join(DIST_DIR, "assets", "css", css_file)
@@ -253,6 +255,7 @@ def generate_index(songs):
 
       <ul class="nav-links">
         <li><a href="#inicio" class="active">Inicio</a></li>
+        <li><a href="playlist.html" class="nav-highlight">🎬 Videoclips</a></li>
         <li><a href="#destacado">Tema Destacado</a></li>
         <li><a href="#canciones">Canciones ({len(songs)})</a></li>
         <li><a href="#universo">Universo</a></li>
@@ -527,6 +530,7 @@ def generate_index(songs):
           <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
+            <li><a href="playlist.html">🎬 Videoclips del Álbum</a></li>
             <li><a href="#destacado">Tema Destacado</a></li>
             <li><a href="#canciones">Listado de Canciones</a></li>
             <li><a href="#universo">Universo</a></li>
@@ -807,6 +811,7 @@ def generate_song_pages(songs):
 
       <ul class="nav-links">
         <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../playlist.html" class="nav-highlight">🎬 Videoclips</a></li>
         <li><a href="../index.html#canciones">Todas las Canciones</a></li>
         <li><a href="../index.html#universo">Universo</a></li>
       </ul>
@@ -958,6 +963,7 @@ def generate_song_pages(songs):
           <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="../index.html">Página Principal</a></li>
+            <li><a href="../playlist.html">🎬 Lista de Videoclips</a></li>
             <li><a href="../index.html#canciones">Índice del CD 1 (23 Canciones)</a></li>
             <li><a href="../index.html#universo">Universo</a></li>
           </ul>
@@ -994,6 +1000,360 @@ def generate_song_pages(songs):
 
     print(f"Generated {len(songs)} song pages in {os.path.join(DIST_DIR, 'canciones')}")
 
+def generate_playlist_page(songs):
+    first_song = songs[0] if songs else {}
+    first_ytid = first_song.get('youtube_id', 'PyvTqcnsZgI')
+    first_title = html.escape(first_song.get('title', 'Corona de Hierro'))
+    first_num = first_song.get('number', 1)
+    first_duration = first_song.get('duration', '03:31')
+    first_clips = first_song.get('clips_count', 21)
+    first_synopsis = html.escape(sanitize_public_text(first_song.get('synopsis', '')))
+    first_slug = first_song.get('slug', '01-corona-de-hierro')
+    first_cover = first_song.get('cover_file', 'cover-01.webp')
+
+    cards_html = []
+    for s in songs:
+        ytid = s.get('youtube_id', '')
+        title_esc = html.escape(s.get('title', ''))
+        num = s.get('number', 1)
+        num_str = f"{num:02d}"
+        duration = s.get('duration', '')
+        clips = s.get('clips_count', 23)
+        synopsis_clean = html.escape(sanitize_public_text(s.get('synopsis', '')))
+        slug = s.get('slug', '')
+        cover = s.get('cover_file', f'cover-{num_str}.webp')
+        is_active = (num == 1)
+        active_class = " active" if is_active else ""
+        display_playing = "inline-flex" if is_active else "none"
+
+        card_item = f"""
+        <article class="playlist-card{active_class}" 
+                 data-ytid="{ytid}" 
+                 data-title="{title_esc}" 
+                 data-num="{num}" 
+                 data-duration="{duration}" 
+                 data-clips="{clips}" 
+                 data-synopsis="{synopsis_clean}" 
+                 data-slug="{slug}"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Reproducir videoclip #{num_str} {title_esc}">
+          <div class="playlist-card-media">
+            <img src="assets/images/covers/{cover}" 
+                 alt="Portada del videoclip {title_esc} — Raupulus Music" 
+                 width="380" height="214" 
+                 loading="lazy">
+            <span class="playlist-card-duration">{duration}</span>
+            <div class="playlist-card-play-overlay" aria-hidden="true">
+              <div class="card-play-btn">▶</div>
+            </div>
+          </div>
+          <div class="playlist-card-body">
+            <div class="playlist-card-top">
+              <span class="badge">#{num_str}</span>
+              <span class="playing-badge badge badge-cyan" style="display: {display_playing};">▶ En Reproducción</span>
+              <span style="font-size: 0.78rem; color: var(--text-dim); margin-left: auto;">{clips} clips</span>
+            </div>
+            <h3 class="playlist-card-title">{title_esc}</h3>
+            <p class="playlist-card-synopsis">{synopsis_clean}</p>
+            <div class="playlist-card-footer">
+              <button type="button" class="btn btn-sm btn-purple card-play-trigger">▶ Ver en Grande</button>
+              <a href="canciones/{slug}.html" class="btn btn-sm btn-outline card-lyrics-link" title="Ver letra y crónica de {title_esc}">📜 Letra</a>
+              <a href="https://www.youtube.com/watch?v={ytid}&list={YT_PLAYLIST_ID}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt card-yt-link" title="Ver videoclip en YouTube">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        """
+        cards_html.append(card_item)
+    cards_joined = "\n".join(cards_html)
+
+    track_schema = []
+    for s in songs:
+        track_schema.append({
+            "@type": "MusicRecording",
+            "name": s["title"],
+            "position": s["number"],
+            "url": f"{SITE_URL}/canciones/{s['slug']}.html"
+        })
+
+    schema_ld = {
+        "@context": "https://schema.org",
+        "@type": "MusicPlaylist",
+        "name": "Nunca venderé mi alma de Metal — Videoclips Oficiales",
+        "description": "Videoteca oficial de los 23 videoclips cinemáticos del álbum CD 1 de Raupulus.",
+        "numTracks": len(songs),
+        "url": f"{SITE_URL}/playlist.html",
+        "creator": {
+            "@type": "MusicGroup",
+            "name": "Raupulus",
+            "url": SITE_URL
+        },
+        "track": track_schema
+    }
+
+    playlist_page_html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videoclips Oficiales — Raupulus Music | Álbum CD 1: Nunca venderé mi alma de Metal</title>
+  <meta name="description" content="Videoteca oficial de 'Nunca venderé mi alma de Metal' de Raupulus. 23 videoclips cinemáticos de Metal Industrial generados con IA. Reproduce en bucle y sigue la lista oficial en YouTube.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{SITE_URL}/playlist.html">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Raupulus Music">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="music.playlist">
+  <meta property="og:url" content="{SITE_URL}/playlist.html">
+  <meta property="og:title" content="Videoclips Oficiales — Raupulus Music | Álbum CD 1">
+  <meta property="og:description" content="Reproduce los 23 videoclips cinemáticos de Raupulus en alta definición. Selecciona cualquier tema para verlo en pantalla gigante o reproduce la lista continua oficial en YouTube.">
+  <meta property="og:image" content="{SITE_URL}/assets/images/social-cover.webp">
+  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/social-cover.webp">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="Raupulus Music — Videoclips Oficiales del Álbum CD 1">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@RaupulusMusic">
+  <meta name="twitter:creator" content="@raupulus">
+  <meta name="twitter:url" content="{SITE_URL}/playlist.html">
+  <meta name="twitter:title" content="Videoclips Oficiales — Raupulus Music | Álbum CD 1">
+  <meta name="twitter:description" content="23 videoclips cinemáticos de Metal Industrial. Reproduce en pantalla gigante o escucha la playlist continua en YouTube.">
+  <meta name="twitter:image" content="{SITE_URL}/assets/images/social-cover.webp">
+  <meta name="twitter:image:alt" content="Raupulus Music — Videoclips Oficiales del Álbum CD 1">
+
+  <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/playlist.css">
+
+  <script type="application/ld+json">
+  {json.dumps(schema_ld, indent=2, ensure_ascii=False)}
+  </script>
+</head>
+<body class="playlist-page">
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Siluetas ambientales del Avatar -->
+  <div class="playlist-watermark-left" aria-hidden="true"></div>
+  <div class="playlist-watermark-right" aria-hidden="true"></div>
+
+  <!-- Barra de Navegación -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <div class="container">
+      <a href="{SITE_URL}/" class="nav-brand">
+        <img src="assets/images/logo.webp" alt="Logotipo Oficial Raupulus Music" width="44" height="44">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">RAUPULUS</span>
+          <span class="nav-brand-sub">MUSIC</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="playlist.html" class="active nav-highlight">🎬 Videoclips</a></li>
+        <li><a href="index.html#canciones">Todas las Canciones</a></li>
+        <li><a href="index.html#universo">Universo</a></li>
+        <li><a href="index.html#proyecto">El Proyecto</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt btn-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Canal YouTube
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Abrir menú de navegación">☰</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container">
+    <!-- Header de la Videoteca -->
+    <header class="playlist-header">
+      <nav class="breadcrumb" aria-label="Miga de pan">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <span style="color: var(--accent-cyan);">Videoteca Oficial</span>
+      </nav>
+      <div class="badge badge-purple">VIDEOTECA OFICIAL • 23 CLIPS CINEMÁTICOS</div>
+      <h1 class="playlist-main-title">LISTA DE REPRODUCCIÓN: <span class="highlight-purple">NUNCA VENDERÉ MI ALMA DE METAL</span></h1>
+      <p class="playlist-lead">
+        Disfruta de los 23 videoclips cinemáticos de <strong>Raupulus</strong> en gran formato con ambientación inmersiva. Pulsa en cualquier tema para reproducirlo en grande o activa el modo continuo para reproducir el disco completo en bucle oficial de YouTube.
+      </p>
+    </header>
+
+    <!-- Reproductor en Gran Formato (Theater Stage) -->
+    <section class="playlist-stage" aria-label="Reproductor principal de videoclips">
+      <div class="playlist-stage-bar">
+        <div class="playlist-stage-status">
+          <span class="playlist-stage-badge">🔴 EN PANTALLA</span>
+          <span id="player-song-num" class="badge">#{first_num:02d}</span>
+          <span id="player-song-dur" style="color: var(--text-dim); font-size: 0.85rem;">{first_duration}</span>
+          <span id="player-song-clips" class="badge badge-cyan" style="font-size: 0.75rem;">{first_clips} clips</span>
+        </div>
+        <div class="stage-song-meta-tags">
+          <button type="button" id="btn-loop-mode" class="btn btn-sm btn-outline" title="Reproducir todo el álbum en bucle continuo">
+            🔁 Reproducir Lista en Bucle
+          </button>
+          <a id="player-yt-watch-btn" href="https://www.youtube.com/watch?v={first_ytid}&list={YT_PLAYLIST_ID}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="playlist-screen-wrap" id="playlist-player-screen" data-active-ytid="{first_ytid}">
+        <div class="video-player-container video-facade" 
+             data-facade-ytid="{first_ytid}" 
+             data-facade-title="{first_title}"
+             role="button" 
+             tabindex="0" 
+             onclick=""
+             aria-label="Reproducir videoclip oficial de {first_title}" 
+             style="margin: 0; width: 100%; height: 100%; cursor: pointer;">
+          <div class="video-poster-placeholder">
+            <img src="assets/images/covers/{first_cover}" 
+                 alt="Portada videoclip {first_title}" 
+                 width="1280" height="720" 
+                 fetchpriority="high"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="spotlight-play-overlay">
+              <div class="play-circle" aria-hidden="true">
+                <svg width="46" height="46" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="badge badge-yt">▶ Reproducir Videoclip en Grande</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="playlist-stage-meta">
+        <div class="stage-title-wrap">
+          <h2 id="player-song-title" class="stage-song-title">{first_title}</h2>
+        </div>
+        <p id="player-song-synopsis" class="stage-synopsis">{first_synopsis}</p>
+
+        <div class="playlist-actions-bar">
+          <a href="{YT_PLAYLIST_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt-playlist">
+            ⭐ Seguir Lista en YouTube
+          </a>
+          <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-yt-sub">
+            🔔 Suscribirse al Canal
+          </a>
+          <a id="player-lyrics-btn" href="canciones/{first_slug}.html" class="btn btn-outline">
+            📜 Ver Letra y Crónica Oficial
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner de Suscripción y Retención de Tráfico -->
+    <aside class="playlist-sub-banner" aria-label="Suscripción al canal oficial de YouTube">
+      <div class="sub-banner-content">
+        <span class="badge badge-yt">🔥 COMUNIDAD YOUTUBE • @RaupulusMusic</span>
+        <h2 class="sub-banner-title">Apoya el Metal Industrial y sigue el viaje sonoro</h2>
+        <p class="sub-banner-desc">
+          Al <strong>seguir la lista oficial</strong> y <strong>suscribirte al canal</strong> recibes acceso preferente a cada nuevo videoclip, clips de producción cinematográfica y temas inéditos del universo conceptual de Raupulus.
+        </p>
+      </div>
+      <div class="sub-banner-actions">
+        <a href="{YT_SUBSCRIBE}" target="_blank" rel="noopener noreferrer" class="btn btn-yt btn-lg">
+          🔔 Suscribirse al Canal
+        </a>
+        <a href="{YT_PLAYLIST_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+          ⭐ Guardar Playlist en YouTube
+        </a>
+      </div>
+    </aside>
+
+    <!-- Sección de Rejilla con las 23 Canciones -->
+    <section id="videoclips-grid-section" aria-label="Índice de videoclips del álbum">
+      <div class="playlist-section-header">
+        <div class="badge badge-cyan">REPERTORIO COMPLETO</div>
+        <h2>TODOS LOS VIDEOCLIPS ({len(songs)})</h2>
+        <p style="color: var(--text-muted); margin-top: 6px;">
+          Haz clic en cualquier canción para cargarla de inmediato en el reproductor en pantalla gigante:
+        </p>
+      </div>
+
+      <div class="playlist-toolbar">
+        <div class="playlist-search-wrap">
+          <label for="playlist-search" class="visually-hidden">Buscar videoclip</label>
+          <input type="text" id="playlist-search" class="playlist-search-input" placeholder="🔍 Buscar videoclip por título o número..." autocomplete="off">
+        </div>
+        <div id="playlist-search-count" class="playlist-count-badge">Mostrando {len(songs)} de {len(songs)} videoclips</div>
+      </div>
+
+      <div class="playlist-grid">
+{cards_joined}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/logo.webp" alt="Logotipo Raupulus Music" width="150" height="150">
+          <p>
+            Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
+          </p>
+          <div style="margin-top: 8px;">
+            <a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer" class="btn btn-yt btn-sm">
+              YouTube @RaupulusMusic
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navegación</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="playlist.html">🎬 Videoclips del Álbum</a></li>
+            <li><a href="index.html#canciones">Todas las Canciones (23)</a></li>
+            <li><a href="index.html#universo">Universo Cinematográfico</a></li>
+            <li><a href="index.html#proyecto">Sobre el Proyecto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Contacto & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="mailto:{PUBLIC_EMAIL}">Email: {PUBLIC_EMAIL}</a></li>
+            <li><a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer">YouTube Oficial</a></li>
+            <li><a href="{YT_PERSONAL}" target="_blank" rel="noopener noreferrer">Canal Personal / Tech</a></li>
+            <li><span style="color: var(--text-dim);">Todos los derechos reservados © {datetime.now().year}</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © {datetime.now().year} <strong>Raupulus Music</strong>. Letra y música compuestas por Raúl Caro Pastorino (@raupulus).
+        </div>
+        <div>
+          Dominio oficial: <a href="{SITE_URL}" style="color: var(--accent-purple);">music.raupulus.dev</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+"""
+    output_path = os.path.join(DIST_DIR, "playlist.html")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(playlist_page_html)
+    print(f"Generated {output_path}")
+
 def generate_sitemap(songs):
     today = datetime.now().strftime("%Y-%m-%d")
     urls = [
@@ -1002,6 +1362,12 @@ def generate_sitemap(songs):
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>""",
+        f"""  <url>
+    <loc>{SITE_URL}/playlist.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>"""
     ]
 
@@ -1040,6 +1406,7 @@ def main():
     songs = load_songs()
     generate_index(songs)
     generate_song_pages(songs)
+    generate_playlist_page(songs)
     generate_sitemap(songs)
     generate_robots()
     print("=== Build Completed Successfully! ===")

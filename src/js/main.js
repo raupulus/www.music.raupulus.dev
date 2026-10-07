@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyLyrics();
   initVideoFacades();
   initPreviewModal();
+  initPlaylistViewer();
   initFileProtocolNotice();
 });
 
@@ -386,4 +387,168 @@ function initVideoFacades() {
       }
     });
   });
+}
+
+/**
+ * Visor Interactivo de la Videoteca / Lista de Reproducción
+ * Permite seleccionar cualquier canción para ver su vídeo en grande,
+ * alternar al modo de reproducción en bucle de la playlist y filtrar tarjetas.
+ */
+function initPlaylistViewer() {
+  const screenWrap = document.getElementById('playlist-player-screen');
+  if (!screenWrap) return;
+
+  const titleEl = document.getElementById('player-song-title');
+  const numEl = document.getElementById('player-song-num');
+  const durEl = document.getElementById('player-song-dur');
+  const clipsEl = document.getElementById('player-song-clips');
+  const synEl = document.getElementById('player-song-synopsis');
+  const lyricsBtn = document.getElementById('player-lyrics-btn');
+  const ytWatchBtn = document.getElementById('player-yt-watch-btn');
+  const loopBtn = document.getElementById('btn-loop-mode');
+  const searchInput = document.getElementById('playlist-search');
+  const searchCount = document.getElementById('playlist-search-count');
+  const cards = document.querySelectorAll('.playlist-card');
+
+  const playlistId = 'PLAfm1RK6VyG8';
+
+  function loadVideo(data, autoScroll = true) {
+    const { ytid, title, num, duration, clips, synopsis, slug } = data;
+
+    if (titleEl) titleEl.textContent = title;
+    if (numEl) numEl.textContent = `#${String(num).padStart(2, '0')}`;
+    if (durEl) durEl.textContent = duration;
+    if (clipsEl) clipsEl.textContent = `${clips} clips`;
+    if (synEl) synEl.textContent = synopsis;
+    if (lyricsBtn) lyricsBtn.href = `canciones/${slug}.html`;
+    if (ytWatchBtn) ytWatchBtn.href = `https://www.youtube.com/watch?v=${ytid}&list=${playlistId}`;
+
+    // Actualizar estado activo en la rejilla de tarjetas
+    cards.forEach((card) => {
+      if (card.getAttribute('data-ytid') === ytid) {
+        card.classList.add('active');
+        const badge = card.querySelector('.playing-badge');
+        if (badge) badge.style.display = 'inline-flex';
+      } else {
+        card.classList.remove('active');
+        const badge = card.querySelector('.playing-badge');
+        if (badge) badge.style.display = 'none';
+      }
+    });
+
+    if (window.location.protocol === 'file:') {
+      screenWrap.innerHTML = `
+        <div class="file-protocol-warning" style="margin: 24px; font-size: 0.95rem;">
+          <div class="warning-header" style="font-size: 1.05rem;">⚠️ Previsualización en archivo local (file://)</div>
+          <p style="margin-bottom: 10px;">YouTube bloquea los reproductores embebidos locales sin servidor (Error 153). En <strong>music.raupulus.dev</strong> o corriendo <code>python3 serve.py</code> se reproduce automáticamente.</p>
+          <a href="https://www.youtube.com/watch?v=${ytid}&list=${playlistId}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt">▶ Ver en YouTube con la Playlist</a>
+        </div>
+      `;
+    } else {
+      screenWrap.innerHTML = `
+        <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?list=${playlistId}&autoplay=1&playsinline=1&rel=0&modestbranding=1" 
+                title="${title} — Raupulus Music" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+      `;
+    }
+
+    if (autoScroll && window.innerWidth <= 992) {
+      screenWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // Botón para reproducir la lista completa en bucle continuo
+  if (loopBtn) {
+    loopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (titleEl) titleEl.textContent = 'Álbum Completo: Nunca venderé mi alma de Metal (Bucle Oficial)';
+      if (numEl) numEl.textContent = 'Playlist';
+      if (durEl) durEl.textContent = '23 Videoclips';
+      if (clipsEl) clipsEl.textContent = '524 clips';
+      if (synEl) synEl.textContent = 'Reproducción ininterrumpida y en bucle continuo oficial de los 23 videoclips cinemáticos del disco en YouTube.';
+      if (ytWatchBtn) ytWatchBtn.href = `https://www.youtube.com/playlist?list=${playlistId}`;
+
+      cards.forEach((card) => {
+        card.classList.remove('active');
+        const badge = card.querySelector('.playing-badge');
+        if (badge) badge.style.display = 'none';
+      });
+
+      if (window.location.protocol === 'file:') {
+        screenWrap.innerHTML = `
+          <div class="file-protocol-warning" style="margin: 24px; font-size: 0.95rem;">
+            <div class="warning-header" style="font-size: 1.05rem;">⚠️ Previsualización en archivo local (file://)</div>
+            <p style="margin-bottom: 10px;">YouTube bloquea los reproductores embebidos locales sin servidor (Error 153). En <strong>music.raupulus.dev</strong> o corriendo <code>python3 serve.py</code> se reproduce automáticamente.</p>
+            <a href="https://www.youtube.com/playlist?list=${playlistId}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-yt">▶ Abrir Playlist en YouTube</a>
+          </div>
+        `;
+      } else {
+        screenWrap.innerHTML = `
+          <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}&autoplay=1&playsinline=1&loop=1&rel=0&modestbranding=1" 
+                  title="Raupulus Music — Playlist Oficial del Álbum en Bucle" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen></iframe>
+        `;
+      }
+
+      if (window.innerWidth <= 992) {
+        screenWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+
+  // Manejar clic y teclado en las tarjetas de videoclip
+  cards.forEach((card) => {
+    const handleSelect = (e) => {
+      if (e.target.closest('.card-lyrics-link') || e.target.closest('.card-yt-link')) {
+        return;
+      }
+      e.preventDefault();
+      const data = {
+        ytid: card.getAttribute('data-ytid'),
+        title: card.getAttribute('data-title'),
+        num: card.getAttribute('data-num'),
+        duration: card.getAttribute('data-duration'),
+        clips: card.getAttribute('data-clips') || '23',
+        synopsis: card.getAttribute('data-synopsis'),
+        slug: card.getAttribute('data-slug')
+      };
+      loadVideo(data, true);
+    };
+
+    card.addEventListener('click', handleSelect);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        handleSelect(e);
+      }
+    });
+  });
+
+  // Buscador en tiempo real de videoclips dentro de la lista
+  if (searchInput && cards.length) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const num = (card.getAttribute('data-num') || '').toLowerCase();
+        const synopsis = (card.getAttribute('data-synopsis') || '').toLowerCase();
+
+        if (!term || title.includes(term) || num.includes(term) || synopsis.includes(term)) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (searchCount) {
+        searchCount.textContent = `Mostrando ${visibleCount} de ${cards.length} videoclips`;
+      }
+    });
+  }
 }
