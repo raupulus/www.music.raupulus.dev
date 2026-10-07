@@ -61,18 +61,50 @@ function initMobileMenu() {
 
   if (!btn || !links) return;
 
-  btn.addEventListener('click', () => {
+  const closeMenu = () => {
+    if (links.classList.contains('mobile-open')) {
+      links.classList.remove('mobile-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Abrir menú de navegación');
+      btn.innerHTML = '☰';
+    }
+  };
+
+  const toggleMenu = (e) => {
+    e.stopPropagation();
     const isOpen = links.classList.toggle('mobile-open');
     btn.setAttribute('aria-expanded', isOpen);
+    btn.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
     btn.innerHTML = isOpen ? '✕' : '☰';
-  });
+  };
+
+  btn.addEventListener('click', toggleMenu);
 
   // Cerrar al pulsar un enlace
   links.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      links.classList.remove('mobile-open');
-      btn.innerHTML = '☰';
+      closeMenu();
     });
+  });
+
+  // Cerrar al hacer clic o tocar fuera del menú
+  document.addEventListener('click', (e) => {
+    if (links.classList.contains('mobile-open') && !links.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('touchstart', (e) => {
+    if (links.classList.contains('mobile-open') && !links.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  }, { passive: true });
+
+  // Cerrar al pulsar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && links.classList.contains('mobile-open')) {
+      closeMenu();
+    }
   });
 }
 
@@ -176,7 +208,7 @@ function initPreviewModal() {
         }
         videoWrap.innerHTML = `
           ${noticeHtml}
-          <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1" 
+          <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&playsinline=1&rel=0&modestbranding=1" 
                   title="${title} — Raupulus Music" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   referrerpolicy="strict-origin-when-cross-origin"
@@ -284,8 +316,17 @@ function initVideoFacades() {
     const ytid = container.getAttribute('data-facade-ytid');
     const title = container.getAttribute('data-facade-title') || 'Raupulus Music';
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isTouchScroll = false;
+
     const activatePlayer = (e) => {
-      e.preventDefault();
+      if (e) {
+        if (e.type === 'touchend' && isTouchScroll) return;
+        if (e.cancelable) e.preventDefault();
+      }
+      if (!container.hasAttribute('data-facade-ytid')) return; // Ya activado previamente
+
       container.removeAttribute('data-facade-ytid');
       container.removeAttribute('role');
       container.removeAttribute('tabindex');
@@ -305,7 +346,7 @@ function initVideoFacades() {
       }
 
       container.innerHTML = `
-        <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1" 
+        <iframe src="https://www.youtube-nocookie.com/embed/${ytid}?autoplay=1&playsinline=1&rel=0&modestbranding=1" 
                 title="${title} — Raupulus Music" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
@@ -314,6 +355,31 @@ function initVideoFacades() {
     };
 
     container.addEventListener('click', activatePlayer);
+
+    container.addEventListener('touchstart', (e) => {
+      isTouchScroll = false;
+      if (e.touches && e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const dx = Math.abs(e.touches[0].clientX - touchStartX);
+        const dy = Math.abs(e.touches[0].clientY - touchStartY);
+        if (dx > 10 || dy > 10) {
+          isTouchScroll = true;
+        }
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      if (!isTouchScroll) {
+        activatePlayer(e);
+      }
+    });
+
     container.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         activatePlayer(e);

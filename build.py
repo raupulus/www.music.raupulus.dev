@@ -336,6 +336,7 @@ def generate_index(songs):
                data-facade-title="{html.escape(first_song.get('title', 'Corona de Hierro'))}"
                role="button" 
                tabindex="0" 
+               onclick=""
                aria-label="Reproducir videoclip oficial de {html.escape(first_song.get('title', 'Corona de Hierro'))}" 
                style="margin: 0; cursor: pointer;">
             <div class="video-poster-placeholder">
@@ -640,6 +641,7 @@ def generate_song_pages(songs):
                  data-facade-title="{title_esc}"
                  role="button" 
                  tabindex="0" 
+                 onclick=""
                  aria-label="Reproducir videoclip oficial de {title_esc}" 
                  style="cursor: pointer;">
               <div class="video-poster-placeholder">
