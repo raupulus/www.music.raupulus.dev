@@ -1,12 +1,6 @@
 <p align="center">
   <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
-    <img src="dist/assets/images/banner.jpg" alt="Raupulus Music — Nunca venderé mi alma de Metal" width="100%">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
-    <img src="dist/assets/images/logo.png" alt="Raupulus Music Logo" width="260">
+    <img src="dist/assets/images/banner.webp" alt="Raupulus Music — Nunca venderé mi alma de Metal" width="100%">
   </a>
 </p>
 
@@ -60,7 +54,9 @@
 El disco debut, **«Nunca venderé mi alma de Metal» (CD 1)**, está compuesto por **23 canciones originales** y más de **570 clips cinematográficos** generados a compás exacto (10 segundos por clip), creando un despliegue visual ininterrumpido que narra la resistencia del espíritu frente a la tiranía, la traición y el despojo.
 
 <p align="center">
-  <img src="dist/assets/images/r-avatar-triptych.jpg" alt="Raupulus — Riff de Guitarra, Alas de Ébano y Trono de los Sesenta Mares" width="100%">
+  <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
+    <img src="dist/assets/images/r-avatar-triptych.webp" alt="Raupulus — Riff de Guitarra, Alas de Ébano y Trono de los Sesenta Mares" width="100%">
+  </a>
   <br>
   <em>Tríptico Oficial: El Riff de la Tormenta, Las Alas de Ébano y El Trono de los Sesenta Mares</em>
 </p>
@@ -75,19 +71,28 @@ El universo visual y narrativo de Raupulus cobra vida a través de tres figuras 
   <table>
     <tr>
       <td align="center" width="33%" valign="top">
-        <img src="dist/assets/images/r-avatar-face.png" width="190" alt="Raupulus"><br><br>
+        <a href="https://music.raupulus.dev#lore" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/r-avatar-face.webp" width="170" alt="Raupulus — Protagonista Principal">
+        </a>
+        <br><br>
         <strong>RAUPULUS</strong><br>
         <em>El Soberano Indomable</em>
         <p align="left"><small>Entidad bio-orgánica forjada en haces musculares de madera de ébano, ocho ojos bioluminiscentes sin pupilas, corona de cuernos curvados y energía neural violeta pulsante en su coronilla.</small></p>
       </td>
       <td align="center" width="33%" valign="top">
-        <img src="dist/assets/images/wolf-avatar-bust.png" width="190" alt="El Lobo Titánico"><br><br>
+        <a href="https://music.raupulus.dev#lore" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/wolf-avatar-bust.webp" width="170" alt="Su Mejor Amigo — El Lobo Titánico">
+        </a>
+        <br><br>
         <strong>SU MEJOR AMIGO</strong><br>
         <em>El Lobo Titánico</em>
         <p align="left"><small>Colosal lobo huargo de pelaje azabache y dos faros verde esmeralda por ojos. Guardián leal, hermano de batalla y el compañero incondicional que rescata a Raupulus de la soledad.</small></p>
       </td>
       <td align="center" width="33%" valign="top">
-        <img src="dist/assets/images/amada-avatar-bust.png" width="190" alt="Amada"><br><br>
+        <a href="https://music.raupulus.dev#lore" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/amada-avatar-bust.webp" width="170" alt="Amada — La Musa Trágica">
+        </a>
+        <br><br>
         <strong>AMADA</strong><br>
         <em>La Musa Trágica</em>
         <p align="left"><small>Guerrera y espíritu de estirpe elfa-ogra híbrida. Su belleza salvaje, memoria y destino efímero impulsan la rebelión de Raupulus contra el paso implacable del tiempo.</small></p>
@@ -106,32 +111,32 @@ Una muestra visual de la ambientación cinematográfica generada clip a clip par
   <table>
     <tr>
       <td align="center" width="25%" valign="top">
-        <a href="https://www.youtube.com/watch?v=PyvTqcnsZgI" target="_blank">
-          <img src="dist/assets/images/covers/cover-01.jpg" width="100%" alt="Corona de Hierro"><br>
+        <a href="https://www.youtube.com/watch?v=PyvTqcnsZgI" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/covers/cover-01.webp" width="100%" alt="Corona de Hierro"><br>
           <strong>#01 Corona de Hierro</strong><br>
           <small>🔥 Fortaleza Volcánica</small><br>
           <small>▶️ <em>Ver en YouTube</em></small>
         </a>
       </td>
       <td align="center" width="25%" valign="top">
-        <a href="https://www.youtube.com/watch?v=DBfvozBREXg" target="_blank">
-          <img src="dist/assets/images/covers/cover-08.jpg" width="100%" alt="Pacto con la Muerte"><br>
+        <a href="https://www.youtube.com/watch?v=DBfvozBREXg" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/covers/cover-08.webp" width="100%" alt="Pacto con la Muerte"><br>
           <strong>#08 Pacto con la Muerte</strong><br>
           <small>💀 Trono de las Ánimas</small><br>
           <small>▶️ <em>Ver en YouTube</em></small>
         </a>
       </td>
       <td align="center" width="25%" valign="top">
-        <a href="https://www.youtube.com/watch?v=mp5wRq_PS8U" target="_blank">
-          <img src="dist/assets/images/covers/cover-10.jpg" width="100%" alt="Mi mejor amigo Ladra"><br>
+        <a href="https://www.youtube.com/watch?v=mp5wRq_PS8U" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/covers/cover-10.webp" width="100%" alt="Mi mejor amigo Ladra"><br>
           <strong>#10 Mi mejor amigo Ladra</strong><br>
           <small>🐺 Lealtad Inquebrantable</small><br>
           <small>▶️ <em>Ver en YouTube</em></small>
         </a>
       </td>
       <td align="center" width="25%" valign="top">
-        <a href="https://www.youtube.com/watch?v=yHHLgW3XuQg" target="_blank">
-          <img src="dist/assets/images/covers/cover-19.jpg" width="100%" alt="Rey de los Sesenta Mares"><br>
+        <a href="https://www.youtube.com/watch?v=yHHLgW3XuQg" target="_blank" rel="noopener noreferrer">
+          <img src="dist/assets/images/covers/cover-19.webp" width="100%" alt="Rey de los Sesenta Mares"><br>
           <strong>#19 Rey de los 60 Mares</strong><br>
           <small>⚡ Bastón y Mareas</small><br>
           <small>▶️ <em>Ver en YouTube</em></small>
@@ -178,7 +183,9 @@ Haz clic en **«Ver Videoclip»** para abrir el vídeo oficial en YouTube o en *
 ## 🛠️ Arquitectura Web y Compilación
 
 <p align="center">
-  <img src="dist/assets/images/r-avatar-portrait.jpg" alt="Raupulus Portrait" width="340">
+  <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
+    <img src="dist/assets/images/r-avatar-portrait.webp" alt="Raupulus Portrait" width="340">
+  </a>
   <br>
   <em>Diseño temático oscuro y bioluminiscente optimizado para Core Web Vitals y conversión directa</em>
 </p>
@@ -194,14 +201,18 @@ web/
 ├── data/
 │   └── songs.json            # Base de datos con las 23 canciones, letras, crónicas e IDs
 ├── src/
-│   ├── css/style.css         # Hoja de estilos moderna, responsive y bioluminiscente
+│   ├── css/
+│   │   ├── common.css        # Variables, reset, accesibilidad, navbar y footer
+│   │   ├── home.css          # Hero, single destacado, rejilla de canciones y modal
+│   │   ├── song.css          # Ficha técnica, letra oficial y crónica narrativa
+│   │   └── style.css         # Hoja compilada unificada
 │   └── js/
 │       ├── main.js           # Modal de previsualización rápida, buscador en vivo y utilidades
 │       └── alpine.min.js     # Alpine.js vendored localmente
 └── dist/                     # 🚀 Sitio estático compilado 100% listo para producción
     ├── index.html            # Portada principal con buscador, modal y reproductor
     ├── canciones/            # 23 páginas estáticas dedicadas
-    ├── assets/               # CSS, JS e imágenes
+    ├── assets/               # CSS modular minificado, JS e imágenes
     ├── sitemap.xml           # Sitemap oficial para Google Search Console
     └── robots.txt            # Reglas de indexación SEO
 ```
@@ -227,7 +238,7 @@ web/
 
 <p align="center">
   <a href="https://music.raupulus.dev" target="_blank">
-    <img src="dist/assets/images/avatar-circular.png" alt="Raupulus Circular Avatar" width="100">
+    <img src="dist/assets/images/avatar-circular.webp" alt="Raupulus Circular Avatar" width="100">
   </a>
 </p>
 
