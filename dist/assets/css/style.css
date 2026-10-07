@@ -1032,11 +1032,74 @@ p {
   font-family: inherit;
 }
 
+.synopsis-box {
+  margin-bottom: 26px;
+}
+
 .synopsis-text {
   font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 24px;
+  color: #dfd7f5;
+  line-height: 1.8;
+  margin: 0;
+  padding: 16px 20px;
+  background: rgba(155, 77, 255, 0.08);
+  border-left: 3px solid var(--accent-purple);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: normal;
+}
+
+/* Crónica Cinematográfica Completa del Storyboard */
+.story-chronicle-box {
+  margin-top: 36px;
+  padding: 26px 22px;
+  background: rgba(18, 14, 28, 0.75);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(155, 77, 255, 0.04);
+}
+
+.story-chronicle-header {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.story-chronicle-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+.story-chronicle-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.story-chronicle-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.story-p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #d1cbe5;
+  margin: 0;
+  text-align: left;
+}
+
+.story-p strong {
+  color: var(--text-bright);
 }
 
 .specs-grid {

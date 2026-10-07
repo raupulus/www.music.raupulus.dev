@@ -522,6 +522,26 @@ def generate_song_pages(songs):
         cover_url = f"{SITE_URL}/assets/images/covers/{s['cover_file']}"
         yt_id = s.get('youtube_id', '')
 
+        # Crónica visual completa basada en el Storyboard
+        story_raw = s.get('story', '')
+        if story_raw:
+            story_paras = [p.strip() for p in story_raw.split('\n\n') if p.strip()]
+            story_p_html = "\n".join([f'            <p class="story-p">{html.escape(sanitize_public_text(p))}</p>' for p in story_paras])
+            story_chronicle_html = f"""
+        <!-- Crónica Cinematográfica Completa del Storyboard -->
+        <div class="story-chronicle-box">
+          <div class="story-chronicle-header">
+            <span class="story-chronicle-tag">STORYBOARD OFICIAL • CRÓNICA NARRATIVA</span>
+            <h4 class="story-chronicle-title">🎬 Historia Cinematográfica Completa</h4>
+          </div>
+          <div class="story-chronicle-content">
+{story_p_html}
+          </div>
+        </div>
+            """
+        else:
+            story_chronicle_html = ""
+
         # Player Embed or Interactive Poster
         if yt_id:
             player_html = f"""
@@ -732,7 +752,9 @@ def generate_song_pages(songs):
           <span>🎬 Universo Cinematográfico</span>
         </div>
 
-        <p class="synopsis-text">{synopsis_esc}</p>
+        <div class="synopsis-box">
+          <p class="synopsis-text">{synopsis_esc}</p>
+        </div>
 
         <h4 style="margin-bottom: 14px; font-size: 1.1rem; color: var(--text-bright);">Ficha de Producción</h4>
         <div class="specs-grid">
@@ -775,6 +797,8 @@ def generate_song_pages(songs):
             🔔 Suscribirse al Canal
           </a>
         </div>
+
+        {story_chronicle_html}
       </aside>
     </div>
 

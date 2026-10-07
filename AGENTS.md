@@ -98,4 +98,20 @@
 > 3. **`M-Love-Avatar` (código interno) ➔ `Amada` / `Su Amada` (nombre público):**  
 >    La elfa-ogra híbrida musa trágica del universo. Presentarla ante el público como su amada.
 
+---
+
+## 9. ESTÁNDAR NARRATIVO Y VISUAL EN FICHAS DE CANCIÓN (UNIVERSO CINEMATOGRÁFICO)
+
+> [!IMPORTANT]
+> En la web oficial (`canciones/*.html`) y en la documentación de cada tema, el bloque **🎬 Universo Cinematográfico** debe seguir rigurosamente este estándar narrativo extenso, concreto y oxigenado:
+>
+> 1. **Prohibición de textos abstractos o genéricos:** NUNCA usar sinopsis abstractas ni frases vacías. Debe describirse el entorno tangible (ciudadelas de hierro, bosques de coníferas, acantilados volcánicos, etc.), las acciones físicas y el conflicto visual del clip.
+> 2. **Estructura vertical obligatoria en el lateral (`<aside>` de la ficha):**
+>    - **1) Resumen Cinematográfico:** Sinopsis tangible y directa del argumento y atmósfera del tema.
+>    - **2) Ficha de Producción:** Metadatos técnicos (Pista, Duración, Número de clips de 10s, Protagonista, Género, Dirección).
+>    - **3) Arte de Portada:** Imagen oficial en formato 16:9 de la portada.
+>    - **4) Botones de Conversión a YouTube:** "Ver en YouTube" y "🔔 Suscribirse al Canal" (con `?sub_confirmation=1`).
+>    - **5) Historia Cinematográfica Completa (Crónica del Storyboard):** Situada obligatoriamente **al final, debajo de los botones de suscripción**, narrando de forma extensa y detallada el recorrido visual completo basado en el `01_guion_storyboard.md` de cada videoclip, estructurado en párrafos amplios y bien oxigenados (con interlineado generoso y espaciado claro).
+
+
 
