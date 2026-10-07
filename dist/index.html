@@ -227,16 +227,18 @@
   </script>
 </head>
 <body>
+  <!-- Enlace accesible de salto al contenido -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Siluetas de Raupulus de fondo -->
-  <div class="bg-watermark"></div>
-  <div class="bg-watermark-left"></div>
+  <div class="bg-watermark" aria-hidden="true"></div>
+  <div class="bg-watermark-left" aria-hidden="true"></div>
 
   <!-- Barra de Navegación -->
   <nav class="site-nav" aria-label="Navegación principal">
     <div class="container">
       <a href="https://music.raupulus.dev/" class="nav-brand">
-        <img src="assets/images/logo.png" alt="Logo Oficial Raupulus Music">
+        <img src="assets/images/logo.png" alt="Logotipo Oficial Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -262,8 +264,9 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="inicio" class="hero">
+  <main id="main-content">
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="badge badge-cyan">⚡ LANZAMIENTO OFICIAL • CD 1</div>
@@ -368,10 +371,11 @@
       <!-- Buscador y filtro -->
       <div class="toolbar">
         <div class="search-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <label for="song-search" class="visually-hidden">Buscar canciones por título o temática</label>
           <input type="text" id="song-search" placeholder="Buscar por título o temática (ej: Corona, Lobo, Máquina, Mar)..." aria-label="Buscador de canciones">
         </div>
-        <div class="filter-count" id="search-count">
+        <div class="filter-count" id="search-count" aria-live="polite">
           Mostrando 23 de 23 canciones
         </div>
       </div>
@@ -416,7 +420,8 @@
                       data-synopsis="En una fortaleza volcánica forjada con hierro colado y piedra negra, Raupulus camina entre ríos de lava incandescente. Rechazando el vasallaje de antiguos monarcas y tiranos, forja su propia corona con madera viva y metal al rojo vivo, proclamándose soberano absoluto sobre las cenizas del viejo mundo."
                       data-cover="assets/images/covers/cover-01.jpg"
                       data-slug="01-corona-de-hierro"
-                      data-ytid="PyvTqcnsZgI">
+                      data-ytid="PyvTqcnsZgI"
+                      aria-label="Vista Previa de Corona de Hierro">
                 ▶ Vista Previa
               </button>
             </div>
@@ -458,7 +463,8 @@
                       data-synopsis="Sobre un mar infinito de nubes de tormenta cargadas de electricidad violeta, Raupulus gobierna los relámpagos y el viento desde la cima de un monolito flotante. Desde su atalaya celestial, contempla la insignificancia de los opresores terrestres y canaliza la furia del cielo hacia el abismo."
                       data-cover="assets/images/covers/cover-02.jpg"
                       data-slug="02-desde-el-cielo-mando"
-                      data-ytid="StCK6oO_JPM">
+                      data-ytid="StCK6oO_JPM"
+                      aria-label="Vista Previa de Desde el cielo Mando">
                 ▶ Vista Previa
               </button>
             </div>
@@ -500,7 +506,8 @@
                       data-synopsis="Encadenado en las profundidades de un laberinto subterráneo de piedra húmeda y argollas centenarias, Raupulus confronta a espectros sombríos que intentaron drenar su esencia vital. Desatando su rabia acumulada, despedaza los grilletes y persigue a las sombras traidoras hasta pulverizar su engaño."
                       data-cover="assets/images/covers/cover-03.jpg"
                       data-slug="03-me-has-robado-la-vida"
-                      data-ytid="oZEK5_YWW4c">
+                      data-ytid="oZEK5_YWW4c"
+                      aria-label="Vista Previa de Me has robado la vida">
                 ▶ Vista Previa
               </button>
             </div>
@@ -542,7 +549,8 @@
                       data-synopsis="Bajo una luna roja de sangre en un bosque gótico de árboles retorcidos y ruinas victorianas, Raupulus acecha como el forajido indomable de la noche. Esquivando emboscadas mecánicas y moviéndose veloz entre las tinieblas, reclama las sombras como su territorio absoluto."
                       data-cover="assets/images/covers/cover-04.jpg"
                       data-slug="04-bandolero-de-la-noche"
-                      data-ytid="zZB-H_TxBqE">
+                      data-ytid="zZB-H_TxBqE"
+                      aria-label="Vista Previa de Bandolero de la Noche">
                 ▶ Vista Previa
               </button>
             </div>
@@ -584,7 +592,8 @@
                       data-synopsis="En una llanura desolada asfixiada por ceniza volcánica densa y gases tóxicos, Raupulus camina sin necesidad de aliento. Su cuerpo de madera calcinada y bioelectricidad violeta desafía la extinción, convirtiéndose en el monumento viviente que sobrevive al colapso de la atmósfera."
                       data-cover="assets/images/covers/cover-05.jpg"
                       data-slug="05-no-vuelvo-a-respirar"
-                      data-ytid="AZMI5Kqgi10">
+                      data-ytid="AZMI5Kqgi10"
+                      aria-label="Vista Previa de No vuelvo a Respirar">
                 ▶ Vista Previa
               </button>
             </div>
@@ -626,7 +635,8 @@
                       data-synopsis="En una metrópolis industrial brutalista de acero remachado y engranajes colosales, Raupulus lidera una rebelión de almas de metal. En este imperio de percusión constante y fundición ardiente, el ruido de la opresión se transforma en el himno de los hombres libres."
                       data-cover="assets/images/covers/cover-06.jpg"
                       data-slug="06-ciudadano-de-un-pais-llamado-metal"
-                      data-ytid="Kb1YxcttScc">
+                      data-ytid="Kb1YxcttScc"
+                      aria-label="Vista Previa de Ciudadano de un país llamado Métal">
                 ▶ Vista Previa
               </button>
             </div>
@@ -668,7 +678,8 @@
                       data-synopsis="En un laboratorio clandestino repleto de matraces químicos, serpentines y tuberías de cobre corroído, los fluidos internos de Raupulus hierven con una toxicidad embriagadora. Su resistencia transforma el veneno en potencia motriz pura, purgando el dolor en un trance visceral de combustión."
                       data-cover="assets/images/covers/cover-07.jpg"
                       data-slug="07-mi-corazon-bombea-ginebra"
-                      data-ytid="xC0Y0rx-5lU">
+                      data-ytid="xC0Y0rx-5lU"
+                      aria-label="Vista Previa de Mi corazón bombea Ginebra">
                 ▶ Vista Previa
               </button>
             </div>
@@ -710,7 +721,8 @@
                       data-synopsis="En un cementerio gótico milenario cubierto de niebla helada, Raupulus se encuentra cara a cara con la entidad de la Muerte. En lugar de someterse ante su guadaña, sellan una alianza de respeto mutuo donde la muerte se convierte en su aliada eterna."
                       data-cover="assets/images/covers/cover-08.jpg"
                       data-slug="08-pacto-con-la-muerte"
-                      data-ytid="DBfvozBREXg">
+                      data-ytid="DBfvozBREXg"
+                      aria-label="Vista Previa de Pacto con la Muerte">
                 ▶ Vista Previa
               </button>
             </div>
@@ -752,7 +764,8 @@
                       data-synopsis="En una autopista infinita suspendida sobre un abismo de magma y relámpagos de neón, Raupulus y su amada protagonizan una desenfrenada carrera nocturna de velocidad y complicidad. Al volante de su bólido de ébano, desafían a la muerte en cada curva como una declaración de amor visceral."
                       data-cover="assets/images/covers/cover-09.jpg"
                       data-slug="09-derrapando-por-tu-piel"
-                      data-ytid="u40CotMrAJo">
+                      data-ytid="u40CotMrAJo"
+                      aria-label="Vista Previa de Derrapando por tu Piel">
                 ▶ Vista Previa
               </button>
             </div>
@@ -794,7 +807,8 @@
                       data-synopsis="En un mundo ruinoso y hostil, Raupulus supera el aislamiento de su alma gracias a la presencia viva de su mejor amigo: un lobo titánico de pelaje negro carbón y ojos verde esmeralda. Lejos de ser una bestia agresiva, el lobo es su compañero del alma y el protector leal que le devuelve la paz."
                       data-cover="assets/images/covers/cover-10.jpg"
                       data-slug="10-mi-mejor-amigo-ladra"
-                      data-ytid="mp5wRq_PS8U">
+                      data-ytid="mp5wRq_PS8U"
+                      aria-label="Vista Previa de Mi mejor amigo Ladra">
                 ▶ Vista Previa
               </button>
             </div>
@@ -836,7 +850,8 @@
                       data-synopsis="Raupulus es el eterno nómada nocturno que encuentra su verdadero santuario en el asfalto solitario. Conduciendo sin rumbo bajo túneles iluminados por neones violetas y repostando en gasolineras olvidadas por el tiempo, hace de la libertad del viaje su único destino."
                       data-cover="assets/images/covers/cover-11.jpg"
                       data-slug="11-vivo-en-la-carretera"
-                      data-ytid="JPS26YoNJ7w">
+                      data-ytid="JPS26YoNJ7w"
+                      aria-label="Vista Previa de Vivo en la carretera">
                 ▶ Vista Previa
               </button>
             </div>
@@ -878,7 +893,8 @@
                       data-synopsis="En los pasillos en ruinas de un sanatorio mental industrial consumido por la herrumbre, Raupulus experimenta una violenta fractura psíquica. Entre descargas eléctricas que sacuden su cerebro expuesto y alucinaciones de espejos rotos, libra una guerra interna contra la locura hasta someter sus propios demonios."
                       data-cover="assets/images/covers/cover-12.jpg"
                       data-slug="12-trillado-del-coco"
-                      data-ytid="ZcBROzcaf80">
+                      data-ytid="ZcBROzcaf80"
+                      aria-label="Vista Previa de Trillado del Coco">
                 ▶ Vista Previa
               </button>
             </div>
@@ -920,7 +936,8 @@
                       data-synopsis="Una crónica desgarradora sobre el paso implacable del tiempo y la disolución de los lazos de juventud. Raupulus recorre las calles y tabernas de su antiguo barrio, descubriendo cómo los compañeros de antaño cayeron en la codicia, la envidia y la traición hasta dejarlo en una soledad honorable."
                       data-cover="assets/images/covers/cover-13.jpg"
                       data-slug="13-ya-no-me-quedan-amigos"
-                      data-ytid="-oJfBCCCeHM">
+                      data-ytid="-oJfBCCCeHM"
+                      aria-label="Vista Previa de Ya no me quedan amigos">
                 ▶ Vista Previa
               </button>
             </div>
@@ -962,7 +979,8 @@
                       data-synopsis="Una odisea cósmica a través de diez mil años de historia terrenal y astral. Una misma alma guerrera e inmortal, identificada por sus ocho ojos y esencia de plasma violeta, ha renacido en cien vidas distintas luchando incansablemente contra la sumisión en cada rincón del tiempo."
                       data-cover="assets/images/covers/cover-14.jpg"
                       data-slug="14-diez-mil-anos-en-mas-de-100-vidas"
-                      data-ytid="8x2uwLAnXlQ">
+                      data-ytid="8x2uwLAnXlQ"
+                      aria-label="Vista Previa de Diez Mil Años en más de 100 vidas">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1004,7 +1022,8 @@
                       data-synopsis="Una feroz crítica visual a la deforestación descontrolada y la voracidad del progreso urbano desalmado. Raupulus, encarnación viviente de la madera milenaria y el espíritu de la tierra, presencia la caída de los bosques sagrados bajo las excavadoras y se alza como el vengador que reconquista el hormigón."
                       data-cover="assets/images/covers/cover-15.jpg"
                       data-slug="15-no-quedan-arboles-en-mi-barrio"
-                      data-ytid="eaGRqNsznZg">
+                      data-ytid="eaGRqNsznZg"
+                      aria-label="Vista Previa de No quedan árboles en mi Barrio">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1046,7 +1065,8 @@
                       data-synopsis="En una corte celestial de mármol frío, Raupulus es condenado al destierro por sus alas de madera viva y su esencia indomable. Despeñado al abismo terrenal, transforma la caída en una ascensión gloriosa, demostrando que su fuego violeta vale más que cualquier paraíso de sumisión."
                       data-cover="assets/images/covers/cover-16.jpg"
                       data-slug="16-angel-rechazado"
-                      data-ytid="koQzQXeP0h8">
+                      data-ytid="koQzQXeP0h8"
+                      aria-label="Vista Previa de Ángel Rechazado">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1088,7 +1108,8 @@
                       data-synopsis="En un banquete pantagruélico donde emperadores y cortesanos devoran manjares en un frenesí de codicia ciega, Raupulus contempla con náusea el espectáculo del consumo vacío. Rechazando saciarse con migajas terrenales, ayuna para conservar la pureza de su alma."
                       data-cover="assets/images/covers/cover-17.jpg"
                       data-slug="17-he-perdido-el-hambre"
-                      data-ytid="mwQDAXvQSTE">
+                      data-ytid="mwQDAXvQSTE"
+                      aria-label="Vista Previa de He perdido el hambre">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1130,7 +1151,8 @@
                       data-synopsis="Una elegía poética y desgarradora concebida como homenaje solemne a la muerte y al amor que trasciende la existencia física. Raupulus acompaña a su amada en sus últimos momentos sobre la tierra, sellando un juramento de amor eterno que renace en las estrellas."
                       data-cover="assets/images/covers/cover-18.jpg"
                       data-slug="18-mi-amada-tiene-fecha-de-caducidad"
-                      data-ytid="SnTkN2MmqcY">
+                      data-ytid="SnTkN2MmqcY"
+                      aria-label="Vista Previa de Mi amada tiene fecha de caducidad">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1172,7 +1194,8 @@
                       data-synopsis="Una epopeya submarina y náutica que narra la coronación de Raupulus como soberano absoluto de los sesenta mares. Sumergiéndose en abismos inexplorados y empuñando el Bastón de los Sesenta Mares, doblega leviatanes y ciudadelas sumergidas para gobernar las aguas del planeta."
                       data-cover="assets/images/covers/cover-19.jpg"
                       data-slug="19-rey-de-los-sesenta-mares"
-                      data-ytid="yHHLgW3XuQg">
+                      data-ytid="yHHLgW3XuQg"
+                      aria-label="Vista Previa de Rey de los Sesenta Mares">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1214,7 +1237,8 @@
                       data-synopsis="Una oda a la verdadera abundancia: la lealtad incondicional de los aliados elegidos y el calor del fuego compartido. Raupulus demuestra que las monedas de oro son polvo estéril comparadas con una hermandad de sangre que nunca te dejará caer."
                       data-cover="assets/images/covers/cover-20.jpg"
                       data-slug="20-soy-rico-sin-tener-dinero"
-                      data-ytid="ATeWyiFG-cM">
+                      data-ytid="ATeWyiFG-cM"
+                      aria-label="Vista Previa de Soy Rico sin tener Dinero">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1256,7 +1280,8 @@
                       data-synopsis="Una catarsis visceral de purga emocional y superación en la soledad salvaje de una cordillera ancestral. Raupulus asciende a la aguja más inhóspita para desatar un rugido telúrico que purga el dolor, las decepciones y las verdades acumuladas en su pecho."
                       data-cover="assets/images/covers/cover-21.jpg"
                       data-slug="21-grito-a-la-montana"
-                      data-ytid="_WIJpKsRkP0">
+                      data-ytid="_WIJpKsRkP0"
+                      aria-label="Vista Previa de Grito a la Montaña">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1298,7 +1323,8 @@
                       data-synopsis="En una epopeya de resistencia sobrehumana a través de cuatro actos monumentales, Raupulus convierte cada negativa y cada obstáculo en combustible de plasma violeta. Quebrando cadenas, escalando murallas de 300 metros y forjando diamantes negros con sus propias manos, corona la cumbre más alta del mundo."
                       data-cover="assets/images/covers/cover-22.jpg"
                       data-slug="22-mil-veces-me-dijeron-que-no-podia"
-                      data-ytid="YeGl_-rtxqQ">
+                      data-ytid="YeGl_-rtxqQ"
+                      aria-label="Vista Previa de Mil veces me dijeron que no podía">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1340,7 +1366,8 @@
                       data-synopsis="El apoteósico clímax y cierre oficial de &#x27;Nunca venderé mi alma de Metal&#x27;. Al volante de su bólido biomecánico de ébano y acero, Raupulus disputa una carrera nocturna mortal, batiéndose en duelo rueda con rueda con la Muerte y saltando fallas de magma antes de despegar a la estratosfera terrestre para orbitar la Tierra en triunfo infinito."
                       data-cover="assets/images/covers/cover-23.jpg"
                       data-slug="23-por-encima-de-los-limites"
-                      data-ytid="cHRgwfRbNS8">
+                      data-ytid="cHRgwfRbNS8"
+                      aria-label="Vista Previa de Por encima de los límites">
                 ▶ Vista Previa
               </button>
             </div>
@@ -1364,7 +1391,7 @@
         <!-- Tarjeta 1: Raupulus -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-purple">
-            <img src="assets/images/r-avatar-face.png" alt="Raupulus" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/r-avatar-face.png" alt="Busto de frente de Raupulus mostrando su calavera de ébano oscuro, cuernos curvados, 8 ojos violetas y cerebro bioeléctrico expuesto" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">PROTAGONISTA PRINCIPAL</div>
           <h3 class="lore-title">Raupulus</h3>
@@ -1380,7 +1407,7 @@
         <!-- Tarjeta 2: Su Mejor Amigo -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-emerald">
-            <img src="assets/images/wolf-avatar-bust.png" alt="Su Mejor Amigo" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/wolf-avatar-bust.png" alt="Busto frontal del mejor amigo de Raupulus: lobo titánico de pelaje negro carbón con ojos verde esmeralda luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge badge-cyan">SU PERRO & MEJOR AMIGO</div>
           <h3 class="lore-title">Su Mejor Amigo</h3>
@@ -1395,7 +1422,7 @@
         <!-- Tarjeta 3: Amada -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-cyan">
-            <img src="assets/images/amada-avatar-bust.png" alt="Amada" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/amada-avatar-bust.png" alt="Busto frontal de Amada, la musa trágica: elfa-ogra híbrida con piel verde jade, orejas puntiagudas y ojos cian luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">LA MUSA TRÁGICA</div>
           <h3 class="lore-title">Amada</h3>
@@ -1410,7 +1437,7 @@
 
       <div style="margin-top: 50px; text-align: center;">
         <div style="position: relative; max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow);">
-          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra, Alas Demoníacas y Soberano del Trono" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra con chispas violetas a la izquierda, Alas Demoníacas iluminadas en el centro y Soberano en el Trono de los 60 mares a la derecha" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
         <p style="margin-top: 14px; font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em;">
           Furia Sonora • Ascensión de Plasma • Trono de los Sesenta Mares
@@ -1446,13 +1473,14 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo.png" alt="Raupulus Music">
+          <img src="assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
@@ -1464,7 +1492,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#destacado">Tema Destacado</a></li>
@@ -1475,7 +1503,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Contacto & Legal</h4>
+          <h3 class="footer-col-title">Contacto & Legal</h3>
           <ul class="footer-links">
             <li><a href="mailto:public@raupulus.dev">Email: public@raupulus.dev</a></li>
             <li><a href="https://www.youtube.com/@RaupulusMusic" target="_blank" rel="noopener noreferrer">YouTube Oficial</a></li>

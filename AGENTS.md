@@ -158,5 +158,42 @@
 >    - **4) Botones de Conversión a YouTube:** "Ver en YouTube" y "🔔 Suscribirse al Canal" (con `?sub_confirmation=1`).
 >    - **5) Historia Cinematográfica Completa (Crónica del Storyboard):** Situada obligatoriamente **al final, debajo de los botones de suscripción**, narrando de forma extensa y detallada el recorrido visual completo basado en el `01_guion_storyboard.md` de cada videoclip, estructurado en párrafos amplios y bien oxigenados (con interlineado generoso y espaciado claro).
 
+---
+
+## 10. ESTÁNDARES OBLIGATORIOS DE ACCESIBILIDAD (A11Y), W3C Y RESPONSIVE EN LA WEB
+
+> [!IMPORTANT]
+> Para garantizar una experiencia de usuario perfecta y una auditoría Lighthouse 100/100 en Accesibilidad y SEO, toda página en `dist/` debe respetar estrictamente:
+>
+> 1. **Contraste de Color WCAG AA (Mínimo 4.5:1 en texto normal, 7:1 en badges/pequeño):**
+>    - Fondo oscuro `#06050a` / `#110e1c`: Texto principal `#f5f3f9`, atenuado (`--text-dim`) `#9c95b3` (ratio > 6:1).
+>    - Badges e indicadores: Morado `#d8b4fe`, cian `#38f8ff`, rojo `#ffa0a0`. Prohibido usar morados oscuros `#9b4dff` directamente como color de texto sobre fondos oscuros.
+>
+> 2. **Navegación Accesible por Teclado y Foco Visible:**
+>    - Enlace de salto al contenido inicial: `<a href="#main-content" class="skip-link">Saltar al contenido principal</a>`.
+>    - Landmark semántico principal: `<main id="main-content">` que engloba el contenido esencial.
+>    - Estilo global de `:focus-visible` con contorno nítido cian/violeta (`outline: 2px solid var(--accent-cyan); outline-offset: 3px;`).
+>    - Los modales deben cerrarse con la tecla `Escape` y restablecer el scroll (`document.body.style.overflow = ''`).
+>
+> 3. **Jerarquía Estricta de Encabezados (W3C Sequentially Descending Order):**
+>    - Prohibido saltar niveles de encabezado (ej: de `H1` a `H3` o de `H2` a `H4`).
+>    - En Portada: `H1` (Título del álbum) ➔ `H2` (Secciones) ➔ `H3` (Tarjetas, personajes del lore, títulos de columnas del footer).
+>    - En Fichas de Canción: `H1` (Título de canción) ➔ `H2` (CTA banner, Letra oficial, Universo cinematográfico) ➔ `H3` (Ficha de producción, Arte de portada, Crónica narrativa del storyboard, Columnas del footer).
+>
+> 4. **Textos Alternativos (`alt`) y Descripciones para Lectores de Pantalla:**
+>    - Todas las imágenes `<img>` deben incluir un atributo `alt` exhaustivo y descriptivo. Prohibido dejar `alt` vacío o genérico.
+>    - Bustos de lore y trípticos deben describir elementos anatómicos (cuernos, ojos violetas, cerebro expuesto, vestimenta/poses).
+>    - Elementos puramente decorativos o de fondo deben llevar `aria-hidden="true"`.
+>    - Los campos de entrada (como `#song-search`) deben contar con `<label for="..." class="visually-hidden">`.
+>
+> 5. **Dimensiones Explícitas y Prevención de CLS (Cumulative Layout Shift):**
+>    - Toda etiqueta `<img>` debe contar con atributos `width` y `height` acordes a su proporción intrínseca para evitar saltos de maquetación durante la carga.
+>
+> 6. **Diseño Responsive y Touch Targets (Móviles):**
+>    - Controles interactivos, botones y accesos con un área táctil mínima de 44x44px.
+>    - Inputs de texto con `font-size: 16px` en vista móvil para evitar zoom involuntario en iOS Safari.
+>    - En pantallas pequeñas (`<= 480px`), botones y selectores apilados en ancho 100% con espaciado cómodo.
+
+
 
 

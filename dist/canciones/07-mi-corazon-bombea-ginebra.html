@@ -72,14 +72,14 @@
   </script>
 </head>
 <body>
-
-  <div class="bg-watermark"></div>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <div class="bg-watermark" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <nav class="site-nav" aria-label="Navegación">
     <div class="container">
       <a href="../index.html" class="nav-brand">
-        <img src="../assets/images/logo.png" alt="Logo Raupulus Music">
+        <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -103,7 +103,7 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main id="main-content" class="container">
     <!-- Header -->
     <header class="song-header">
       <nav class="breadcrumb" aria-label="Miga de pan">
@@ -139,7 +139,7 @@
     <!-- Banner Visible CTA hacia YouTube -->
     <section class="video-cta-banner" aria-label="Acciones en YouTube">
       <div class="video-cta-info">
-        <h3 class="video-cta-title">¿Te gusta este tema? Apoya el proyecto en YouTube</h3>
+        <h2 class="video-cta-title">¿Te gusta este tema? Apoya el proyecto en YouTube</h2>
         <p class="video-cta-text">Dale like, comparte y déjanos tu parte favorita en la caja de comentarios.</p>
       </div>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -158,7 +158,7 @@
       <!-- Letra Oficial -->
       <article class="content-box">
         <div class="content-box-title">
-          <span>📜 Letra Oficial</span>
+          <h2 class="content-box-heading">📜 Letra Oficial</h2>
           <button type="button" id="btn-copy-lyrics" class="btn btn-outline btn-sm">
             📋 Copiar Letra
           </button>
@@ -256,14 +256,14 @@ Mi corazón bombea ginebra</div>
       <!-- Historia y Ficha Técnica -->
       <aside class="content-box">
         <div class="content-box-title">
-          <span>🎬 Universo Cinematográfico</span>
+          <h2 class="content-box-heading">🎬 Universo Cinematográfico</h2>
         </div>
 
         <div class="synopsis-box">
           <p class="synopsis-text">En un laboratorio clandestino repleto de matraces químicos, serpentines y tuberías de cobre corroído, los fluidos internos de Raupulus hierven con una toxicidad embriagadora. Su resistencia transforma el veneno en potencia motriz pura, purgando el dolor en un trance visceral de combustión.</p>
         </div>
 
-        <h4 style="margin-bottom: 14px; font-size: 1.1rem; color: var(--text-bright);">Ficha de Producción</h4>
+        <h3 class="aside-section-title">Ficha de Producción</h3>
         <div class="specs-grid">
           <div class="spec-item">
             <span class="spec-label">Pista</span>
@@ -291,9 +291,9 @@ Mi corazón bombea ginebra</div>
           </div>
         </div>
 
-        <h4 style="margin: 24px 0 14px; font-size: 1.1rem; color: var(--text-bright);">Arte de Portada</h4>
+        <h3 class="aside-section-title" style="margin-top: 24px;">Arte de Portada</h3>
         <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle);">
-          <img src="../assets/images/covers/cover-07.jpg" alt="Portada Mi corazón bombea Ginebra" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="../assets/images/covers/cover-07.jpg" alt="Portada cinematográfica de Mi corazón bombea Ginebra — Álbum Nunca venderé mi alma de Metal" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
 
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
@@ -310,7 +310,7 @@ Mi corazón bombea ginebra</div>
         <div class="story-chronicle-box">
           <div class="story-chronicle-header">
             <span class="story-chronicle-tag">STORYBOARD OFICIAL • CRÓNICA NARRATIVA</span>
-            <h4 class="story-chronicle-title">🎬 Historia Cinematográfica Completa</h4>
+            <h3 class="story-chronicle-title">🎬 Historia Cinematográfica Completa</h3>
           </div>
           <div class="story-chronicle-content">
             <p class="story-p">Un travelling lento nos sumerge en una destilería subterránea iluminada por luces de gas verdosas y filamentos incandescentes. Serpentines de cobre y probetas gigantes hierven con un licor espeso de destellos violetas. Raupulus contempla su propio reflejo en un tanque de condensación, donde sus venas palpitan con un líquido bioeléctrico que arde como combustible de alto octanaje.</p>
@@ -344,14 +344,14 @@ Mi corazón bombea ginebra</div>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../assets/images/logo.png" alt="Raupulus Music">
+          <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="../index.html">Página Principal</a></li>
             <li><a href="../index.html#canciones">Índice del CD 1 (23 Canciones)</a></li>
@@ -360,7 +360,7 @@ Mi corazón bombea ginebra</div>
         </div>
 
         <div class="footer-col">
-          <h4>Contacto & Legal</h4>
+          <h3 class="footer-col-title">Contacto & Legal</h3>
           <ul class="footer-links">
             <li><a href="mailto:public@raupulus.dev">Email: public@raupulus.dev</a></li>
             <li><a href="https://www.youtube.com/@RaupulusMusic" target="_blank" rel="noopener noreferrer">YouTube Oficial</a></li>

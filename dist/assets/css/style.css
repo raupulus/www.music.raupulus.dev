@@ -28,7 +28,7 @@
 
   --text-main: #f5f3f9;
   --text-muted: #a39eb4;
-  --text-dim: #726c84;
+  --text-dim: #9c95b3;
   --text-bright: #ffffff;
 
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -46,6 +46,44 @@
   --max-w-main: 1280px;
   --shadow-glow: 0 0 35px rgba(155, 77, 255, 0.25);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Accessibility & Focus States */
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--accent-purple);
+  color: #ffffff;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  z-index: 10000;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(155, 77, 255, 0.8);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* Reset & Base */
@@ -332,20 +370,20 @@ p {
   letter-spacing: 0.08em;
   border-radius: var(--radius-sm);
   background: var(--accent-purple-dim);
-  border: 1px solid rgba(155, 77, 255, 0.3);
-  color: var(--accent-purple);
+  border: 1px solid rgba(155, 77, 255, 0.4);
+  color: #d8b4fe;
 }
 
 .badge-cyan {
-  background: rgba(0, 240, 255, 0.1);
-  border-color: rgba(0, 240, 255, 0.35);
-  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: #38f8ff;
 }
 
 .badge-yt {
-  background: rgba(255, 0, 0, 0.12);
-  border-color: rgba(255, 0, 0, 0.35);
-  color: #ff5555;
+  background: rgba(255, 0, 0, 0.15);
+  border-color: rgba(255, 0, 0, 0.4);
+  color: #ffa0a0;
 }
 
 /* Hero Section */
@@ -746,9 +784,9 @@ p {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(10, 8, 18, 0.85);
+  background: rgba(10, 8, 18, 0.88);
   backdrop-filter: blur(8px);
-  color: var(--accent-purple);
+  color: #d8b4fe;
   border: 1px solid var(--accent-purple);
   font-weight: 800;
   font-size: 0.85rem;
@@ -1024,6 +1062,23 @@ p {
   border-bottom: 1px solid var(--border-subtle);
 }
 
+.content-box-heading {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aside-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 14px;
+}
+
 .lyrics-content {
   font-size: 1.05rem;
   line-height: 1.9;
@@ -1160,7 +1215,7 @@ p {
 
 .nav-direction {
   font-size: 0.8rem;
-  color: var(--accent-purple);
+  color: #d8b4fe;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1201,7 +1256,9 @@ p {
   align-self: flex-start;
 }
 
-.footer-col h4 {
+.footer-col h3,
+.footer-col h4,
+.footer-col-title {
   font-size: 1.05rem;
   margin-bottom: 16px;
   color: var(--text-bright);
@@ -1312,6 +1369,43 @@ p {
 
   .specs-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions,
+  .spotlight-actions,
+  .preview-modal-footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .site-nav .container {
+    height: 64px;
+  }
+
+  .mobile-menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box input {
+    font-size: 16px; /* Evita zoom automático en Safari iOS */
+  }
+
+  .content-box {
+    padding: 20px 16px;
   }
 }
 

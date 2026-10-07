@@ -102,7 +102,8 @@ def generate_index(songs):
                       data-synopsis="{synopsis_short}"
                       data-cover="assets/images/covers/{s['cover_file']}"
                       data-slug="{s['slug']}"
-                      data-ytid="{s.get('youtube_id', '')}">
+                      data-ytid="{s.get('youtube_id', '')}"
+                      aria-label="Vista Previa de {title_esc}">
                 ▶ Vista Previa
               </button>
             </div>
@@ -189,16 +190,18 @@ def generate_index(songs):
   </script>
 </head>
 <body>
+  <!-- Enlace accesible de salto al contenido -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Siluetas de Raupulus de fondo -->
-  <div class="bg-watermark"></div>
-  <div class="bg-watermark-left"></div>
+  <div class="bg-watermark" aria-hidden="true"></div>
+  <div class="bg-watermark-left" aria-hidden="true"></div>
 
   <!-- Barra de Navegación -->
   <nav class="site-nav" aria-label="Navegación principal">
     <div class="container">
       <a href="{SITE_URL}/" class="nav-brand">
-        <img src="assets/images/logo.png" alt="Logo Oficial Raupulus Music">
+        <img src="assets/images/logo.png" alt="Logotipo Oficial Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -224,8 +227,9 @@ def generate_index(songs):
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="inicio" class="hero">
+  <main id="main-content">
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="badge badge-cyan">⚡ LANZAMIENTO OFICIAL • CD 1</div>
@@ -330,10 +334,11 @@ def generate_index(songs):
       <!-- Buscador y filtro -->
       <div class="toolbar">
         <div class="search-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <label for="song-search" class="visually-hidden">Buscar canciones por título o temática</label>
           <input type="text" id="song-search" placeholder="Buscar por título o temática (ej: Corona, Lobo, Máquina, Mar)..." aria-label="Buscador de canciones">
         </div>
-        <div class="filter-count" id="search-count">
+        <div class="filter-count" id="search-count" aria-live="polite">
           Mostrando {len(songs)} de {len(songs)} canciones
         </div>
       </div>
@@ -361,7 +366,7 @@ def generate_index(songs):
         <!-- Tarjeta 1: Raupulus -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-purple">
-            <img src="assets/images/r-avatar-face.png" alt="Raupulus" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/r-avatar-face.png" alt="Busto de frente de Raupulus mostrando su calavera de ébano oscuro, cuernos curvados, 8 ojos violetas y cerebro bioeléctrico expuesto" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">PROTAGONISTA PRINCIPAL</div>
           <h3 class="lore-title">Raupulus</h3>
@@ -377,7 +382,7 @@ def generate_index(songs):
         <!-- Tarjeta 2: Su Mejor Amigo -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-emerald">
-            <img src="assets/images/wolf-avatar-bust.png" alt="Su Mejor Amigo" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/wolf-avatar-bust.png" alt="Busto frontal del mejor amigo de Raupulus: lobo titánico de pelaje negro carbón con ojos verde esmeralda luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge badge-cyan">SU PERRO & MEJOR AMIGO</div>
           <h3 class="lore-title">Su Mejor Amigo</h3>
@@ -392,7 +397,7 @@ def generate_index(songs):
         <!-- Tarjeta 3: Amada -->
         <div class="lore-card">
           <div class="lore-bust-wrap lore-bust-glow-cyan">
-            <img src="assets/images/amada-avatar-bust.png" alt="Amada" class="lore-bust-img" loading="lazy">
+            <img src="assets/images/amada-avatar-bust.png" alt="Busto frontal de Amada, la musa trágica: elfa-ogra híbrida con piel verde jade, orejas puntiagudas y ojos cian luminiscentes" class="lore-bust-img" width="160" height="160" loading="lazy">
           </div>
           <div class="badge">LA MUSA TRÁGICA</div>
           <h3 class="lore-title">Amada</h3>
@@ -407,7 +412,7 @@ def generate_index(songs):
 
       <div style="margin-top: 50px; text-align: center;">
         <div style="position: relative; max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow);">
-          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra, Alas Demoníacas y Soberano del Trono" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="assets/images/r-avatar-triptych.jpg" alt="Raupulus — Tríptico de Poses Épicas: Riff de Guitarra con chispas violetas a la izquierda, Alas Demoníacas iluminadas en el centro y Soberano en el Trono de los 60 mares a la derecha" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
         <p style="margin-top: 14px; font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em;">
           Furia Sonora • Ascensión de Plasma • Trono de los Sesenta Mares
@@ -443,13 +448,14 @@ def generate_index(songs):
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo.png" alt="Raupulus Music">
+          <img src="assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
@@ -461,7 +467,7 @@ def generate_index(songs):
         </div>
 
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#destacado">Tema Destacado</a></li>
@@ -472,7 +478,7 @@ def generate_index(songs):
         </div>
 
         <div class="footer-col">
-          <h4>Contacto & Legal</h4>
+          <h3 class="footer-col-title">Contacto & Legal</h3>
           <ul class="footer-links">
             <li><a href="mailto:{PUBLIC_EMAIL}">Email: {PUBLIC_EMAIL}</a></li>
             <li><a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer">YouTube Oficial</a></li>
@@ -560,7 +566,7 @@ def generate_song_pages(songs):
         <div class="story-chronicle-box">
           <div class="story-chronicle-header">
             <span class="story-chronicle-tag">STORYBOARD OFICIAL • CRÓNICA NARRATIVA</span>
-            <h4 class="story-chronicle-title">🎬 Historia Cinematográfica Completa</h4>
+            <h3 class="story-chronicle-title">🎬 Historia Cinematográfica Completa</h3>
           </div>
           <div class="story-chronicle-content">
 {story_p_html}
@@ -711,14 +717,14 @@ def generate_song_pages(songs):
   </script>
 </head>
 <body>
-
-  <div class="bg-watermark"></div>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <div class="bg-watermark" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <nav class="site-nav" aria-label="Navegación">
     <div class="container">
       <a href="../index.html" class="nav-brand">
-        <img src="../assets/images/logo.png" alt="Logo Raupulus Music">
+        <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="44" height="44">
         <div class="nav-brand-text">
           <span class="nav-brand-title">RAUPULUS</span>
           <span class="nav-brand-sub">MUSIC</span>
@@ -742,7 +748,7 @@ def generate_song_pages(songs):
     </div>
   </nav>
 
-  <main class="container">
+  <main id="main-content" class="container">
     <!-- Header -->
     <header class="song-header">
       <nav class="breadcrumb" aria-label="Miga de pan">
@@ -769,7 +775,7 @@ def generate_song_pages(songs):
     <!-- Banner Visible CTA hacia YouTube -->
     <section class="video-cta-banner" aria-label="Acciones en YouTube">
       <div class="video-cta-info">
-        <h3 class="video-cta-title">¿Te gusta este tema? Apoya el proyecto en YouTube</h3>
+        <h2 class="video-cta-title">¿Te gusta este tema? Apoya el proyecto en YouTube</h2>
         <p class="video-cta-text">Dale like, comparte y déjanos tu parte favorita en la caja de comentarios.</p>
       </div>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -788,7 +794,7 @@ def generate_song_pages(songs):
       <!-- Letra Oficial -->
       <article class="content-box">
         <div class="content-box-title">
-          <span>📜 Letra Oficial</span>
+          <h2 class="content-box-heading">📜 Letra Oficial</h2>
           <button type="button" id="btn-copy-lyrics" class="btn btn-outline btn-sm">
             📋 Copiar Letra
           </button>
@@ -803,14 +809,14 @@ def generate_song_pages(songs):
       <!-- Historia y Ficha Técnica -->
       <aside class="content-box">
         <div class="content-box-title">
-          <span>🎬 Universo Cinematográfico</span>
+          <h2 class="content-box-heading">🎬 Universo Cinematográfico</h2>
         </div>
 
         <div class="synopsis-box">
           <p class="synopsis-text">{synopsis_esc}</p>
         </div>
 
-        <h4 style="margin-bottom: 14px; font-size: 1.1rem; color: var(--text-bright);">Ficha de Producción</h4>
+        <h3 class="aside-section-title">Ficha de Producción</h3>
         <div class="specs-grid">
           <div class="spec-item">
             <span class="spec-label">Pista</span>
@@ -838,9 +844,9 @@ def generate_song_pages(songs):
           </div>
         </div>
 
-        <h4 style="margin: 24px 0 14px; font-size: 1.1rem; color: var(--text-bright);">Arte de Portada</h4>
+        <h3 class="aside-section-title" style="margin-top: 24px;">Arte de Portada</h3>
         <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle);">
-          <img src="../assets/images/covers/{s['cover_file']}" alt="Portada {title_esc}" style="width: 100%; height: auto; display: block;" loading="lazy">
+          <img src="../assets/images/covers/{s['cover_file']}" alt="Portada cinematográfica de {title_esc} — Álbum Nunca venderé mi alma de Metal" width="1376" height="768" style="width: 100%; height: auto; display: block;" loading="lazy">
         </div>
 
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
@@ -868,14 +874,14 @@ def generate_song_pages(songs):
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../assets/images/logo.png" alt="Raupulus Music">
+          <img src="../assets/images/logo.png" alt="Logotipo Raupulus Music" width="150" height="150">
           <p>
             Proyecto musical y cinematográfico oficial de <strong>Raúl Caro Pastorino (@raupulus)</strong>. Metal Industrial y universos de fantasía oscura generados con Inteligencia Artificial.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h3 class="footer-col-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="../index.html">Página Principal</a></li>
             <li><a href="../index.html#canciones">Índice del CD 1 (23 Canciones)</a></li>
@@ -884,7 +890,7 @@ def generate_song_pages(songs):
         </div>
 
         <div class="footer-col">
-          <h4>Contacto & Legal</h4>
+          <h3 class="footer-col-title">Contacto & Legal</h3>
           <ul class="footer-links">
             <li><a href="mailto:{PUBLIC_EMAIL}">Email: {PUBLIC_EMAIL}</a></li>
             <li><a href="{YT_CHANNEL}" target="_blank" rel="noopener noreferrer">YouTube Oficial</a></li>

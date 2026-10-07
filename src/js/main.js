@@ -203,7 +203,7 @@ function initPreviewModal() {
 
   // Asignar a todos los botones y tarjetas con data-preview-trigger
   document.querySelectorAll('[data-preview-trigger]').forEach((el) => {
-    el.addEventListener('click', (e) => {
+    const handleTrigger = (e) => {
       e.preventDefault();
       const data = {
         num: el.getAttribute('data-num') || '1',
@@ -215,6 +215,13 @@ function initPreviewModal() {
         ytid: el.getAttribute('data-ytid') || ''
       };
       openModal(data);
+    };
+
+    el.addEventListener('click', handleTrigger);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        handleTrigger(e);
+      }
     });
   });
 
