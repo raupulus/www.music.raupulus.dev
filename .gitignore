@@ -84,6 +84,7 @@ yarn-debug.log*
 yarn-error.log*
 tmp/
 temp/
+auditoria/
 
 # Cloud Storage & Sync Caches
 *.sync
