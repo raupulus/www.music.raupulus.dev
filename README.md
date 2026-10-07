@@ -1,117 +1,154 @@
-# ⚡ RAUPULUS MUSIC — WEB OFICIAL (music.raupulus.dev)
+<p align="center">
+  <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
+    <img src="dist/assets/images/logo.png" alt="Raupulus Music Logo" width="280">
+  </a>
+</p>
 
-> Sitio web oficial y catálogo cinematográfico para el proyecto musical y audiovisual **Raupulus Music** (`@RaupulusMusic`), centrado en el álbum conceptual **CD 1: Nunca venderé mi alma de Metal** y el universo visual de **Raupulus**.
+<h1 align="center">RAUPULUS MUSIC</h1>
+
+<p align="center">
+  <strong>🔥 Metal Industrial • Cyber Hardcore • Inteligencia Artificial Cinematográfica 🔥</strong><br>
+  <em>Álbum Debut: CD 1 — «Nunca venderé mi alma de Metal»</em>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/@RaupulusMusic" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-%40RaupulusMusic-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Channel">
+  </a>
+  <a href="https://www.youtube.com/@RaupulusMusic?sub_confirmation=1" target="_blank">
+    <img src="https://img.shields.io/badge/Suscribirse-Canal%20Oficial-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Suscribirse al canal">
+  </a>
+  <a href="https://music.raupulus.dev" target="_blank">
+    <img src="https://img.shields.io/badge/Web%20Oficial-music.raupulus.dev-9b4dff?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Sitio Web">
+  </a>
+  <a href="https://www.youtube.com/watch?v=ATeWyiFG-cM&list=PLAfm1RK6VyG8" target="_blank">
+    <img src="https://img.shields.io/badge/Playlist-CD%201%20Completo-00f0ff?style=for-the-badge&logo=youtube&logoColor=white" alt="Playlist CD 1">
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/%C3%81lbum-23%20Canciones-8a2be2?style=flat-square" alt="23 Canciones">
+  <img src="https://img.shields.io/badge/Metraje-570%20Clips%20IA%20(10s)-cyan?style=flat-square" alt="570 Clips IA">
+  <img src="https://img.shields.io/badge/G%C3%A9nero-Industrial%20Metal-orange?style=flat-square" alt="Metal Industrial">
+  <img src="https://img.shields.io/badge/Licencia-Todos%20los%20derechos%20reservados-darkgreen?style=flat-square" alt="Copyright">
+  <img src="https://img.shields.io/badge/Contacto-public%40raupulus.dev-blue?style=flat-square" alt="Contacto">
+</p>
 
 ---
 
-## 🌐 Dominios y Canales Oficiales
-* **Web Oficial:** [https://music.raupulus.dev](https://music.raupulus.dev)
-* **Canal Oficial de YouTube:** [https://www.youtube.com/@RaupulusMusic](https://www.youtube.com/@RaupulusMusic)
-* **Canal Personal / Tech:** [https://www.youtube.com/@raupulus](https://www.youtube.com/@raupulus)
-* **Contacto:** `public@raupulus.dev`
+## ⚡ Accesos Rápidos y Conversión Directa
+
+| 🎯 Destino | 🔗 Enlace Directo | ℹ️ Descripción |
+| :--- | :--- | :--- |
+| 🔴 **Canal Oficial de YouTube** | [**youtube.com/@RaupulusMusic**](https://www.youtube.com/@RaupulusMusic) | Videoclips oficiales cinematográficos en 4K/FHD. |
+| 🔔 **Suscripción con 1 Clic** | [**Suscribirse a @RaupulusMusic**](https://www.youtube.com/@RaupulusMusic?sub_confirmation=1) | Apoya el canal para nuevos estrenos y próximos discos. |
+| 🌐 **Portal Web Oficial** | [**music.raupulus.dev**](https://music.raupulus.dev) | Catálogo interactivo con letras oficiales y crónicas completas. |
+| 💿 **Reproducir Álbum Completo** | [**Ver Playlist Oficial del CD 1**](https://www.youtube.com/watch?v=ATeWyiFG-cM&list=PLAfm1RK6VyG8) | Reproducción continua de las 23 canciones en YouTube. |
 
 ---
 
-## 🎯 Propósito del Sitio y Estrategia SEO
-1. **Captación de Tráfico Orgánico:** Posicionamiento en Google mediante búsquedas de títulos, letras, metal industrial, cyber hardcore y música/videoclips con inteligencia artificial.
-2. **Embudo Directo a YouTube:** Botones prominentes y contrastados para ver los videoclips completos, escuchar la música, suscribirse al canal y dejar comentarios.
-3. **Página Dedicada por Canción:** Cada una de las 23 pistas dispone de su propia página estática optimizada (`/canciones/<slug>.html`) con:
-   * Reproductor de YouTube embebido y responsive.
-   * Letra oficial limpia con botón interactivo de copiado.
-   * Sinopsis y trasfondo narrativo de la escena cinematográfica.
-   * Ficha técnica de producción (duración exacta, número de clips de 10s, protagonista).
-   * Arte de portada 16:9 en alta resolución.
-   * Navegación secuencial entre pistas (anterior / siguiente).
-   * Aviso legal de copyright y créditos completos.
-4. **Diseño Visual Temático:** Estética oscura inspirada en Raupulus (ébano calcinado `#06050a`, bioluminiscencia púrpura `#9b4dff`, siluetas semitransparentes del personaje, acentos cian y neón).
+## 🎬 Acerca del Proyecto
+
+**Raupulus Music** es una experiencia conceptual multimedia que fusiona la potencia del **Metal Industrial** y el **Cyber Hardcore** con un universo cinematográfico de fantasía oscura y ciencia ficción generado con Inteligencia Artificial.
+
+El disco debut, **«Nunca venderé mi alma de Metal» (CD 1)**, está compuesto por **23 canciones originales** y más de **570 clips cinematográficos** generados a compás exacto (10 segundos por clip), creando un despliegue visual ininterrumpido que narra la resistencia del espíritu frente a la tiranía, la traición y el despojo.
+
+<p align="center">
+  <img src="dist/assets/images/r-avatar-triptych.jpg" alt="Raupulus — Riff de Guitarra, Alas de Ébano y Trono de los Sesenta Mares" width="100%">
+</p>
+
+### 🌌 Personajes del Universo
+
+* **Raupulus:** El soberano indomable de la corteza y el plasma violeta. Un titán forjado en haces musculares de madera de ébano, ocho ojos bioluminiscentes, corona de cuernos orgánicos y energía bioeléctrica pulsante en su coronilla.
+* **Su Perro / Mascota / Mejor Amigo (el Lobo Titánico):** Colosal lobo huargo de pelaje azabache y ojos esmeralda. Protector leal, compañero de fatigas y el ancla emocional que acompaña a Raupulus en su viaje.
+* **Amada:** Musa y compañera espiritual de estirpe elfa-ogra híbrida, cuya memoria y destino trágico inspiran la lucha de Raupulus contra el tiempo.
 
 ---
 
-## 📁 Arquitectura del Proyecto
+## 📜 Repertorio del Álbum (23 Canciones)
+
+Haz clic en **«Ver Videoclip»** para abrir el vídeo oficial en YouTube o en **«Letra & Crónica»** para leer la letra y la historia visual en la web oficial:
+
+| # | Título | Duración | Clips (10s) | 🎬 YouTube | 📖 Web Oficial |
+| :-: | :--- | :-: | :-: | :--- | :--- |
+| **01** | **Corona de Hierro** | 03:31 | 21 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=PyvTqcnsZgI) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/01-corona-de-hierro.html) |
+| **02** | **Desde el cielo Mando** | 03:42 | 23 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=StCK6oO_JPM) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/02-desde-el-cielo-mando.html) |
+| **03** | **Me has robado la vida** | 04:13 | 26 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=oZEK5_YWW4c) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/03-me-has-robado-la-vida.html) |
+| **04** | **Bandolero de la Noche** | 04:04 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=zZB-H_TxBqE) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/04-bandolero-de-la-noche.html) |
+| **05** | **No vuelvo a Respirar** | 04:09 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=AZMI5Kqgi10) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/05-no-vuelvo-a-respirar.html) |
+| **06** | **Ciudadano de un país llamado Métal** | 03:37 | 22 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=Kb1YxcttScc) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/06-ciudadano-de-un-pais-llamado-metal.html) |
+| **07** | **Mi corazón bombea Ginebra** | 03:59 | 24 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=xC0Y0rx-5lU) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/07-mi-corazon-bombea-ginebra.html) |
+| **08** | **Pacto con la Muerte** | 04:07 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=DBfvozBREXg) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/08-pacto-con-la-muerte.html) |
+| **09** | **Derrapando por tu Piel** | 03:52 | 24 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=u40CotMrAJo) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/09-derrapando-por-tu-piel.html) |
+| **10** | **Mi mejor amigo Ladra** | 03:32 | 22 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=mp5wRq_PS8U) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/10-mi-mejor-amigo-ladra.html) |
+| **11** | **Vivo en la carretera** | 04:24 | 27 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=JPS26YoNJ7w) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/11-vivo-en-la-carretera.html) |
+| **12** | **Trillado del Coco** | 04:13 | 26 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=ZcBROzcaf80) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/12-trillado-del-coco.html) |
+| **13** | **Ya no me quedan amigos** | 05:02 | 31 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=-oJfBCCCeHM) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/13-ya-no-me-quedan-amigos.html) |
+| **14** | **Diez Mil Años en más de 100 vidas** | 03:24 | 21 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=8x2uwLAnXlQ) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/14-diez-mil-anos-en-mas-de-100-vidas.html) |
+| **15** | **No quedan árboles en mi Barrio** | 04:14 | 26 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=eaGRqNsznZg) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/15-no-quedan-arboles-en-mi-barrio.html) |
+| **16** | **Ángel Rechazado** | 04:03 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=koQzQXeP0h8) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/16-angel-rechazado.html) |
+| **17** | **He perdido el hambre** | 03:47 | 23 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=mwQDAXvQSTE) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/17-he-perdido-el-hambre.html) |
+| **18** | **Mi amada tiene fecha de caducidad** | 04:17 | 26 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=SnTkN2MmqcY) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/18-mi-amada-tiene-fecha-de-caducidad.html) |
+| **19** | **Rey de los Sesenta Mares** | 04:07 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=yHHLgW3XuQg) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/19-rey-de-los-sesenta-mares.html) |
+| **20** | **Soy Rico sin tener Dinero** | 04:04 | 25 clips | [▶️ Ver Videoclip](https://www.youtube.com/watch?v=ATeWyiFG-cM) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/20-soy-rico-sin-tener-dinero.html) |
+| **21** | **Grito a la Montaña** | 04:05 | 25 clips | [🔴 Estreno en YouTube](https://www.youtube.com/@RaupulusMusic) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/21-grito-a-la-montana.html) |
+| **22** | **Mil veces me dijeron que no podía** | 04:04 | 25 clips | [🔴 Estreno en YouTube](https://www.youtube.com/@RaupulusMusic) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/22-mil-veces-me-dijeron-que-no-podia.html) |
+| **23** | **Por encima de los límites** | 04:19 | 26 clips | [🔴 Estreno en YouTube](https://www.youtube.com/@RaupulusMusic) | [📜 Letra & Crónica](https://music.raupulus.dev/canciones/23-por-encima-de-los-limites.html) |
+
+---
+
+## 🛠️ Arquitectura Web y Compilación
+
+La web oficial (`music.raupulus.dev`) está construida con un generador estático ultrarrápido y ligero escrito en Python (`build.py`), diseñado para máxima velocidad de carga, SEO optimizado y Core Web Vitals impecables sin dependencias externas pesadas.
 
 ```text
 web/
-├── AGENTS.md                 # Reglas obligatorias, privacidad y estándares de diseño
-├── README.md                 # Este manual técnico
-├── build.py                  # Generador estático en Python (compila dist/ en 1 segundo)
+├── AGENTS.md                 # Reglas del proyecto, privacidad y estándares de diseño
+├── README.md                 # Portada del repositorio y catálogo oficial
+├── build.py                  # Generador estático Python (compila dist/ en < 1 segundo)
 ├── serve.py                  # Servidor local de desarrollo (http://localhost:8080)
 ├── data/
-│   └── songs.json            # Base de datos JSON con las 23 canciones, letras y YouTube IDs
+│   └── songs.json            # Base de datos con las 23 canciones, letras, crónicas e IDs
 ├── src/
-│   ├── css/
-│   │   └── style.css         # Hoja de estilos moderna, responsive y con diseño bioluminiscente
+│   ├── css/style.css         # Hoja de estilos moderna, responsive y bioluminiscente
 │   └── js/
-│       ├── main.js           # Buscador en tiempo real, menú móvil, spotlight y copiar letras
-│       └── alpine.min.js     # Alpine.js vendored localmente (sin CDNs externos)
-└── dist/                     # 🚀 DIRECTORIO PUBLICABLE FINAL (Deploy-ready)
-    ├── index.html            # Portada principal, catálogo de 23 canciones y buscador
-    ├── canciones/            # 23 páginas individuales para cada canción
-    │   ├── 01-corona-de-hierro.html
-    │   ├── 02-desde-el-cielo-mando.html
-    │   └── ...
-    ├── assets/
-    │   ├── css/style.css
-    │   ├── js/main.js
-    │   └── images/
-    │       ├── logo.png
-    │       ├── r-avatar-face.png
-    │       ├── wolf-avatar-bust.png
-    │       ├── amada-avatar-bust.png
-    │       ├── r-avatar-triptych.jpg
-    │       └── covers/       # 23 portadas cinematográficas oficiales 16:9
-    ├── sitemap.xml           # Mapa del sitio para indexación completa en Google
-    └── robots.txt            # Reglas para rastreadores de motores de búsqueda
+│       ├── main.js           # Modal de previsualización rápida, buscador en vivo y utilidades
+│       └── alpine.min.js     # Alpine.js vendored localmente
+└── dist/                     # 🚀 Sitio estático compilado 100% listo para producción
+    ├── index.html            # Portada principal con buscador, modal y reproductor
+    ├── canciones/            # 23 páginas estáticas dedicadas
+    ├── assets/               # CSS, JS e imágenes
+    ├── sitemap.xml           # Sitemap oficial para Google Search Console
+    └── robots.txt            # Reglas de indexación SEO
 ```
 
----
+### 💻 Cómo Compilar y Probar en Local
 
-## 🚀 Cómo Actualizar Vídeos de YouTube y Regenerar la Web
-
-Cuando subas un nuevo videoclip a YouTube y tengas su ID (por ejemplo `dQw4w9WgXcQ` en `youtube.com/watch?v=dQw4w9WgXcQ`):
-
-1. Abre `data/songs.json`.
-2. Busca la canción correspondiente y rellena el campo `"youtube_id"`:
-   ```json
-   {
-     "number": 1,
-     "title": "Corona de Hierro",
-     "youtube_id": "dQw4w9WgXcQ"
-   }
-   ```
-3. Ejecuta el generador desde la terminal:
+1. **Compilar el sitio:**
    ```bash
    python3 build.py
    ```
-4. ¡Listo! El script regenerará automáticamente la portada, las páginas de canciones con el reproductor oficial de YouTube embebido y el `sitemap.xml` en milisegundos.
+2. **Iniciar servidor local para probar con reproductores de YouTube activos:**
+   ```bash
+   python3 serve.py
+   ```
+   *Abre automáticamente `http://localhost:8080` con soporte para políticas de origen `Referrer` de Google.*
+
+3. **Despliegue (Deploy):**
+   El directorio `dist/` es 100% estático y puede desplegarse directamente en **Cloudflare Pages**, **Vercel**, **Netlify**, **GitHub Pages** o servidores tradicionales (**Nginx / Apache**).
 
 ---
 
-## 💻 Previsualización Local y Desarrollo (`serve.py`)
+## 🔒 Privacidad, Autoría y Contacto
 
-Debido a las políticas de seguridad de Google/YouTube, los reproductores embebidos bloquean la reproducción si se abren directamente desde el explorador como archivo local en disco (`file://`, provocando el **Error 153**) al carecer de cabecera de origen web (`Referrer`).
+* **Música, Guion y Dirección:** Raupulus
+* **Creador:** **Raúl Caro Pastorino (@raupulus)**
+* **Canal Oficial de Música:** [@RaupulusMusic](https://www.youtube.com/@RaupulusMusic)
+* **Canal Personal & Tech:** [@raupulus](https://www.youtube.com/@raupulus)
+* **Contacto Oficial:** [public@raupulus.dev](mailto:public@raupulus.dev)
+* **Copyright:** © 2026 **Raupulus Music**. Letras, composiciones musicales y obras visuales registradas. Todos los derechos reservados.
 
-Para previsualizar y navegar la web en local con todos los vídeos operativos:
-
-```bash
-# Iniciar servidor local de desarrollo (abre automáticamente http://localhost:8080)
-python3 serve.py
-```
-
-Al desplegar en producción (`https://music.raupulus.dev`) o sobre un servidor web, los vídeos se reproducen directamente sin ninguna restricción.
-
----
-
-## 🛠️ Opciones de Despliegue (Deploy)
-
-El directorio `dist/` es 100% estático e independiente. Se puede desplegar directamente en:
-* **Cloudflare Pages:** Conectar el repositorio o subir la carpeta `dist`.
-* **Netlify / Vercel:** Configurar `dist` como el *Publish Directory*.
-* **GitHub Pages:** Publicar la rama o carpeta `dist`.
-* **Nginx / Apache:** Apuntar el `DocumentRoot` de `music.raupulus.dev` a `/ruta/a/web/dist`.
-
----
-
-## 🔒 Privacidad y Autoría
-* Contacto oficial público: `public@raupulus.dev`.
-* Creado por: **Raúl Caro Pastorino (@raupulus)**.
-* Todos los derechos reservados © 2026 Raupulus Music.
+<p align="center">
+  <strong>⚔️ «NUNCA VENDERÉ MI ALMA DE METAL» ⚔️</strong><br>
+  <a href="https://www.youtube.com/@RaupulusMusic?sub_confirmation=1">👉 ¡Haz clic aquí para suscribirte al canal de YouTube! 👈</a>
+</p>

@@ -7,7 +7,7 @@
 
 ## 1. PRIVACIDAD Y SEGURIDAD ESTRICTA (PERMANENTE)
 
-* **Correo personal estrictamente prohibido:** NUNCA utilizar bajo ningún concepto ningún otro correo privado en código, plantillas, metadatos, commits o documentación.
+* **Correo personal estrictamente prohibido:** NUNCA utilizar bajo ningún concepto ningún correo personal o privado del creador en código, plantillas, metadatos, commits o documentación.
 * **Único correo público permitido:** El ÚNICO correo que puede utilizarse en proyectos públicos, metadatos, avisos legales, contacto o menciones es: `public@raupulus.dev`.
 * **Protección de datos:** NUNCA publicar ni compartir datos personales privados (nombres reales completos sin autorización, números de teléfono, IPs privadas, credenciales o tokens).
 

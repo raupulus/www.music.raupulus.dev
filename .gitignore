@@ -1,5 +1,91 @@
+# ==============================================================================
+# Raupulus Music Website — .gitignore
+# ==============================================================================
+
+# Operating System Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
+.DocumentRevisions-V100
+.fseventsd
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 Thumbs.db
-*.log
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+
+# IDE & Editor Files
+.vscode/
+*.code-workspace
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Environment Variables, Secrets & Keys
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.secret
+*.p12
+
+# Logs & Temporary Data
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/
+
+# Cloud Storage & Sync Caches
+*.sync
+.pcloud/
+.pcloud_cache/
