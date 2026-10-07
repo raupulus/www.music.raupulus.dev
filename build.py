@@ -167,13 +167,13 @@ def generate_index(songs):
         "@context": "https://schema.org",
         "@type": "MusicAlbum",
         "name": ALBUM_TITLE,
-        "image": f"{SITE_URL}/assets/images/logo.webp",
+        "image": f"{SITE_URL}/assets/images/social-cover.webp",
         "url": f"{SITE_URL}/",
         "byArtist": {
             "@type": "MusicGroup",
             "name": "Raupulus Music",
             "url": YT_CHANNEL,
-            "image": f"{SITE_URL}/assets/images/logo.webp"
+            "image": f"{SITE_URL}/assets/images/social-cover.webp"
         },
         "genre": ["Industrial Metal", "Cyber Hardcore", "Metal IA"],
         "numTracks": len(songs),
@@ -203,12 +203,12 @@ def generate_index(songs):
   <meta property="og:url" content="{SITE_URL}/">
   <meta property="og:title" content="Raupulus Music — CD 1: Nunca venderé mi alma de Metal">
   <meta property="og:description" content="23 canciones de puro Metal Industrial y Cyber Hardcore con 570 clips generados por IA cinematográfica. Explora los vídeos y las letras oficiales.">
-  <meta property="og:image" content="{SITE_URL}/assets/images/logo.webp">
-  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/logo.webp">
+  <meta property="og:image" content="{SITE_URL}/assets/images/social-cover.webp">
+  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/social-cover.webp">
   <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
-  <meta property="og:image:alt" content="Logotipo Oficial de Raupulus Music">
+  <meta property="og:image:alt" content="Raupulus Music — Álbum Oficial CD 1: Nunca venderé mi alma de Metal">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -217,8 +217,8 @@ def generate_index(songs):
   <meta name="twitter:url" content="{SITE_URL}/">
   <meta name="twitter:title" content="Raupulus Music — Álbum Oficial CD 1">
   <meta name="twitter:description" content="Metal Industrial y Videoclips Cinematográficos de Raupulus. Letras, historias y vídeos en YouTube.">
-  <meta name="twitter:image" content="{SITE_URL}/assets/images/logo.webp">
-  <meta name="twitter:image:alt" content="Logotipo Oficial de Raupulus Music">
+  <meta name="twitter:image" content="{SITE_URL}/assets/images/social-cover.webp">
+  <meta name="twitter:image:alt" content="Raupulus Music — Álbum Oficial CD 1: Nunca venderé mi alma de Metal">
 
   <link rel="icon" type="image/webp" href="assets/images/avatar-circular.webp">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
@@ -719,13 +719,13 @@ def generate_song_pages(songs):
                 "@type": "MusicAlbum",
                 "name": ALBUM_TITLE,
                 "url": f"{SITE_URL}/",
-                "image": f"{SITE_URL}/assets/images/logo.webp"
+                "image": f"{SITE_URL}/assets/images/social-cover.webp"
             },
             "byArtist": {
                 "@type": "MusicGroup",
                 "name": "Raupulus Music",
                 "url": YT_CHANNEL,
-                "image": f"{SITE_URL}/assets/images/logo.webp"
+                "image": f"{SITE_URL}/assets/images/social-cover.webp"
             },
             "description": sanitize_public_text(s.get('synopsis', ''))
         }
