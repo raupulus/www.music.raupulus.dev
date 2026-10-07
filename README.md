@@ -1,6 +1,12 @@
 <p align="center">
   <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
-    <img src="dist/assets/images/logo.png" alt="Raupulus Music Logo" width="280">
+    <img src="dist/assets/images/banner.jpg" alt="Raupulus Music — Nunca venderé mi alma de Metal" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://music.raupulus.dev" target="_blank" rel="noopener noreferrer">
+    <img src="dist/assets/images/logo.png" alt="Raupulus Music Logo" width="260">
   </a>
 </p>
 
@@ -40,9 +46,9 @@
 
 | 🎯 Destino | 🔗 Enlace Directo | ℹ️ Descripción |
 | :--- | :--- | :--- |
-| 🔴 **Canal Oficial de YouTube** | [**youtube.com/@RaupulusMusic**](https://www.youtube.com/@RaupulusMusic) | Videoclips oficiales cinematográficos en 4K/FHD. |
-| 🔔 **Suscripción con 1 Clic** | [**Suscribirse a @RaupulusMusic**](https://www.youtube.com/@RaupulusMusic?sub_confirmation=1) | Apoya el canal para nuevos estrenos y próximos discos. |
-| 🌐 **Portal Web Oficial** | [**music.raupulus.dev**](https://music.raupulus.dev) | Catálogo interactivo con letras oficiales y crónicas completas. |
+| 🔴 **Canal Oficial de YouTube** | [**youtube.com/@RaupulusMusic**](https://www.youtube.com/@RaupulusMusic) | Videoclips oficiales cinematográficos en máxima calidad. |
+| 🔔 **Suscripción Directa (1 Clic)** | [**Suscribirse a @RaupulusMusic**](https://www.youtube.com/@RaupulusMusic?sub_confirmation=1) | Recibe notificaciones de nuevos lanzamientos y próximos discos. |
+| 🌐 **Portal Web Oficial** | [**music.raupulus.dev**](https://music.raupulus.dev) | Catálogo interactivo con reproductor, letras y crónicas completas. |
 | 💿 **Reproducir Álbum Completo** | [**Ver Playlist Oficial del CD 1**](https://www.youtube.com/watch?v=ATeWyiFG-cM&list=PLAfm1RK6VyG8) | Reproducción continua de las 23 canciones en YouTube. |
 
 ---
@@ -55,19 +61,91 @@ El disco debut, **«Nunca venderé mi alma de Metal» (CD 1)**, está compuesto 
 
 <p align="center">
   <img src="dist/assets/images/r-avatar-triptych.jpg" alt="Raupulus — Riff de Guitarra, Alas de Ébano y Trono de los Sesenta Mares" width="100%">
+  <br>
+  <em>Tríptico Oficial: El Riff de la Tormenta, Las Alas de Ébano y El Trono de los Sesenta Mares</em>
 </p>
-
-### 🌌 Personajes del Universo
-
-* **Raupulus:** El soberano indomable de la corteza y el plasma violeta. Un titán forjado en haces musculares de madera de ébano, ocho ojos bioluminiscentes, corona de cuernos orgánicos y energía bioeléctrica pulsante en su coronilla.
-* **Su Perro / Mascota / Mejor Amigo (el Lobo Titánico):** Colosal lobo huargo de pelaje azabache y ojos esmeralda. Protector leal, compañero de fatigas y el ancla emocional que acompaña a Raupulus en su viaje.
-* **Amada:** Musa y compañera espiritual de estirpe elfa-ogra híbrida, cuya memoria y destino trágico inspiran la lucha de Raupulus contra el tiempo.
 
 ---
 
-## 📜 Repertorio del Álbum (23 Canciones)
+## 🌌 Personajes del Universo Cinematográfico
 
-Haz clic en **«Ver Videoclip»** para abrir el vídeo oficial en YouTube o en **«Letra & Crónica»** para leer la letra y la historia visual en la web oficial:
+El universo visual y narrativo de Raupulus cobra vida a través de tres figuras clave en constante interacción y evolución dramática:
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="33%" valign="top">
+        <img src="dist/assets/images/r-avatar-face.png" width="190" alt="Raupulus"><br><br>
+        <strong>RAUPULUS</strong><br>
+        <em>El Soberano Indomable</em>
+        <p align="left"><small>Entidad bio-orgánica forjada en haces musculares de madera de ébano, ocho ojos bioluminiscentes sin pupilas, corona de cuernos curvados y energía neural violeta pulsante en su coronilla.</small></p>
+      </td>
+      <td align="center" width="33%" valign="top">
+        <img src="dist/assets/images/wolf-avatar-bust.png" width="190" alt="El Lobo Titánico"><br><br>
+        <strong>SU MEJOR AMIGO</strong><br>
+        <em>El Lobo Titánico</em>
+        <p align="left"><small>Colosal lobo huargo de pelaje azabache y dos faros verde esmeralda por ojos. Guardián leal, hermano de batalla y el compañero incondicional que rescata a Raupulus de la soledad.</small></p>
+      </td>
+      <td align="center" width="33%" valign="top">
+        <img src="dist/assets/images/amada-avatar-bust.png" width="190" alt="Amada"><br><br>
+        <strong>AMADA</strong><br>
+        <em>La Musa Trágica</em>
+        <p align="left"><small>Guerrera y espíritu de estirpe elfa-ogra híbrida. Su belleza salvaje, memoria y destino efímero impulsan la rebelión de Raupulus contra el paso implacable del tiempo.</small></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 🎥 Videoclips Destacados (Galería 16:9)
+
+Una muestra visual de la ambientación cinematográfica generada clip a clip para el álbum:
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="25%" valign="top">
+        <a href="https://www.youtube.com/watch?v=PyvTqcnsZgI" target="_blank">
+          <img src="dist/assets/images/covers/cover-01.jpg" width="100%" alt="Corona de Hierro"><br>
+          <strong>#01 Corona de Hierro</strong><br>
+          <small>🔥 Fortaleza Volcánica</small><br>
+          <small>▶️ <em>Ver en YouTube</em></small>
+        </a>
+      </td>
+      <td align="center" width="25%" valign="top">
+        <a href="https://www.youtube.com/watch?v=DBfvozBREXg" target="_blank">
+          <img src="dist/assets/images/covers/cover-08.jpg" width="100%" alt="Pacto con la Muerte"><br>
+          <strong>#08 Pacto con la Muerte</strong><br>
+          <small>💀 Trono de las Ánimas</small><br>
+          <small>▶️ <em>Ver en YouTube</em></small>
+        </a>
+      </td>
+      <td align="center" width="25%" valign="top">
+        <a href="https://www.youtube.com/watch?v=mp5wRq_PS8U" target="_blank">
+          <img src="dist/assets/images/covers/cover-10.jpg" width="100%" alt="Mi mejor amigo Ladra"><br>
+          <strong>#10 Mi mejor amigo Ladra</strong><br>
+          <small>🐺 Lealtad Inquebrantable</small><br>
+          <small>▶️ <em>Ver en YouTube</em></small>
+        </a>
+      </td>
+      <td align="center" width="25%" valign="top">
+        <a href="https://www.youtube.com/watch?v=yHHLgW3XuQg" target="_blank">
+          <img src="dist/assets/images/covers/cover-19.jpg" width="100%" alt="Rey de los Sesenta Mares"><br>
+          <strong>#19 Rey de los 60 Mares</strong><br>
+          <small>⚡ Bastón y Mareas</small><br>
+          <small>▶️ <em>Ver en YouTube</em></small>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 📜 Repertorio Completo del Álbum (23 Canciones)
+
+Haz clic en **«Ver Videoclip»** para abrir el vídeo oficial en YouTube o en **«Letra & Crónica»** para acceder a la ficha oficial con la letra sincronizada y la crónica detallada del storyboard:
 
 | # | Título | Duración | Clips (10s) | 🎬 YouTube | 📖 Web Oficial |
 | :-: | :--- | :-: | :-: | :--- | :--- |
@@ -99,7 +177,13 @@ Haz clic en **«Ver Videoclip»** para abrir el vídeo oficial en YouTube o en *
 
 ## 🛠️ Arquitectura Web y Compilación
 
-La web oficial (`music.raupulus.dev`) está construida con un generador estático ultrarrápido y ligero escrito en Python (`build.py`), diseñado para máxima velocidad de carga, SEO optimizado y Core Web Vitals impecables sin dependencias externas pesadas.
+<p align="center">
+  <img src="dist/assets/images/r-avatar-portrait.jpg" alt="Raupulus Portrait" width="340">
+  <br>
+  <em>Diseño temático oscuro y bioluminiscente optimizado para Core Web Vitals y conversión directa</em>
+</p>
+
+La web oficial ([music.raupulus.dev](https://music.raupulus.dev)) está construida con un generador estático en Python (`build.py`), diseñado para máxima velocidad de carga, SEO optimizado y Core Web Vitals impecables sin dependencias externas pesadas ni frameworks sobrecargados.
 
 ```text
 web/
@@ -141,6 +225,12 @@ web/
 
 ## 🔒 Privacidad, Autoría y Contacto
 
+<p align="center">
+  <a href="https://music.raupulus.dev" target="_blank">
+    <img src="dist/assets/images/avatar-circular.png" alt="Raupulus Circular Avatar" width="100">
+  </a>
+</p>
+
 * **Música, Guion y Dirección:** Raupulus
 * **Creador:** **Raúl Caro Pastorino (@raupulus)**
 * **Canal Oficial de Música:** [@RaupulusMusic](https://www.youtube.com/@RaupulusMusic)
@@ -150,5 +240,5 @@ web/
 
 <p align="center">
   <strong>⚔️ «NUNCA VENDERÉ MI ALMA DE METAL» ⚔️</strong><br>
-  <a href="https://www.youtube.com/@RaupulusMusic?sub_confirmation=1">👉 ¡Haz clic aquí para suscribirte al canal de YouTube! 👈</a>
+  <a href="https://www.youtube.com/@RaupulusMusic?sub_confirmation=1">👉 ¡Haz clic aquí para suscribirte al canal oficial de YouTube! 👈</a>
 </p>
