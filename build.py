@@ -51,6 +51,15 @@ def sanitize_public_text(text):
     text = text.replace("M-Love-Avatar", "su amada").replace("m-love-avatar", "su amada")
     return text
 
+def duration_to_seconds(dur_str):
+    try:
+        parts = str(dur_str).strip().split(':')
+        mins = int(parts[0])
+        secs = int(float(parts[1]))
+        return mins * 60 + secs
+    except Exception:
+        return 210
+
 def generate_index(songs):
     first_song = songs[0] if songs else {}
 
@@ -119,10 +128,13 @@ def generate_index(songs):
         "@context": "https://schema.org",
         "@type": "MusicAlbum",
         "name": ALBUM_TITLE,
+        "image": f"{SITE_URL}/assets/images/logo.png",
+        "url": f"{SITE_URL}/",
         "byArtist": {
             "@type": "MusicGroup",
             "name": "Raupulus Music",
-            "url": YT_CHANNEL
+            "url": YT_CHANNEL,
+            "image": f"{SITE_URL}/assets/images/logo.png"
         },
         "genre": ["Industrial Metal", "Cyber Hardcore", "Metal IA"],
         "numTracks": len(songs),
@@ -136,22 +148,38 @@ def generate_index(songs):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Raupulus Music — Metal Industrial, Cyberpunk & Videoclips con IA</title>
-  <meta name="description" content="Sitio oficial de Raupulus Music. Descubre el álbum 'CD 1: Nunca venderé mi alma de Metal', 23 videoclips cinematográficos, letras oficiales y el universo visual de Raupulus.">
+  <meta name="description" content="Sitio oficial de Raupulus Music. Descubre el álbum 'CD 1: Nunca venderé mi alma de Metal', 23 videoclips cinematográficos generados por IA, letras oficiales y el universo visual de Raupulus.">
+  <meta name="keywords" content="Raupulus, Raupulus Music, Nunca venderé mi alma de Metal, Metal Industrial, Cyber Hardcore, Metal IA, Videoclips IA, Música Oficial, Letras de Canciones, Heavy Metal, Álbum Completo">
+  <meta name="author" content="Raúl Caro Pastorino (@raupulus)">
+  <meta name="publisher" content="Raupulus Music">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#9b4dff">
+  <meta name="msapplication-TileColor" content="#07060a">
   <link rel="canonical" href="{SITE_URL}/">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:site_name" content="Raupulus Music">
+  <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{SITE_URL}/">
   <meta property="og:title" content="Raupulus Music — CD 1: Nunca venderé mi alma de Metal">
   <meta property="og:description" content="23 canciones de puro Metal Industrial y Cyber Hardcore con 570 clips generados por IA cinematográfica. Explora los vídeos y las letras oficiales.">
-  <meta property="og:image" content="{SITE_URL}/assets/images/banner.jpg">
+  <meta property="og:image" content="{SITE_URL}/assets/images/logo.png">
+  <meta property="og:image:secure_url" content="{SITE_URL}/assets/images/logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="Logotipo Oficial de Raupulus Music">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@RaupulusMusic">
+  <meta name="twitter:creator" content="@raupulus">
   <meta name="twitter:url" content="{SITE_URL}/">
   <meta name="twitter:title" content="Raupulus Music — Álbum Oficial CD 1">
   <meta name="twitter:description" content="Metal Industrial y Videoclips Cinematográficos de Raupulus. Letras, historias y vídeos en YouTube.">
-  <meta name="twitter:image" content="{SITE_URL}/assets/images/banner.jpg">
+  <meta name="twitter:image" content="{SITE_URL}/assets/images/logo.png">
+  <meta name="twitter:image:alt" content="Logotipo Oficial de Raupulus Music">
 
   <link rel="icon" type="image/png" href="assets/images/avatar-circular.png">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -604,23 +632,28 @@ def generate_song_pages(songs):
             </a>
             """
 
+        dur_secs = duration_to_seconds(s.get('duration', '03:30'))
+
         # Schema LD
         schema_ld = {
             "@context": "https://schema.org",
             "@type": "MusicRecording",
             "name": s['title'],
             "url": canonical_url,
+            "image": cover_url,
             "duration": f"PT{s['duration'].replace(':', 'M')}S",
             "position": s['number'],
             "inAlbum": {
                 "@type": "MusicAlbum",
                 "name": ALBUM_TITLE,
-                "url": f"{SITE_URL}/"
+                "url": f"{SITE_URL}/",
+                "image": f"{SITE_URL}/assets/images/logo.png"
             },
             "byArtist": {
                 "@type": "MusicGroup",
                 "name": "Raupulus Music",
-                "url": YT_CHANNEL
+                "url": YT_CHANNEL,
+                "image": f"{SITE_URL}/assets/images/logo.png"
             },
             "description": sanitize_public_text(s.get('synopsis', ''))
         }
@@ -632,22 +665,43 @@ def generate_song_pages(songs):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>{title_esc} — Raupulus Music | Vídeo Oficial y Letra</title>
-  <meta name="description" content="Videoclip y letra oficial de '{title_esc}' por Raupulus Music. Pista {s['number']} del álbum 'Nunca venderé mi alma de Metal'.">
+  <meta name="description" content="Videoclip y letra oficial de '{title_esc}' por Raupulus Music. Pista {s['number']} del álbum 'Nunca venderé mi alma de Metal'. 570 clips cinematográficos con IA.">
+  <meta name="keywords" content="{title_esc}, Raupulus, Raupulus Music, Letra {title_esc}, Videoclip {title_esc}, Metal Industrial, Cyber Hardcore, Nunca venderé mi alma de Metal, CD 1">
+  <meta name="author" content="Raúl Caro Pastorino (@raupulus)">
+  <meta name="publisher" content="Raupulus Music">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#9b4dff">
+  <meta name="msapplication-TileColor" content="#07060a">
   <link rel="canonical" href="{canonical_url}">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:site_name" content="Raupulus Music">
+  <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="music.song">
   <meta property="og:url" content="{canonical_url}">
-  <meta property="og:title" content="{title_esc} — Raupulus Music (Vídeo y Letra)">
+  <meta property="og:title" content="{title_esc} — Raupulus Music (Vídeo y Letra Oficial)">
   <meta property="og:description" content="{synopsis_esc}">
   <meta property="og:image" content="{cover_url}">
+  <meta property="og:image:secure_url" content="{cover_url}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta property="og:image:alt" content="Portada oficial de {title_esc} — Álbum Nunca venderé mi alma de Metal">
+  <meta property="music:duration" content="{dur_secs}">
+  <meta property="music:album" content="{SITE_URL}/">
+  <meta property="music:musician" content="{YT_CHANNEL}">
+  <meta property="music:song:disc" content="1">
+  <meta property="music:song:track" content="{s['number']}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@RaupulusMusic">
+  <meta name="twitter:creator" content="@raupulus">
   <meta name="twitter:url" content="{canonical_url}">
   <meta name="twitter:title" content="{title_esc} — Raupulus Music">
   <meta name="twitter:description" content="{synopsis_esc}">
   <meta name="twitter:image" content="{cover_url}">
+  <meta name="twitter:image:alt" content="Portada oficial de {title_esc} — Álbum Nunca venderé mi alma de Metal">
 
   <link rel="icon" type="image/png" href="../assets/images/avatar-circular.png">
   <link rel="stylesheet" href="../assets/css/style.css">

@@ -53,17 +53,62 @@
 
 ---
 
-## 5. ESTRATEGIA DE SEO Y CONVERSIÓN A YOUTUBE
+## 5. ESTRATEGIA DE SEO Y METADATOS OBLIGATORIOS PARA REDES SOCIALES
 
-* **Objetivo de Tráfico:** Atraer tráfico orgánico desde motores de búsqueda (búsquedas por títulos de canciones, letras, metal industrial, cyber metal, música IA) y canalizarlo directamente a YouTube para reproducciones y suscripciones.
-* **Metadatos por Página:**
-  * OpenGraph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`).
-  * Twitter Card (`summary_large_image`).
-  * Etiquetas canónicas apuntando a `https://music.raupulus.dev/...`.
-  * Datos estructurados Schema.org (`MusicGroup`, `MusicAlbum`, `MusicRecording`, `VideoObject`).
-* **Llamadas a la Acción (CTA) de YouTube:**
-  * Botones grandes y contrastados: "Ver en YouTube", "Suscribirse al Canal", "Comentar en YouTube".
-  * Reproductor embebido accesible y responsive con lazy loading.
+> [!IMPORTANT]
+> **REGLA ESTRICTA Y PERMANENTE DE SEO Y SOCIAL SHARING:**
+> Todas las páginas actuales y cualquier página nueva que se cree o edite deben mantener obligatoriamente la suite completa de metadatos SEO y tarjetas de previsualización para redes sociales (WhatsApp, Facebook, Twitter/X, Telegram, Discord, LinkedIn).
+>
+> 1. **Página Principal (`dist/index.html`):**
+>    - **Imagen Oficial Obligatoria:** Debe utilizar OBLIGATORIAMENTE el **logotipo oficial** (`https://music.raupulus.dev/assets/images/logo.png`).
+>    - Metadatos Open Graph obligatorios:
+>      - `og:image`: `https://music.raupulus.dev/assets/images/logo.png`
+>      - `og:image:secure_url`: `https://music.raupulus.dev/assets/images/logo.png`
+>      - `og:image:type`: `image/png`
+>      - `og:image:width`: `1024`
+>      - `og:image:height`: `1024`
+>      - `og:image:alt`: `Logotipo Oficial de Raupulus Music`
+>      - `og:site_name`: `Raupulus Music`
+>      - `og:locale`: `es_ES`
+>      - `og:type`: `website`
+>    - Metadatos Twitter Card:
+>      - `twitter:card`: `summary_large_image`
+>      - `twitter:site`: `@RaupulusMusic`
+>      - `twitter:creator`: `@raupulus`
+>      - `twitter:image`: `https://music.raupulus.dev/assets/images/logo.png`
+>      - `twitter:image:alt`: `Logotipo Oficial de Raupulus Music`
+>
+> 2. **Páginas de Canciones (`dist/canciones/*.html`):**
+>    - **Imagen Oficial Obligatoria:** Debe utilizar OBLIGATORIAMENTE la **portada cinematográfica oficial 16:9** de la canción en el disco (`https://music.raupulus.dev/assets/images/covers/cover-XX.jpg`).
+>    - Metadatos Open Graph obligatorios:
+>      - `og:image`: `https://music.raupulus.dev/assets/images/covers/{cover_file}`
+>      - `og:image:secure_url`: `https://music.raupulus.dev/assets/images/covers/{cover_file}`
+>      - `og:image:type`: `image/jpeg`
+>      - `og:image:width`: `1376`
+>      - `og:image:height`: `768`
+>      - `og:image:alt`: `Portada oficial de {Título} — Álbum Nunca venderé mi alma de Metal`
+>      - `og:site_name`: `Raupulus Music`
+>      - `og:locale`: `es_ES`
+>      - `og:type`: `music.song`
+>      - Metadatos de música: `music:duration`, `music:album`, `music:musician`, `music:song:disc`, `music:song:track`.
+>    - Metadatos Twitter Card:
+>      - `twitter:card`: `summary_large_image`
+>      - `twitter:site`: `@RaupulusMusic`
+>      - `twitter:creator`: `@raupulus`
+>      - `twitter:image`: `https://music.raupulus.dev/assets/images/covers/{cover_file}`
+>      - `twitter:image:alt`: `Portada oficial de {Título} — Álbum Nunca venderé mi alma de Metal`
+>
+> 3. **Metadatos Globales Obligatorios en TODAS las Páginas:**
+>    - `robots`: `index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1`
+>    - `keywords`: Palabras clave relevantes optimizadas para SEO.
+>    - `author`: `Raúl Caro Pastorino (@raupulus)`
+>    - `publisher`: `Raupulus Music`
+>    - `theme-color`: `#9b4dff`
+>    - `msapplication-TileColor`: `#07060a`
+>    - `link rel="canonical"`: URL canónica absoluta.
+>    - Datos estructurados Schema.org (`MusicAlbum` / `MusicRecording`) con la propiedad `"image"` siempre sincronizada.
+>
+> 4. **Mantenimiento y Automatización Obligatoria:** Tras editar cualquier metadato, letra, sinopsis o añadir nuevas canciones/páginas, es imperativo ejecutar `python3 build.py` para regenerar todos los archivos estáticos en `dist/`.
 
 ---
 
